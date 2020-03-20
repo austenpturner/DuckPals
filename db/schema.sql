@@ -1,0 +1,24 @@
+DROP DATABASE IF EXISTS project_db;
+
+CREATE DATABASE project_db;
+
+USE project_db;
+
+CREATE TABLE ducks (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  hungry BOOLEAN NOT NULL,
+  sleepy BOOLEAN NOT NULL,
+  color VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(30) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
