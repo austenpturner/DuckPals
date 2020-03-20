@@ -1,42 +1,49 @@
-$(document).ready(function() {
+// window.onload( () => {
   // Getting references to our form and input
-  var signUpForm = $('form.signup');
-  var emailInput = $('input#email-input');
-  var passwordInput = $('input#password-input');
+  const signUpBtn = document.getElementById('submit-btn')
+  const emailInput = document.getElementById('email-input');
+  const passwordInput = document.getElementById('password-input');
+  const alertMsg = document.getElementById('alert-msg');
+  const alertContainer = document.getElementById('alert-container');
 
   // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on('submit', function(event) {
-    event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+  signUpBtn.addEventListener('click', e => {
+    e.preventDefault();
+    const userData = {
+      email: emailInput.value.trim(),
+      password: passwordInput.value.trim()
     };
 
     if (!userData.email || !userData.password) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
-    emailInput.val('');
-    passwordInput.val('');
+    signUpUser(userData);
+    emailInput.value = '';
+    passwordInput.value = '';
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post('/api/signup', {
-      email: email,
-      password: password
-    })
-      .then(function(data) {
-        window.location.replace('/ducklist');
+  const signUpUser = data => {
+    console.log(data);
+    fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => {
+      return res.json();
+    }).then(data => {
+        location.reload('/ducklist');
         // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
+    }).catch(handleLoginErr());
   }
 
-  function handleLoginErr(err) {
-    $('#alert .msg').text(err.responseJSON);
-    $('#alert').fadeIn(500);
+  const handleLoginErr = err => {
+    alertMsg.textContent = 'Error.';
+    alertContainer.style.display = 'block';
   }
-});
+// });
+
