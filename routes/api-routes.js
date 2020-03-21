@@ -23,7 +23,6 @@ module.exports = app => {
       password: req.body.password
     })
       .then(() => {
-        // console.log(data);
         res.redirect(307, "/api/login");
       })
       .catch(err => {
@@ -34,7 +33,7 @@ module.exports = app => {
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Route for getting some data about our user to be used client side
