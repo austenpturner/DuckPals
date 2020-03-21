@@ -36,10 +36,10 @@ const signUpUser = data => {
   }).then(res => {
     return res.json();
   }).then(data => {
-      // console.log(data);
-      location.reload('/login');
+      console.log(data.dataValues);
+      window.location.replace("/login");
   // If there's an error, handle it by throwing up a bootstrap alert
-  }).catch(handleLoginErr());
+  }).catch(handleLoginErr);
 };
 
 const handleLoginErr = err => {
