@@ -32,8 +32,7 @@ const loginUser = data => {
       body: JSON.stringify(data)
   }).then(res => {
     return res.json();
-  }).then(data => {
-    // console.log(data);
+  }).then(() => {
     location.reload('/ducklist');
       // If there's an error, log the error
   }).catch(err =>{

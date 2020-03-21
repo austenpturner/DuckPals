@@ -35,8 +35,7 @@ const signUpUser = data => {
     body: JSON.stringify(data)
   }).then(res => {
     return res.json();
-  }).then(data => {
-      console.log(data.dataValues);
+  }).then(() => {
       window.location.replace("/login");
   // If there's an error, handle it by throwing up a bootstrap alert
   }).catch(handleLoginErr);
