@@ -34,7 +34,7 @@ const loginUser = data => {
     return res.json();
   }).then(data => {
     console.log(data);
-      // location.reload('/ducklist');
+    location.reload('/ducklist');
       // If there's an error, log the error
   }).catch(err =>{
     console.log(`Error ${err}`);

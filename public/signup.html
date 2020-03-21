@@ -20,20 +20,20 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Sign Up Form</h2>
-        <form>
+        <form method='POST' action='/api/signup'>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            <label for="email-input">Email address</label>
+            <input type="email" class="form-control" id="email-input" name='email' placeholder="Email">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
+            <label for="password-input">Password</label>
+            <input type="password" class="form-control" id="password-input" name='password' placeholder="Password">
           </div>
           <div style="display: none" id="alert-container" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span id="alert-msg"></span>
           </div>
-          <button id = 'signUp-btn' type="submit" class="btn btn-default">Sign Up</button>
+          <button id ='signUp-btn' type="submit" class="btn btn-default">Sign Up</button>
         </form>
         <br />
         <p>Or log in <a href="/login">here</a></p>
