@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Welcome DuckPals</title>
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
   <link href="stylesheets/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body id='index'>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -20,13 +20,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome to DuckPals!</h2>
-        <button id='login-btn' class="btn btn-default">
-            <a href='/login'>Login</a>
-        </button>
-        <button id='signup-btn' class="btn btn-default">
-            <a href='/signup'>Signup</a>
-        </button>
+        <h1>Welcome to DuckPals!</h1>
+        <a href='/login'>
+            <button id='login-btn' class="btn btn-default">
+                Login
+            </button>
+        </a>
+        <a href='/signup'>
+            <button id='signup-btn' class="btn btn-default">
+                Signup
+            </button>
+        </a>
       </div>
     </div>
   </div>

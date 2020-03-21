@@ -2,4 +2,27 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+body {
+  list-style: none;
+  text-decoration: none;
+}
+
+#index {
+  background-color: #aafbaa;
+}
+
+#index h1 {
+  color: #3d3d3d;
+  font-size: 4em;
+}
+
+#index a button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#8c8cb4), to(#8200dc));
+  background: linear-gradient(#8c8cb4, #8200dc);
+  border: none;
+  color: white;
+  margin: 10px;
+  font-size: 1.2em;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,16 @@
+#index {
+    background-color: $lightAqua;
+    h1 {
+        color: $darkGrey;
+        font-size: 4em;
+    }
+    a {
+        button {
+            background: linear-gradient(rgb(140, 140, 180), rgb(130, 0, 220));
+            border: none;
+            color: white;
+            margin: 10px;
+            font-size: 1.2em;
+        }
+    }
+}
