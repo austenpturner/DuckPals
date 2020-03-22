@@ -1,15 +1,143 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
+// -------- COLORS -------- //
 
 $lightAqua: rgb(170,251,170);
 $darkGrey: rgb(61, 61, 61);
+$lightPurple: rgb(140, 140, 180);
+$darkPurple: rgb(130, 0, 220);
+
+// -------- MIXINS -------- //
+
+@mixin registerStyles () {
+  background-color: $lightAqua;
+    .container {
+        margin: 12vh auto 0;
+        width: 86%;
+        h2 {
+            color: $darkGrey;
+        }
+        button {
+            background: linear-gradient($lightPurple, $darkPurple);
+            border: none;
+            color: white;
+        }
+        p {
+            a {
+                color: $lightPurple;
+            }
+        }
+    }
+}
+
+// -------- CSS RESET -------- //
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  padding: 0;
+}
+
+// -------- BASE STYLES -------- //
 
 body {
   list-style: none;
   text-decoration: none;
 }
 
-@import "index";
+// -------- PAGE STYLES -------- //
 
+@import "index";
+@import "signup";
+@import "login";
+@import "ducklist";
+
+// -------- DUCK STYLES -------- //
+
+#duck-container {
+  // border: 1px dashed black;
+  height: 200px;
+  position: relative;
+  margin-left: -17px;
+  width: 250px;
+  #body {
+    background-color: rgb(255,255,51);
+    border: 1px solid rgba(255,165,0, 0.3);
+    border-radius: 5% 60% 50% 95%;
+    box-shadow: -5px 5px 5px rgba(128,128,128,0.3);
+    height: 120px;
+    left: 20px;
+    overflow: hidden;
+    position: absolute;
+    top: 78px;
+    width: 200px;
+    #wing {
+      background: rgb(255,255,51);
+      border: 1px solid rgba(255,165,0, 0.3);
+      border-bottom: none;
+      border-radius: 0% 70% 25% 100%;
+      bottom: 35px;
+      box-shadow: -5px 5px 5px rgba(128,128,128, 0.3);
+      height: 45px;
+      left: 55px;
+      position: absolute;
+      width: 90px;
+      z-index: 1;
+    }
+  }  
+  #head {
+    background-color: rgb(255,255,51);
+    border: 1px solid rgba(255,165,0, 0.3);
+    border-bottom: none;
+    border-radius: 50% 70% 40% 50%;
+    bottom: 55px;
+    box-shadow: -5px 5px 5px rgba(128,128,128, 0.3);
+    height: 100px;
+    left: 90px;
+    position: absolute;
+    top: 0px;
+    width: 120px;
+    #eye {
+      background: #333;
+      border-radius: 50% 80%;
+      display: block;
+      height: 38px;
+      left: 78px;
+      position: absolute;
+      top: 25px;
+      width: 25px;
+      z-index: 1;
+      #pupil {
+        background: white;
+        border-radius: 50% 80%;
+        bottom: 14px;
+        display: block;
+        height: 14px;
+        left: 12px;
+        position: absolute;
+        width: 8px;
+        z-index: 1;
+      }
+    }
+    #beaktop {
+      background: rgb(255,165,0);
+      border-radius: 40% 20% 90% 0%;
+      height: 20px;
+      left: 110px;
+      position: absolute;
+      top: 60px;
+      width: 35px;
+      z-index: 1;
+    }
+    #beakbottom {
+      background: rgb(255,165,0);
+      border-radius: 20% 90% 20% 70%;
+      box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
+      height: 10px;
+      left: 110px;
+      position: absolute;
+      top: 75px;
+      width: 30px;
+      z-index: 1;
+    }    
+  } 
+}

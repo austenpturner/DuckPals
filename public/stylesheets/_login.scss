@@ -1,0 +1,30 @@
+#login {
+    @include registerStyles;
+}
+
+// ---------- MEDIA QUERIES ---------- // 
+
+@media (min-width: 568px) {
+    #login {
+        .container {
+            width: 80%;
+        }
+    }
+}
+
+@media (min-width: 736px) {
+    #login {
+        .container {
+            width: 70%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #login {
+        .container {
+            margin-top: 18vh;
+            width: 50%;
+        }
+    }
+}
