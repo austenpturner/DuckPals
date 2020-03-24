@@ -13,9 +13,7 @@ const duckFoodHead = document.querySelector('#duckfood');
 const duckHungerHead = document.querySelector('#duckhunger');
 const duckSleepyHead = document.querySelector('#ducksleepy');
 const button = document.querySelector('button');
-const duck = document.getElementsByClassName('duck');
-const duckHunger
-const duckSleepy
+const duck = document.getElementsByClassName('.duck');
 
 button.addEventListener('click', () => {
   let color = randomColor();
@@ -24,12 +22,12 @@ button.addEventListener('click', () => {
   }
 });
 
-// Sets the stats for the Duck
+// Sets the stats for the Duck bla bla bla
 function duckStats() {
   duckBuckHead.innerHTML = `Duck Bucks: ${duckBucks}`;
   duckFoodHead.innerHTML = `Duck Food: ${duckFood}`;
-  duckHungerHead.innerHTML = `Duck Hungry: ${duckHunger}`;
-  duckSleepyHead.innerHTML = `Duck Sleepy: ${duckSleepy}`;
+  duckHungerHead.innerHTML = `Duck Hungry: `;
+  duckSleepyHead.innerHTML = `Duck Sleepy: `;
 }
 
 function randomColor() {
