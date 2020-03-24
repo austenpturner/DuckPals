@@ -24,7 +24,7 @@ button.addEventListener('click', () => {
   }
 });
 
-// Sets the stats for the Duck
+// Sets the stats for the Duck bla bla bla
 function duckStats() {
   duckBuckHead.innerHTML = `Duck Bucks: ${duckBucks}`;
   duckFoodHead.innerHTML = `Duck Food: ${duckFood}`;
