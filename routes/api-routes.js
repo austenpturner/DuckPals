@@ -19,9 +19,11 @@ module.exports = app => {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post('/api/signup', (req, res) => {
+    console.log(req.body);
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      duckbucks: 0
     })
       .then(() => {
         res.redirect(307, '/api/login');
@@ -31,6 +33,23 @@ module.exports = app => {
       });
   });
 
+  app.post('/api/newduck', (req, res) => {
+    console.log(req);
+    db.Duck.create({
+      name: req.body.name,
+      UserId: req.user.id
+    })
+      .then(dbDuck => {
+        console.log(dbDuck);
+        res.json(dbDuck);
+        res.redirect(307, '/playground');
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  });
+
+  // Post request that creates the PayPal payment
   app.post('/pay', (req, res) => {
     const create_payment_json = {
       intent: 'sale',
@@ -52,20 +71,6 @@ module.exports = app => {
                 currency: 'USD',
                 quantity: 1
               }
-              // {
-              //   name: 'Duck Bucks (10)',
-              //   sku: '002',
-              //   price: '10.00',
-              //   currency: 'USD',
-              //   quantity: 1
-              // },
-              // {
-              //   name: 'Duck Bucks (50)',
-              //   sku: '003',
-              //   price: '1,000.00',
-              //   currency: 'USD',
-              //   quantity: 1
-              // }
             ]
           },
           amount: {
@@ -77,6 +82,7 @@ module.exports = app => {
       ]
     };
 
+    //Creates payment, finds the right link to redirect to user to.
     paypal.payment.create(create_payment_json, function(error, payment) {
       if (error) {
         throw error;
@@ -90,10 +96,10 @@ module.exports = app => {
       }
     });
 
+    //Path redirect after the user successfully pays
     app.get('/success', (req, res) => {
       const payerId = req.query.PayerID;
       const paymentId = req.query.paymentId;
-
       const execute_payment_json = {
         payer_id: payerId,
         transactions: [
@@ -106,6 +112,7 @@ module.exports = app => {
         ]
       };
 
+      //This will add one duck buck to the user's account in the database.
       paypal.payment.execute(paymentId, execute_payment_json, function(
         error,
         payment
