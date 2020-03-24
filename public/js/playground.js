@@ -5,13 +5,17 @@
 // Austen's duck code
 
 // Duck Food and Duck Bucks for Microtransactions
-const duckbucks = 0;
+const duckBucks = 0;
 const duckFood = 0;
 
-const duckBuckHead = document.querySelector('duckbuck');
-const duckFoodHead = document.querySelector('duckfood');
+const duckBuckHead = document.querySelector('#duckbuck');
+const duckFoodHead = document.querySelector('#duckfood');
+const duckHungerHead = document.querySelector('#duckhunger');
+const duckSleepyHead = document.querySelector('#ducksleepy');
 const button = document.querySelector('button');
 const duck = document.getElementsByClassName('duck');
+const duckHunger
+const duckSleepy
 
 button.addEventListener('click', () => {
   let color = randomColor();
@@ -20,7 +24,13 @@ button.addEventListener('click', () => {
   }
 });
 
-function duckDeath() {}
+// Sets the stats for the Duck
+function duckStats() {
+  duckBuckHead.innerHTML = `Duck Bucks: ${duckBucks}`;
+  duckFoodHead.innerHTML = `Duck Food: ${duckFood}`;
+  duckHungerHead.innerHTML = `Duck Hungry: ${duckHunger}`;
+  duckSleepyHead.innerHTML = `Duck Sleepy: ${duckSleepy}`;
+}
 
 function randomColor() {
   var firstNum = Math.floor(Math.random() * 255);
@@ -82,12 +92,14 @@ function makeDuckJump() {
   // interval where the image of the duck is replaced with a jumping duck
   console.log('getting here');
   animateCSS('#duck', 'bounce');
+  duckStats();
 }
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
   console.log('getting here');
   animateCSS('#duck', 'bounceOutDown');
+  duckStats();
   // setInterval(console.log('sleepgin'), 3000)
 }
 
@@ -95,12 +107,14 @@ function makeDuckSmile() {
   // interval where the image of the duck is replaced with a smiling duck
   console.log('getting here');
   animateCSS('#duck', 'tada');
+  duckStats();
 }
 
 function makeDuckThank() {
   // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
   console.log('getting here');
   animateCSS('#duck', 'rubberBand');
+  duckStats();
 }
 
 function randIntervalSwitch() {
