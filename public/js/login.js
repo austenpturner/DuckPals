@@ -35,7 +35,7 @@ const loginUser = data => {
   }).then(() => {
     location.reload('/ducklist');
       // If there's an error, log the error
-  }).catch(err =>{
+  }).catch(err => {
     console.log(`Error ${err}`);
   });
 };
