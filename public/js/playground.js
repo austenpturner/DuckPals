@@ -1,21 +1,20 @@
-// DEPENDENCIES
-
-// const Duck = require('../../models/duck');
-
-// Austen's duck code
-
 // Duck Food and Duck Bucks for Microtransactions
 const duckBucks = 0;
 const duckFood = 0;
 
-const duckBuckHead = document.querySelector('#duckbuck');
-const duckFoodHead = document.querySelector('#duckfood');
-const duckHungerHead = document.querySelector('#duckhunger');
-const duckSleepyHead = document.querySelector('#ducksleepy');
-const button = document.querySelector('button');
-const duck = document.getElementsByClassName('.duck');
+const playBtn = document.querySelector("#play-btn");
+const sleepBtn = document.querySelector("#sleep-btn");
+const feedBtn = document.querySelector("#feed-btn");
+const petBtn = document.querySelector("#pet-btn");
+const newDuckBtn = document.querySelector("#new-duck-btn");
+const duckBuckHead = document.querySelector("#duckbuck");
+const duckFoodHead = document.querySelector("#duckfood");
+const duckHungerHead = document.querySelector("#duckhunger");
+const duckSleepyHead = document.querySelector("#ducksleepy");
+const button = document.querySelector("button");
+const duck = document.getElementsByClassName(".duck");
 
-button.addEventListener('click', () => {
+button.addEventListener("click", () => {
   let color = randomColor();
   for (var i = 0; i < duck.length; i++) {
     duck[i].style.backgroundColor = color;
@@ -34,31 +33,47 @@ function randomColor() {
   var firstNum = Math.floor(Math.random() * 255);
   var secondNum = Math.floor(Math.random() * 255);
   var thirdNum = Math.floor(Math.random() * 255);
-  return 'rgb(' + firstNum + ',' + secondNum + ',' + thirdNum + ')';
+  return "rgb(" + firstNum + "," + secondNum + "," + thirdNum + ")";
 }
 
 // DOM VARIABLES
 
-const playBtn = document.querySelector('#play-btn');
-const sleepBtn = document.querySelector('#sleep-btn');
-const feedBtn = document.querySelector('#feed-btn');
-const petBtn = document.querySelector('#pet-btn');
-const newDuckBtn = document.querySelector('#new-duck-btn');
-
 // GLOBAL VARIABLES
 
-// the duck veriable that represents the duck we are currently manipulating
-// const thisDuck =
+const newDuck = data => {
+  fetch("/ducklist", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      return res.json();
+    })
+    .catch(err => {
+      if (err) throw err;
+    });
+};
 
 // GLOBAL FUNCTIONS
 
-function initializeDuck() {
-  // display the duck
-}
-
-function sleepy() {
+const sleepy = data => {
   // need a put to the db to make sleepy boolean TRUE
-}
+  fetch("/ducklist/sleepy", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      res.json();
+    })
+    .catch(err => {
+      if (err) throw err;
+    });
+};
 
 function notSleepy() {
   // need a put to the db to make sleepy boolean FALSE
@@ -74,61 +89,55 @@ function notHungry() {
 
 function animateCSS(element, animationName, callback) {
   const node = document.querySelector(element);
-  node.classList.add('animated', animationName);
+  node.classList.add("animated", animationName);
 
   function handleAnimationEnd() {
-    node.classList.remove('animated', animationName);
-    node.removeEventListener('animationend', handleAnimationEnd);
-
-    if (typeof callback === 'function') callback();
+    node.classList.remove("animated", animationName);
+    node.removeEventListener("animationend", handleAnimationEnd);
+    if (typeof callback === "function") callback();
   }
-
-  node.addEventListener('animationend', handleAnimationEnd);
+  node.addEventListener("animationend", handleAnimationEnd);
 }
 
 function makeDuckJump() {
-
-    // interval where the image of the duck is replaced with a jumping duck
-    console.log('getting here')
-    animateCSS('#duck', 'bounce')
-    animateCSS('#eye', 'jello')
-    animateCSS('#wing', 'headShake')
-    animateCSS('#body', 'jello')
-    animateCSS('#duck', 'flip')
-    // animateCSS('#head', 'flip')
-    animateCSS('#eye', 'flip')
-    animateCSS('#pupil', 'flip')
-};
-
+  // interval where the image of the duck is replaced with a jumping duck
+  console.log("getting here");
+  animateCSS("#duck", "bounce");
+  animateCSS("#eye", "jello");
+  animateCSS("#wing", "headShake");
+  animateCSS("#body", "jello");
+  animateCSS("#duck", "flip");
+  animateCSS("#eye", "flip");
+  animateCSS("#pupil", "flip");
+}
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
-  console.log('getting here');
-  animateCSS('#duck', 'bounceOutDown');
+  console.log("getting here");
+  animateCSS("#duck", "bounceOutDown");
   duckStats();
   // setInterval(console.log('sleepgin'), 3000)
 }
 
 function makeDuckSmile() {
-    // interval where the image of the duck is replaced with a smiling duck
-    console.log('getting here')
-    animateCSS('#duck', 'jello')
-    animateCSS('#wing', 'headShake')
-   duckStats();
-};
+  // interval where the image of the duck is replaced with a smiling duck
+  console.log("getting here");
+  animateCSS("#duck", "jello");
+  animateCSS("#wing", "headShake");
+  duckStats();
+}
 
 function makeDuckThank() {
-    // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble 
-    console.log('getting here')
-    // animateCSS('#duck', 'rubberBand')
-    animateCSS('#wing', 'headShake')
+  // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
+  console.log("getting here");
+  // animateCSS('#duck', 'rubberBand')
+  animateCSS("#wing", "headShake");
 
-    animateCSS('#body', 'pulse')
-    animateCSS('#beaktop', 'swing')
-    animateCSS('#beakbottom', 'wobble')
-   duckStats();
-};
-
+  animateCSS("#body", "pulse");
+  animateCSS("#beaktop", "swing");
+  animateCSS("#beakbottom", "wobble");
+  duckStats();
+}
 
 function randIntervalSwitch() {
   // randomly choose to select either hungry or sleepy boolean
@@ -150,37 +159,23 @@ function randWaitTime() {
   setInterval(randIntervalSwitch(), ranWait);
 }
 
-function getANewDuck() {
-  // redirectt to the new duck page
-}
-
 // EVENT LISTENERS
-
-playBtn.addEventListener('click', function(e) {
+playBtn.addEventListener("click", function(e) {
   // e.preventDefault();
-  // // make the duck not sleepy
+
   // notSleepy();
-  // // make the duck hungry
+
   // hungry();
-  // make the duck jump
+
   makeDuckJump();
-  // timer after that
-  // randWaitTime();
 });
 
-sleepBtn.addEventListener('click', function(e) {
+sleepBtn.addEventListener("click", function(e) {
   e.preventDefault();
-  // make the duck not sleepy
-  notSleepy();
-  // make the duck not hungry
-  notHungry();
-  // make the duck sleep
-  makeDuckSleep();
-  // timer after that
-  randWaitTime();
+  sleepy();
 });
 
-feedBtn.addEventListener('click', function(e) {
+feedBtn.addEventListener("click", function(e) {
   e.preventDefault();
   // make the duck not hungry
   notHungry();
@@ -192,7 +187,7 @@ feedBtn.addEventListener('click', function(e) {
   randWaitTime();
 });
 
-petBtn.addEventListener('click', function(e) {
+petBtn.addEventListener("click", function(e) {
   e.preventDefault();
   // make the duck sleepy
   sleepy();
@@ -204,16 +199,7 @@ petBtn.addEventListener('click', function(e) {
   randWaitTime();
 });
 
-newDuckBtn.addEventListener('click', function(e) {
+newDuckBtn.addEventListener("click", function(e) {
   e.preventDefault();
-  getANewDuck();
+  newDuck();
 });
-
-// START DUCK STATE
-
-initializeDuck();
-
-// PARTICLES FOR BATH TIME
-
-particlesJS("particles-js", { "particles": { "number": { "value": 111, "density": { "enable": true, "value_area": 3046.4829156444935 } }, "color": { "value": "#9adade" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.44093831673801875, "random": true, "anim": { "enable": false, "speed": 0.6496617698410762, "opacity_min": 0.10557003759917487, "sync": false } }, "size": { "value": 86.80624057954999, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 500, "color": "#dc1111", "opacity": 0.4, "width": 2 }, "move": { "enable": true, "speed": 28.861417095579412, "direction": "top", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 4, "duration": 0.3, "opacity": 1, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
-
