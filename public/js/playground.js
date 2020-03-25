@@ -58,6 +58,13 @@ const newDuck = data => {
 
 // GLOBAL FUNCTIONS
 
+
+function initializeDuck() {
+  // display the duck
+
+  animateCSS('#duck', 'bounceInDown')
+}
+
 const sleepy = data => {
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
@@ -100,44 +107,48 @@ function animateCSS(element, animationName, callback) {
 }
 
 function makeDuckJump() {
-  // interval where the image of the duck is replaced with a jumping duck
-  console.log("getting here");
-  animateCSS("#duck", "bounce");
-  animateCSS("#eye", "jello");
-  animateCSS("#wing", "headShake");
-  animateCSS("#body", "jello");
-  animateCSS("#duck", "flip");
-  animateCSS("#eye", "flip");
-  animateCSS("#pupil", "flip");
-}
+
+    // interval where the image of the duck is replaced with a jumping duck
+    console.log('getting here')
+    animateCSS('#duck', 'bounce')
+    animateCSS('#eye', 'jello')
+    animateCSS('#wing', 'headShake')
+    animateCSS('#body', 'jello')
+    animateCSS('#duck', 'flip')
+    animateCSS('#eye', 'flip')
+    animateCSS('#pupil', 'flip')
+};
+
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
-  console.log("getting here");
-  animateCSS("#duck", "bounceOutDown");
+  console.log('getting here');
+  animateCSS('#duck', 'bounceOutDown')
   duckStats();
   // setInterval(console.log('sleepgin'), 3000)
 }
 
 function makeDuckSmile() {
-  // interval where the image of the duck is replaced with a smiling duck
-  console.log("getting here");
-  animateCSS("#duck", "jello");
-  animateCSS("#wing", "headShake");
-  duckStats();
-}
+    // interval where the image of the duck is replaced with a smiling duck
+    console.log('getting here')
+    animateCSS('#wing', 'headShake');
+    animateCSS('#duck', 'wobble');
+    animateCSS('#head', 'shake')
+    animateCSS('#eye','pulse')
+   duckStats();
+};
 
 function makeDuckThank() {
-  // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
-  console.log("getting here");
-  // animateCSS('#duck', 'rubberBand')
-  animateCSS("#wing", "headShake");
+    // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble 
+    console.log('getting here')
+    animateCSS('#wing', 'headShake')
+    animateCSS('#head', 'pulse')
+    animateCSS('#body', 'pulse')
+    animateCSS('#beaktop', 'swing')
+    animateCSS('#beakbottom', 'wobble')
+   duckStats();
+};
 
-  animateCSS("#body", "pulse");
-  animateCSS("#beaktop", "swing");
-  animateCSS("#beakbottom", "wobble");
-  duckStats();
-}
 
 function randIntervalSwitch() {
   // randomly choose to select either hungry or sleepy boolean
