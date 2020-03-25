@@ -5,7 +5,8 @@
     <title>DuckPals Playground</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="stylesheets/duckstyle.css" rel="stylesheet" />
+    <link href="stylesheets/styles.css" rel="stylesheet" />
+    <link href='stylesheets/orientation.css' rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 </head>
 
@@ -63,17 +64,17 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <h3 id="duckhunger">Duck Hungry: [ ] Duck Sleepy: [ ] Duck Bucks: [ ] Duck Food: [ ] </h3>
+                        <h3 id="duckhunger">Hungry: [ ]   Sleepy: [ ]   Duck Bucks: [ ]    Food: [ ] </h3>
+                        <hr>
                     </div>
                 </div>
             </nav>
 
             <hgroup id="bubble" class="speech-bubble animated">
-                <h1>INSERT DUCK THOUGHT HERE</h1>
-                <h2>I'M NOW SLEEPY!!!!!!!!!</h2>
+                <h2>Hello, I am a duck.</h2>
             </hgroup>
 
-            <div class="container">
+            <div class="container" id='duck-container'>
                 <div id="duck" class="animated">
                     <div id="body" class="duck animated">
                         <div id="wing" class="duck animated"></div>

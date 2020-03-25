@@ -54,6 +54,8 @@ const newDuckBtn = document.querySelector('#new-duck-btn');
 
 function initializeDuck() {
   // display the duck
+
+  animateCSS('#duck', 'bounceInDown')
 }
 
 function sleepy() {
@@ -95,7 +97,6 @@ function makeDuckJump() {
     animateCSS('#wing', 'headShake')
     animateCSS('#body', 'jello')
     animateCSS('#duck', 'flip')
-    // animateCSS('#head', 'flip')
     animateCSS('#eye', 'flip')
     animateCSS('#pupil', 'flip')
 };
@@ -104,7 +105,8 @@ function makeDuckJump() {
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
   console.log('getting here');
-  animateCSS('#duck', 'bounceOutDown');
+  animateCSS('#duck', 'bounceOutDown')
+  
   duckStats();
   // setInterval(console.log('sleepgin'), 3000)
 }
@@ -112,17 +114,18 @@ function makeDuckSleep() {
 function makeDuckSmile() {
     // interval where the image of the duck is replaced with a smiling duck
     console.log('getting here')
-    animateCSS('#duck', 'jello')
-    animateCSS('#wing', 'headShake')
+    animateCSS('#wing', 'headShake');
+    animateCSS('#duck', 'wobble');
+    animateCSS('#head', 'shake')
+    animateCSS('#eye','pulse')
    duckStats();
 };
 
 function makeDuckThank() {
     // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble 
     console.log('getting here')
-    // animateCSS('#duck', 'rubberBand')
     animateCSS('#wing', 'headShake')
-
+    animateCSS('#head', 'pulse')
     animateCSS('#body', 'pulse')
     animateCSS('#beaktop', 'swing')
     animateCSS('#beakbottom', 'wobble')
