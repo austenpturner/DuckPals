@@ -28,21 +28,21 @@ hatch.addEventListener('click', e => {
 // Creates a duck in the database. If successful, we are redirectto the playground
 // Otherwise we log errors
 const addDuck = data => {
-  fetch('/api/newduck', {
+  fetch('/api/ducklist', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   })
-    .then(res => {
-      return res.json();
-    })
-    .then(() => {
-      window.location.replace('/playground');
-      // If there's an error, handle it by throwing up a bootstrap alert
-    })
-    .catch(handleDuckErr);
+  .then(res => {
+    return res.json();
+  })
+  .then(() => {
+    window.location.replace('/playground');
+    // If there's an error, handle it by throwing up a bootstrap alert
+  })
+  .catch(handleDuckErr);
 };
 
 const handleDuckErr = err => {

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     hungry: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: true
     },
     sleepy: {
       type: DataTypes.BOOLEAN,
