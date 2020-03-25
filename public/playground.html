@@ -45,92 +45,80 @@
             <button id="new-duck-btn">
                 New Duck
             </button>
-            <br>
-            <a href="/logout">
-                <button id="new-duck-btn">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <h3 id="duckhunger">Duck Hungry: </h3>
-                <h3 id="ducksleepy">Duck Sleepy: </h3>
-                <h3 id="duckbuck">Duck Bucks:</h3>
-                <h3 id="duckfood">Duck Food:</h3>
-                <a class="navbar-brand" href="/logout">
 
-                    Logout
-                </button>
-            </a>
-        </div>
-                  </nav>
 
-        <div class="viewer">
-
-            <hgroup id="bubble" class="speech-bubble animated">
-                <h1>INSERT DUCK THOUGHT HERE</h1>
-                <h2>I'M NOW SLEEPY!!!!!!!!!</h2>
-            </hgroup>
-
-            <div class="container">
-                <div id="duck" class="animated">
-                    <div id="body" class="duck animated">
-                        <div id="wing" class="duck animated"></div>
-                    </div>
-                    <div id="head" class="duck animate">
-                        <div id="eye">
-                            <div id="pupil" class="animated"></div>
-                        </div>
-                        <div id="beaktop" class="animated"></div>
-                        <div id="beakbottom" class="animated"></div>
-  
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h3 id="duckhunger">Duck Hungry: </h3>
+                        <h3 id="ducksleepy">Duck Sleepy: </h3>
+                        <h3 id="duckbuck">Duck Bucks:</h3>
+                        <h3 id="duckfood">Duck Food:</h3>
+                        <a class="navbar-brand" href="/logout">
+                            Logout
+                        </a>
                     </div>
                 </div>
+            </nav>
 
-            </div>
 
-            <div class="grass">
-                
+
+            <div class="viewer">
+
+                <hgroup id="bubble" class="speech-bubble animated">
+                    <h1>INSERT DUCK THOUGHT HERE</h1>
+                    <h2>I'M NOW SLEEPY!!!!!!!!!</h2>
+                </hgroup>
+
+                <div class="container">
+                    <div id="duck" class="animated">
+                        <div id="body" class="duck animated">
+                            <div id="wing" class="duck animated"></div>
+                        </div>
+                        <div id="head" class="duck animate">
+                            <div id="eye">
+                                <div id="pupil" class="animated"></div>
+                            </div>
+                            <div id="beaktop" class="animated"></div>
+                            <div id="beakbottom" class="animated"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grass"></div>
             </div>
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/ducklist.js.js"></script>
+        <script type="text/javascript" src="js/playground.js"></script>
+        <script>
+            let quack = document.querySelector('audio')
+            $(document).ready(function () {
 
-    </div>
-
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/ducklist.js.js"></script>
-    <script type="text/javascript" src="js/playground.js"></script>
-    <script>
-        let quack = document.querySelector('audio')
-        $(document).ready(function () {
-
-            $('#play-btn').click(function () {
-                quack.setAttribute('src', './assets/quack1.mp3');
-                quack.play();
+                $('#play-btn').click(function () {
+                    quack.setAttribute('src', './assets/quack1.mp3');
+                    quack.play();
+                });
             });
-        });
-        $(document).ready(function () {
-            $('#feed-btn').click(function () {
-                quack.setAttribute('src', './assets/quack2.mp3');
-                quack.play();
+            $(document).ready(function () {
+                $('#feed-btn').click(function () {
+                    quack.setAttribute('src', './assets/quack2.mp3');
+                    quack.play();
+                });
             });
-        });
-        $(document).ready(function () {
-            $('#pet-btn').click(function () {
-                quack.setAttribute('src', './assets/quack2.mp3');
-                quack.play();
+            $(document).ready(function () {
+                $('#pet-btn').click(function () {
+                    quack.setAttribute('src', './assets/quack2.mp3');
+                    quack.play();
+                });
             });
-        });
-        $(document).ready(function () {
-            $('#sleep-btn').click(function () {
-                quack.setAttribute('src', './assets/quack1.mp3');
-                quack.play();
+            $(document).ready(function () {
+                $('#sleep-btn').click(function () {
+                    quack.setAttribute('src', './assets/quack1.mp3');
+                    quack.play();
+                });
             });
-        });
-    </script>
+        </script>
 </body>
 
 </html>
