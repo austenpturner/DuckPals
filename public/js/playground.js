@@ -87,11 +87,19 @@ function animateCSS(element, animationName, callback) {
 }
 
 function makeDuckJump() {
-  // interval where the image of the duck is replaced with a jumping duck
-  console.log('getting here');
-  animateCSS('#duck', 'bounce');
-  duckStats();
-}
+
+    // interval where the image of the duck is replaced with a jumping duck
+    console.log('getting here')
+    animateCSS('#duck', 'bounce')
+    animateCSS('#eye', 'jello')
+    animateCSS('#wing', 'headShake')
+    animateCSS('#body', 'jello')
+    animateCSS('#duck', 'flip')
+    // animateCSS('#head', 'flip')
+    animateCSS('#eye', 'flip')
+    animateCSS('#pupil', 'flip')
+};
+
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
@@ -102,18 +110,25 @@ function makeDuckSleep() {
 }
 
 function makeDuckSmile() {
-  // interval where the image of the duck is replaced with a smiling duck
-  console.log('getting here');
-  animateCSS('#duck', 'tada');
-  duckStats();
-}
+    // interval where the image of the duck is replaced with a smiling duck
+    console.log('getting here')
+    animateCSS('#duck', 'jello')
+    animateCSS('#wing', 'headShake')
+   duckStats();
+};
 
 function makeDuckThank() {
-  // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
-  console.log('getting here');
-  animateCSS('#duck', 'rubberBand');
-  duckStats();
-}
+    // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble 
+    console.log('getting here')
+    // animateCSS('#duck', 'rubberBand')
+    animateCSS('#wing', 'headShake')
+
+    animateCSS('#body', 'pulse')
+    animateCSS('#beaktop', 'swing')
+    animateCSS('#beakbottom', 'wobble')
+   duckStats();
+};
+
 
 function randIntervalSwitch() {
   // randomly choose to select either hungry or sleepy boolean
@@ -200,83 +215,5 @@ initializeDuck();
 
 // PARTICLES FOR BATH TIME
 
-particlesJS('particles-js', {
-  particles: {
-    number: {
-      value: 111,
-      density: { enable: true, value_area: 3046.4829156444935 }
-    },
-    color: { value: '#9adade' },
-    shape: {
-      type: 'circle',
-      stroke: { width: 0, color: '#000000' },
-      polygon: { nb_sides: 5 },
-      image: { src: 'img/github.svg', width: 100, height: 100 }
-    },
-    opacity: {
-      value: 0.44093831673801875,
-      random: true,
-      anim: {
-        enable: false,
-        speed: 0.6496617698410762,
-        opacity_min: 0.10557003759917487,
-        sync: false
-      }
-    },
-    size: {
-      value: 86.80624057954999,
-      random: true,
-      anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-    },
-    line_linked: {
-      enable: false,
-      distance: 500,
-      color: '#dc1111',
-      opacity: 0.4,
-      width: 2
-    },
-    move: {
-      enable: true,
-      speed: 28.861417095579412,
-      direction: 'top',
-      random: true,
-      straight: false,
-      out_mode: 'out',
-      bounce: false,
-      attract: { enable: false, rotateX: 600, rotateY: 1200 }
-    }
-  },
-  interactivity: {
-    detect_on: 'canvas',
-    events: {
-      onhover: { enable: true, mode: 'bubble' },
-      onclick: { enable: true, mode: 'repulse' },
-      resize: true
-    },
-    modes: {
-      grab: { distance: 400, line_linked: { opacity: 0.5 } },
-      bubble: { distance: 400, size: 4, duration: 0.3, opacity: 1, speed: 3 },
-      repulse: { distance: 200, duration: 0.4 },
-      push: { particles_nb: 4 },
-      remove: { particles_nb: 2 }
-    }
-  },
-  retina_detect: true
-});
-var count_particles, stats, update;
-stats = new Stats();
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
-count_particles = document.querySelector('.js-count-particles');
-update = function() {
-  stats.begin();
-  stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
+particlesJS("particles-js", { "particles": { "number": { "value": 111, "density": { "enable": true, "value_area": 3046.4829156444935 } }, "color": { "value": "#9adade" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.44093831673801875, "random": true, "anim": { "enable": false, "speed": 0.6496617698410762, "opacity_min": 0.10557003759917487, "sync": false } }, "size": { "value": 86.80624057954999, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 500, "color": "#dc1111", "opacity": 0.4, "width": 2 }, "move": { "enable": true, "speed": 28.861417095579412, "direction": "top", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 4, "duration": 0.3, "opacity": 1, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+

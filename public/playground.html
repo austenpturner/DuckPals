@@ -16,6 +16,38 @@
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
     <audio></audio>
+    <div id='gameContainer'>
+
+        <div class='buttons' id='buttons-left'>
+            <button id="change-btn">
+                Color
+            </button>
+            <br>
+            <button id="play-btn">
+                Play
+            </button>
+            <br>
+            <button id="feed-btn">
+                Feed
+            </button>
+        </div>
+
+
+        <div class='buttons' id='buttons-right'>
+            <button id="pet-btn">
+                Pet
+            </button>
+            <br>
+            <button id="sleep-btn">
+                Sleep
+            </button>
+            <br>
+            <button id="new-duck-btn">
+                New Duck
+            </button>
+            <br>
+            <a href="/logout">
+                <button id="new-duck-btn">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -24,45 +56,50 @@
                 <h3 id="duckbuck">Duck Bucks:</h3>
                 <h3 id="duckfood">Duck Food:</h3>
                 <a class="navbar-brand" href="/logout">
+
                     Logout
-                </a>
-            </div>
+                </button>
+            </a>
         </div>
-    </nav>
-    <br>
-    <div class="viewer">
-        <div class="container">
-            <div id="duck" class="animated">
-                <div id="body" class="duck">
-                    <div id="wing" class="duck"></div>
-                </div>
-                <div id="head" class="duck">
-                    <div id="eye">
-                        <div id="pupil"></div>
+                  </nav>
+
+        <div class="viewer">
+
+            <hgroup id="bubble" class="speech-bubble animated">
+                <h1>INSERT DUCK THOUGHT HERE</h1>
+                <h2>I'M NOW SLEEPY!!!!!!!!!</h2>
+            </hgroup>
+
+            <div class="container">
+                <div id="duck" class="animated">
+                    <div id="body" class="duck animated">
+                        <div id="wing" class="duck animated"></div>
                     </div>
-                    <div id="beaktop"></div>
-                    <div id="beakbottom"></div>
+                    <div id="head" class="duck animate">
+                        <div id="eye">
+                            <div id="pupil" class="animated"></div>
+                        </div>
+                        <div id="beaktop" class="animated"></div>
+                        <div id="beakbottom" class="animated"></div>
+  
+                    </div>
                 </div>
+
             </div>
-            <button>Change Duck Color</button>
+
+            <div class="grass">
+                
+            </div>
         </div>
+
+
     </div>
 
-    <button id="play-btn">
-        Play with the Duck!
-    </button>
-    <button id="feed-btn">
-        Feed the Duck!
-    </button>
-    <button id="pet-btn">
-        Pet the Duck!
-    </button>
-    <button id="sleep-btn">
-        Make the Duck sleep!
-    </button>
-    <button id="new-duck-btn">
-        Pick a new Duck!
-    </button>
+
+
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/ducklist.js.js"></script>
     <script type="text/javascript" src="js/playground.js"></script>
