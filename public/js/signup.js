@@ -1,5 +1,5 @@
 // DOM Elements
-const signUpBtn = document.getElementById('signUp-btn')
+const signUpBtn = document.getElementById('signUp-btn');
 const emailInput = document.getElementById('email-input');
 const passwordInput = document.getElementById('password-input');
 const alertMsg = document.getElementById('alert-msg');
@@ -33,12 +33,15 @@ const signUpUser = data => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  }).then(res => {
-    return res.json();
-  }).then(() => {
-      window.location.replace("/login");
-  // If there's an error, handle it by throwing up a bootstrap alert
-  }).catch(handleLoginErr);
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(() => {
+      window.location.replace('/login');
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr);
 };
 
 const handleLoginErr = err => {

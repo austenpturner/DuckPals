@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DuckPals Ducklist</title>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"/>
-    <link href="stylesheets/styles.css" rel="stylesheet" />
-  </head>
 
-  <body id="ducklist">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1>Welcome<span class="user-name"></span>!</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DuckPals Ducklist</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" />
+  <link href="stylesheets/styles.css" rel="stylesheet" />
+</head>
+
+<body id="ducklist">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Welcome<span class="user-name"></span>!</h1>
       </div>
     </div>
+  </div>
 
     <main>
       <h2>Select a Duck</h2>
@@ -24,20 +25,20 @@
         <li>
           <!-- saved duck -->
           <p>Duck Name</p>
-          <button type="submit" id="select-btn">Select Duck</button>
+          <button href="/playground" type="submit" id="select-btn">Select Duck</button>
         </li>
       </ul>
     </main>
 
-    <form>
-      <h2>Make a New Duck</h2>
-      <label for="duckname">Enter Your Duck's Name</label>
-      <input type="text" class="form-control" id="duckname" name="duckname"/>
-      <button type="submit" id="hatch-btn" class="btn btn-default">Hatch My Duck!</button>
-    </form>
-    <p>Click here to <a href="/logout">Logout</a></p>
+  <form>
+    <h2>Make a New Duck</h2>
+    <label for="duckname">Enter Your Duck's Name</label>
+    <input type="text" class="form-control" id="duckname" name="duckname" />
+    <button type="submit" id="hatch-btn" class="btn btn-default">Hatch My Duck!</button>
+  </form>
+  <p>Click here to <a href="/logout">Logout</a></p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/ducklist.js"></script>
+</body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/ducklist.js"></script>
-  </body>
 </html>

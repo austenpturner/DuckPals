@@ -5,12 +5,23 @@ const session = require('express-session');
 // Requiring passport as we've configured it
 const passport = require('./config/passport');
 
+// Requiring the Paypal API Dev Kit
+const paypal = require('paypal-rest-sdk');
+
+paypal.configure({
+  mode: 'sandbox', //sandbox or live
+  client_id:
+    'ASDraD_C2gNn2uPXaX5kc-2HE7p22YaMdzI02DUY5FunSRf_b04yXVRVM2JSIl5g-On6vHtlBNZ2ZBHN',
+  client_secret:
+    'EJonUMOQqeu-QlnqYFl6NMZ8ce4aca8FP_bub9RLbCp0wDcP2EIhkb1dPlKvptF_zlWfVoQwKBkQOXF_'
+});
+
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const db = require('./models');
 
 // Creating express app and configuring middleware needed for authentication
-var app = express();
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
@@ -30,7 +41,7 @@ require('./routes/html-routes.js')(app);
 require('./routes/api-routes.js')(app);
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log(
       '==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
