@@ -1,6 +1,6 @@
 // Creating our Duck model
 module.exports = (sequelize, DataTypes) => {
-  const Duck = sequelize.define("Duck", {
+  const Duck = sequelize.define('Duck', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,22 +12,26 @@ module.exports = (sequelize, DataTypes) => {
     hungry: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: false
     },
     sleepy: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     },
     color: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: 'yellow'
-    },
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'yellow'
+    }
   });
+
+  Duck.associate = models => {
+    Duck.belongsTo(models.User, {
+      foreignKey: 'UserId',
+      targetKey: 'id'
+    });
+  };
+
   return Duck;
 };

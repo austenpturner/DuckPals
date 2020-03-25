@@ -9,11 +9,11 @@ const config    = require(__dirname + '/../config/config.json')[env];
 const db        = {};
 
 if (process.env.JAWSDB_URL) {
-  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(
+    sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,

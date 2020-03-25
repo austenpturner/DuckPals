@@ -1,0 +1,30 @@
+#signup {
+    @include registerStyles;
+}
+
+// ---------- MEDIA QUERIES ---------- // 
+
+@media (min-width: 568px) {
+    #signup {
+        .container {
+            width: 80%;
+        }
+    }
+}
+
+@media (min-width: 736px) {
+    #signup {
+        .container {
+            width: 70%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #signup {
+        .container {
+            margin-top: 18vh;
+            width: 50%;
+        }
+    }
+}

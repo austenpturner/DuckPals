@@ -8,15 +8,19 @@ module.exports = app => {
   app.get('/', (req, res) => {
     // If the user already logged in send them to the members page
     if (req.user) {
-      res.redirect('/ducklist');
+      return res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/index.html'));
+  });
+
+  app.get('/playground', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/playground.html'));
   });
 
   app.get('/login', (req, res) => {
     // If the user already logged in send them to the members page
     if (req.user) {
-      res.redirect('/ducklist');
+      return res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/login.html'));
   });
@@ -24,7 +28,7 @@ module.exports = app => {
   app.get('/signup', (req, res) => {
     // If the user already logged in send them to the members page
     if (req.user) {
-      res.redirect('/ducklist');
+      return res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/signup.html'));
   });
