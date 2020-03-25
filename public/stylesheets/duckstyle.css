@@ -19,9 +19,14 @@
     margin-bottom: 10px;
 }
 
-#pet-btn, #sleep-btn, #new-duck-btn {
+#pet-btn, #new-duck-btn {
     float: right;
-    margin: 10px;
+    margin: 10px 100px 10px 10px;
+}
+
+#sleep-btn, #logout-btn {
+    float: right;
+    margin: 10px 200px 10px 10px;
 }
 
 
@@ -152,8 +157,8 @@ body {
 button {
     background: linear-gradient(rgb(107, 107, 228), rgb(114, 114, 168));
     border: none;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     border-style: solid;
     border-width: 3px;
