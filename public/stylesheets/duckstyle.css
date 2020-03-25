@@ -16,7 +16,7 @@
 
 #change-btn, #play-btn, #feed-btn {
     float: left;
-    margin-bottom: 10px;
+    margin: 10px 10px 100px;
 }
 
 #pet-btn, #new-duck-btn {
@@ -167,7 +167,6 @@ button {
     color: white;
     cursor: pointer;
     padding: 10px 20px;
-    margin: 10px;
 }
 
 /* THOUGHT BUBBLE */
