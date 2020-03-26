@@ -270,9 +270,9 @@ body {
 #duck-container {
   height: 200px;
   position: relative;
-  margin-left: -17px;
-  margin-top: 40px;
-  width: 250px;
+  margin-left: -15px;
+  margin-top: -10px;
+  width: 100%;
 }
 
 #duck-container #body {
@@ -372,23 +372,23 @@ body {
   border-width: 5px;
   border-color: black;
   width: 80%;
-  height: 70vh;
+  height: 90vh;
   margin: 40px auto;
-  background-color: #a97bcf;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 40%;
-  border-bottom-right-radius: 40%;
+  background-color: lightgray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 50px;
   -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
           box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
 }
 
 #gameContainer button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
-  background: linear-gradient(#6b6be4, #7272a8);
+  background: -webkit-gradient(linear, left top, left bottom, from(#a5115b), to(#703232));
+  background: linear-gradient(#a5115b, #703232);
   border: none;
-  height: 80px;
-  width: 80px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   border-style: solid;
   border-width: 3px;
@@ -397,34 +397,35 @@ body {
           box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
   color: white;
   cursor: pointer;
-  padding: 10px 20px;
 }
 
 #gameContainer #pet-btn, #gameContainer #new-duck-btn {
   float: right;
-  margin: 10px 100px 10px 10px;
+  margin: 10px 25px 10px 10px;
 }
 
 #gameContainer #sleep-btn, #gameContainer #logout-btn {
   float: right;
-  margin: 10px 200px 10px 10px;
+  margin: 10px 75px 10px 10px;
 }
 
 #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
   float: left;
-  margin: 10px 0 10px 100px;
+  margin: 10px 10px 10px 25px;
 }
 
 #gameContainer #play-btn {
-  margin: 10px 0 10px 200px;
+  margin: 10px 0 10px 75px;
 }
 
 #gameContainer #buttons-left {
   float: left;
+  margin: 40vh 0;
 }
 
 #gameContainer #buttons-right {
   float: right;
+  margin: 40vh 0;
 }
 
 #gameContainer .buttons {
@@ -432,13 +433,14 @@ body {
 }
 
 #gameContainer .viewer {
-  width: 40%;
-  height: 70%;
-  margin: 5% 30% 5% 30%;
+  position: relative;
+  width: 80% auto;
+  height: 40%;
+  margin: 5% 5% 5% 5%;
   border-style: solid;
   border-width: 5px;
   border-color: black;
-  padding: 10px;
+  padding: 3% 3% 3% 3%;
   background-color: lightcyan;
 }
 
@@ -448,6 +450,7 @@ body {
   border-radius: .4em;
   padding: 10px;
   margin-top: 10px;
+  height: 10px;
 }
 
 #gameContainer .viewer .speech-bubble:after {
@@ -463,5 +466,244 @@ body {
   border-right: 0;
   margin-left: -1.156em;
   margin-bottom: -2.312em;
+}
+
+@media (min-width: 576px) {
+  #gameContainer {
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    height: 80vh;
+    margin: 40px auto;
+    background-color: #a97bcf;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+            box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+  }
+  #gameContainer button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
+    background: linear-gradient(#6b6be4, #7272a8);
+    border: none;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgray;
+    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+    color: white;
+    cursor: pointer;
+    padding: 3px 3px;
+  }
+  #gameContainer #pet-btn, #gameContainer #new-duck-btn {
+    float: right;
+    margin: 5px 20px 5px 5px;
+  }
+  #gameContainer #sleep-btn, #gameContainer #logout-btn {
+    float: right;
+    margin: 5px 60px 5px 5px;
+  }
+  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+    float: left;
+    margin: 5px 0 5px 20px;
+  }
+  #gameContainer #play-btn {
+    margin: 5px 0 5px 60px;
+  }
+  #gameContainer #buttons-left, #gameContainer #buttons-right {
+    margin: 10px;
+  }
+  #gameContainer .buttons {
+    margin: 10px;
+  }
+  #gameContainer .viewer {
+    width: 50%;
+    height: 80%;
+    margin: 5% auto;
+    border-style: solid;
+    border-width: 5px;
+  }
+  #gameContainer .viewer .speech-bubble {
+    position: relative;
+    background: #ff9bfd;
+    border-radius: .4em;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  #gameContainer .viewer .speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 2.313em solid transparent;
+    border-top-color: #ff9bfd;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -1.156em;
+    margin-bottom: -2.312em;
+  }
+}
+
+@media (min-width: 768px) {
+  #gameContainer {
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    height: 75vh;
+    margin: 40px auto;
+    background-color: #a97bcf;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+            box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+  }
+  #gameContainer button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
+    background: linear-gradient(#6b6be4, #7272a8);
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgray;
+    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+    color: white;
+    cursor: pointer;
+    padding: 3px 3px;
+  }
+  #gameContainer #pet-btn, #gameContainer #new-duck-btn {
+    float: right;
+    margin: 5px 20px 5px 5px;
+  }
+  #gameContainer #sleep-btn, #gameContainer #logout-btn {
+    float: right;
+    margin: 5px 60px 5px 5px;
+  }
+  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+    float: left;
+    margin: 5px 0 5px 20px;
+  }
+  #gameContainer #play-btn {
+    margin: 5px 0 5px 60px;
+  }
+  #gameContainer #buttons-left {
+    float: left;
+  }
+  #gameContainer #buttons-right {
+    float: right;
+  }
+  #gameContainer .buttons {
+    margin: 10px;
+  }
+  #gameContainer .viewer .speech-bubble {
+    position: relative;
+    background: #ff9bfd;
+    border-radius: .4em;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  #gameContainer .viewer .speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 2.313em solid transparent;
+    border-top-color: #ff9bfd;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -1.156em;
+    margin-bottom: -2.312em;
+  }
+}
+
+@media (min-width: 992px) {
+  #gameContainer {
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    height: 60vh;
+    margin: 40px auto;
+    background-color: #a97bcf;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+            box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
+  }
+  #gameContainer button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
+    background: linear-gradient(#6b6be4, #7272a8);
+    border: none;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgray;
+    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: large;
+  }
+  #gameContainer #pet-btn, #gameContainer #new-duck-btn {
+    float: right;
+    margin: 10px 50px 10px 10px;
+  }
+  #gameContainer #sleep-btn, #gameContainer #logout-btn {
+    float: right;
+    margin: 10px 100px 10px 10px;
+  }
+  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+    float: left;
+    margin: 10px 0 10px 50px;
+  }
+  #gameContainer #play-btn {
+    margin: 10px 0 10px 100px;
+  }
+  #gameContainer #buttons-left {
+    float: left;
+  }
+  #gameContainer #buttons-right {
+    float: right;
+  }
+  #gameContainer .buttons {
+    margin: 10px;
+  }
+  #gameContainer .viewer .speech-bubble {
+    position: relative;
+    background: #ff9bfd;
+    border-radius: .4em;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  #gameContainer .viewer .speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 2.313em solid transparent;
+    border-top-color: #ff9bfd;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -1.156em;
+    margin-bottom: -2.312em;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
