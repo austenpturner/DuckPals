@@ -132,13 +132,11 @@ const newDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  })
-    .then(res => {
-      return res.json();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }).then(res => {
+    return res.json();
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
 // GLOBAL FUNCTIONS

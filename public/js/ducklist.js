@@ -1,9 +1,9 @@
 const duckNameInp = document.querySelector("#duckname");
-const hatch = document.querySelector("#hatch-btn");
-const select = document.querySelector("#select-btn");
+const hatchBtn = document.querySelector("#hatch-btn");
+const selectBtns = document.querySelectorAll(".select-btn");
 
 // Event listener
-hatch.addEventListener("click", e => {
+hatchBtn.addEventListener("click", e => {
   e.preventDefault();
   const duckName = duckNameInp.value.trim();
   const duckData = {
@@ -18,16 +18,34 @@ hatch.addEventListener("click", e => {
   duckNameInp.value = "";
 });
 
-// Use submits instead of 'clicks' so event runs after action is complete.
-// select.addEventListener("submit");
-
-// Creates a duck in the database. If successful, we are redirectto the playground
-// Otherwise we log errors
-const getDucks = () => {
-  $.get("/ducklist", function(data) {
-    console.log(data);
+for (let i = 0; i < selectBtns.length; i++) {
+  selectBtns[i].addEventListener("click", e => {
+    e.preventDefault();
+    const name = e.target.previousElementSibling.textContent;
+    console.log(name);
+    const duckName = {
+      name: name
+    }
+    // send selected duck's name to /api/playground in api-routes.js
+    selectDuck(duckName);
   });
 };
+
+const selectDuck = data => {
+  fetch("/api/playground", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(res => {
+    return res.json();
+  }).then(() => {
+    console.log('done');
+    window.location.replace("/playground");
+  })
+}
+
 
 const addDuck = data => {
   fetch("/api/ducklist", {
@@ -50,5 +68,3 @@ const addDuck = data => {
 const handleDuckErr = err => {
   console.log(`Error: ${err}`);
 };
-
-getDucks();
