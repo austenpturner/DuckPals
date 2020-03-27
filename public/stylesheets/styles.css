@@ -179,10 +179,6 @@ body {
   font-size: 1.6em;
 }
 
-#ducklist main {
-  display: none;
-}
-
 #ducklist main ul {
   display: -webkit-box;
   display: -ms-flexbox;

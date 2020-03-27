@@ -1,6 +1,8 @@
 const duckNameInp = document.querySelector("#duckname");
 const hatch = document.querySelector("#hatch-btn");
+const select = document.querySelector("#select-btn");
 
+getDucks();
 // Event listener
 hatch.addEventListener("click", e => {
   e.preventDefault();
@@ -17,8 +19,17 @@ hatch.addEventListener("click", e => {
   duckNameInp.value = "";
 });
 
+// Use submits instead of 'clicks' so event runs after action is complete.
+// select.addEventListener("submit");
+
 // Creates a duck in the database. If successful, we are redirectto the playground
 // Otherwise we log errors
+const getDucks = () => {
+  $.get("/ducklist", function(data) {
+    console.log(data);
+  });
+};
+
 const addDuck = data => {
   fetch("/api/ducklist", {
     method: "POST",
