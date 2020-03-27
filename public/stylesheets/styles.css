@@ -554,6 +554,7 @@ body {
   padding: 10px 10px 0;
   position: absolute;
   top: 220px;
+  width: 225px;
   z-index: 2;
   /* Hide Old Radio Button */
   /* Space Between Labels */
@@ -572,6 +573,21 @@ body {
 
 #color-form #radio-container div {
   padding: 5px;
+}
+
+#color-form button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
+  background: linear-gradient(#6b6be4, #7272a8);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: darkgray;
+  -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+          box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 180px;
 }
 
 #color-form input[type=radio]:not(old) {
