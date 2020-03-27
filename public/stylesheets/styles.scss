@@ -58,9 +58,8 @@ body {
 #duck-container {
   // border: 1px dashed black;
   height: 200px;
-  position: relative;
-  margin-left: -15px;
-  margin-top: -10px;
+  // position: relative;
+  margin: auto;
   width: 100%;
   #body {
     background-color: rgb(255,255,51);
@@ -157,6 +156,7 @@ body {
   border-color: black;
   width: 80%;
   height: 90vh;
+  min-height: 300px;
   margin: 40px auto;
   background-color: lightgray;
   border-top-left-radius: 10px;
@@ -208,11 +208,12 @@ body {
     position: relative;
     width: 80% auto;
     height: 40%;
+    min-height: 240px;
     margin: 5% 5% 5% 5%;
     border-style: solid;
     border-width: 5px;
     border-color: black;
-    padding: 3% 3% 3% 3%;
+    padding: 3% 0%;
     background-color: lightcyan;
     .speech-bubble {
       position: relative;
@@ -484,5 +485,94 @@ body {
         margin-bottom: -2.312em;
       }
     }
+  }
+
+  #duck-container {
+    // border: 1px dashed black;
+    height: 100%;
+    // position: relative;
+    margin: auto;
+    width: 100%;
+    #body {
+      background-color: rgb(255,255,51);
+      border: 3px solid rgba(255,165,0, 0.3);
+      border-radius: 5% 60% 50% 95%;
+      box-shadow: -5px 5px 5px rgba(128,128,128,0.3);
+      height: 250px;
+      left: 20px;
+      overflow: hidden;
+      position: absolute;
+      top: 78px;
+      width: 300px;
+      #wing {
+        background: rgb(255,255,51);
+        border: 3px solid rgba(255,165,0, 0.3);
+        border-bottom: none;
+        border-radius: 0% 70% 25% 100%;
+        bottom: 80px;
+        box-shadow: -15px 15px 15px rgba(71, 71, 71, 0.3);
+        height: 90px;
+        left: 55px;
+        position: absolute;
+        width: 200px;
+        z-index: 1;
+      }
+    }  
+    #head {
+      background-color: rgb(255,255,51);
+      border: 1px solid rgba(255,165,0, 0.3);
+      border-bottom: none;
+      border-radius: 50% 70% 40% 50%;
+      bottom: 80px;
+      box-shadow: -5px 5px 5px rgba(128,128,128, 0.3);
+      height: 150px;
+      left: 150px;
+      position: absolute;
+      top: -30px;
+      width: 150px;
+      #eye {
+        background: #333;
+        border-radius: 50% 80%;
+        display: block;
+        height: 38px;
+        left: 90px;
+        position: absolute;
+        top: 25px;
+        width: 25px;
+        z-index: 1;
+        #pupil {
+          background: white;
+          border-radius: 50% 80%;
+          bottom: 14px;
+          display: block;
+          height: 14px;
+          left: 12px;
+          position: absolute;
+          width: 8px;
+          z-index: 1;
+        }
+      }
+      #beaktop {
+        background: rgb(255,165,0);
+        border-radius: 40% 20% 90% 0%;
+        height: 40px;
+        left: 125px;
+        position: absolute;
+        top: 60px;
+        width: 70px;
+        z-index: 1;
+      }
+      #beakbottom {
+        background: rgb(255,165,0);
+        border-radius: 20% 90% 20% 70%;
+        box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
+        height: 20px;
+        left: 125px;
+        position: absolute;
+        top: 85px;
+        width: 60px;
+        z-index: 1;
+      }    
+    } 
   }
 }
