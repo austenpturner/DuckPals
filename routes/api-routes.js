@@ -23,11 +23,13 @@ module.exports = app => {
       password: req.body.password,
       duckbucks: 0,
       duckfood: 0
-    }).then(() => {
-      res.redirect(307, "/api/login");
-    }).catch(err => {
-      res.status(401).json(err);
-    });
+    })
+      .then(() => {
+        res.redirect(307, "/api/login");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   app.post("/api/playground", (req, res) => {
@@ -39,33 +41,33 @@ module.exports = app => {
         id: req.user.id
       },
       include: [db.Duck]
-    }).then(res => {
-      const userDucks = res.Ducks;
-      for (let i = 0; i < userDucks.length; i++) {
-        duckData = userDucks[i].dataValues;
-        // Find user's duck with that name
-
-        if (duckData.name === duckName) {
-          console.log(duckData);
-          // return data for that duck
-          // return duckData;
-         
-          // return duckData;
-        };
-      };
-    }).then(() => {
-      res.redirect("/playground");
     })
+      .then(res => {
+        const userDucks = res.Ducks;
+        for (let i = 0; i < userDucks.length; i++) {
+          duckData = userDucks[i].dataValues;
+          // Find user's duck with that name
+
+          if (duckData.name === duckName) {
+            // return data for that duck
+            // return duckData;
+            // return duckData;
+          }
+        }
+      })
+      .then(() => {
+        res.redirect("/playground");
+      });
   });
 
   app.get("/api/playground", function(req, res) {
+    console.log(req);
     db.User.findOne({
       where: {
         id: req.user.id
       },
       include: [db.Duck]
     }).then(response => {
-      console.log(response.Ducks[0].dataValues);
       return res.json(response);
     });
   });
@@ -76,13 +78,15 @@ module.exports = app => {
       UserId: req.user.id
     })
 
-    .then(() => {
-      res.redirect(307, "/playground");
-    }).then(dbDuck => {
-      res.json(dbDuck);
-    }).catch(err => {
-      res.send(err);
-    });
+      .then(() => {
+        res.redirect(307, "/playground");
+      })
+      .then(dbDuck => {
+        res.json(dbDuck);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   });
 
   // Route for logging user out
@@ -103,7 +107,7 @@ module.exports = app => {
         email: req.user.email,
         id: req.user.id
       });
-    };
+    }
   });
 
   // ---------- PAYPAL ROUTES ---------- //
@@ -148,9 +152,9 @@ module.exports = app => {
         for (let i = 0; i < payment.links.length; i++) {
           if (payment.links[i].rel === "approval_url") {
             res.redirect(payment.links[i].href);
-          };
-        };
-      };
+          }
+        }
+      }
     });
 
     //Path redirect after the user successfully pays
