@@ -63,7 +63,6 @@ body {
   margin: auto;
   width: 100%;
   #body {
-    background-color: rgb(255,255,51);
     border: 1px solid rgba(255,165,0, 0.3);
     border-radius: 5% 60% 50% 95%;
     box-shadow: -5px 5px 5px rgba(128,128,128,0.3);
@@ -74,7 +73,6 @@ body {
     top: 78px;
     width: 200px;
     #wing {
-      background: rgb(255,255,51);
       border: 1px solid rgba(255,165,0, 0.3);
       border-bottom: none;
       border-radius: 0% 70% 25% 100%;
@@ -88,7 +86,6 @@ body {
     }
   }  
   #head {
-    background-color: rgb(255,255,51);
     border: 1px solid rgba(255,165,0, 0.3);
     border-bottom: none;
     border-radius: 50% 70% 40% 50%;
@@ -339,16 +336,10 @@ body {
     box-shadow: -15px 15px 15px rgba(128,128,128, 0.5);
     button {
       background: linear-gradient(rgb(107, 107, 228), rgb(114, 114, 168));
-      border: none;
       height: 45px;
       width: 45px;
-      border-radius: 50%;
-      border-style: solid;
+   
       border-width: 3px;
-      border-color: darkgray;
-      box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
-      color: white;
-      cursor: pointer;
       padding: 3px 3px;
     }
     #pet-btn, #new-duck-btn {
@@ -378,28 +369,6 @@ body {
       margin: 5% auto;
       border-style: solid;
       border-width: 5px;
-      .speech-bubble {
-        position: relative;
-        background: #ff9bfd;
-          border-radius: .4em;
-          padding: 10px;
-          margin-top: 10px;
-      }
-      
-      .speech-bubble:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border: 2.313em solid transparent;
-        border-top-color: #ff9bfd;
-        border-bottom: 0;
-        border-right: 0;
-        margin-left: -1.156em;
-        margin-bottom: -2.312em;
-      }
     }
   }
 }
@@ -407,79 +376,28 @@ body {
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   #gameContainer {
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
     height: 75vh;
     margin: 40px auto;
-    background-color: rgb(169, 123, 207);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 40%;
-    border-bottom-right-radius: 40%;
-    box-shadow: -15px 15px 15px rgba(128,128,128, 0.5);
+
     button {
-      background: linear-gradient(rgb(107, 107, 228), rgb(114, 114, 168));
-      border: none;
       height: 50px;
       width: 50px;
-      border-radius: 50%;
-      border-style: solid;
-      border-width: 3px;
-      border-color: darkgray;
-      box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
-      color: white;
-      cursor: pointer;
       padding: 3px 3px;
     }
     #pet-btn, #new-duck-btn {
-      float: right;
       margin: 5px 20px 5px 5px;
     }
     #sleep-btn, #logout-btn {
-      float: right;
       margin: 5px 60px 5px 5px;
     }
     #change-btn, #play-btn, #feed-btn {
-      float: left;
       margin: 5px 0 5px 20px;
     }
     #play-btn {
       margin: 5px 0 5px 60px;
     }
-    #buttons-left {
-      float: left;
-    }
-    #buttons-right {
-      float: right;
-    }
     .buttons {
       margin: 10px;
-    }
-    .viewer {
-
-      .speech-bubble {
-        position: relative;
-        background: #ff9bfd;
-          border-radius: .4em;
-          padding: 10px;
-          margin-top: 10px;
-      }
-      
-      .speech-bubble:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border: 2.313em solid transparent;
-        border-top-color: #ff9bfd;
-        border-bottom: 0;
-        border-right: 0;
-        margin-left: -1.156em;
-        margin-bottom: -2.312em;
-      }
     }
   }
 }
@@ -487,7 +405,6 @@ body {
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   #gameContainer {
-    border-style: solid;
     border-width: 5px;
     border-color: black;
     height: 60vh;
@@ -514,142 +431,92 @@ body {
       font-size: large;
     }
     #pet-btn, #new-duck-btn {
-      float: right;
+
       margin: 10px 50px 10px 10px;
     }
     #sleep-btn, #logout-btn {
-      float: right;
+
       margin: 10px 100px 10px 10px;
     }
     #change-btn, #play-btn, #feed-btn {
-      float: left;
+ 
       margin: 10px 0 10px 50px;
     }
     #play-btn {
       margin: 10px 0 10px 100px;
     }
-    #buttons-left {
-      float: left;
-    }
-    #buttons-right {
-      float: right;
-    }
+   
     .buttons {
       margin: 10px;
     }
     .viewer {
 
-      .speech-bubble {
-        position: relative;
-        background: #ff9bfd;
-          border-radius: .4em;
-          padding: 10px;
-          margin-top: 10px;
-      }
       
-      .speech-bubble:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border: 2.313em solid transparent;
-        border-top-color: #ff9bfd;
-        border-bottom: 0;
-        border-right: 0;
-        margin-left: -1.156em;
-        margin-bottom: -2.312em;
+
+      #duck-container {
+        // border: 1px dashed black;
+        height: 100%;
+        // position: relative;
+        margin: auto;
+        width: 100%;
+        #body {
+          
+          border: 3px solid rgba(255,165,0, 0.3);
+          height: 180px;
+          left: 20px;
+          top: 100px;
+          width: 300px;
+          #wing {
+            
+            border: 3px solid rgba(255,165,0, 0.3);
+            bottom: 50px;
+            height: 90px;
+            left: 55px;
+            width: 200px;
+          }
+        }  
+        #head {
+          
+          border: 3px solid rgba(255,165,0, 0.3);
+          bottom: 80px;
+          height: 150px;
+          left: 130px;
+          top: -30px;
+          width: 170px;
+          #eye {
+            height: 50px;
+            left: 90px;
+            top: 25px;
+            width: 30px;
+            
+            #pupil {
+              
+              bottom: 14px;
+              
+              height: 20px;
+              left: 12px;
+              
+              width: 12px;
+              
+            }
+          }
+          #beaktop {
+            height: 40px;
+            left: 150px;
+            top: 60px;
+            width: 70px;
+          }
+          #beakbottom {
+
+            height: 20px;
+            left: 150px;
+            top: 85px;
+            width: 60px;
+          }    
+        } 
       }
     }
   }
 
-  #duck-container {
-    // border: 1px dashed black;
-    height: 100%;
-    // position: relative;
-    margin: auto;
-    width: 100%;
-    #body {
-      background-color: rgb(255,255,51);
-      border: 3px solid rgba(255,165,0, 0.3);
-      border-radius: 5% 60% 50% 95%;
-      box-shadow: -5px 5px 5px rgba(128,128,128,0.3);
-      height: 250px;
-      left: 20px;
-      overflow: hidden;
-      position: absolute;
-      top: 78px;
-      width: 300px;
-      #wing {
-        background: rgb(255,255,51);
-        border: 3px solid rgba(255,165,0, 0.3);
-        border-bottom: none;
-        border-radius: 0% 70% 25% 100%;
-        bottom: 80px;
-        box-shadow: -15px 15px 15px rgba(71, 71, 71, 0.3);
-        height: 90px;
-        left: 55px;
-        position: absolute;
-        width: 200px;
-        z-index: 1;
-      }
-    }  
-    #head {
-      background-color: rgb(255,255,51);
-      border: 1px solid rgba(255,165,0, 0.3);
-      border-bottom: none;
-      border-radius: 50% 70% 40% 50%;
-      bottom: 80px;
-      box-shadow: -5px 5px 5px rgba(128,128,128, 0.3);
-      height: 150px;
-      left: 150px;
-      position: absolute;
-      top: -30px;
-      width: 150px;
-      #eye {
-        background: #333;
-        border-radius: 50% 80%;
-        display: block;
-        height: 38px;
-        left: 90px;
-        position: absolute;
-        top: 25px;
-        width: 25px;
-        z-index: 1;
-        #pupil {
-          background: white;
-          border-radius: 50% 80%;
-          bottom: 14px;
-          display: block;
-          height: 14px;
-          left: 12px;
-          position: absolute;
-          width: 8px;
-          z-index: 1;
-        }
-      }
-      #beaktop {
-        background: rgb(255,165,0);
-        border-radius: 40% 20% 90% 0%;
-        height: 40px;
-        left: 125px;
-        position: absolute;
-        top: 60px;
-        width: 70px;
-        z-index: 1;
-      }
-      #beakbottom {
-        background: rgb(255,165,0);
-        border-radius: 20% 90% 20% 70%;
-        box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
-        height: 20px;
-        left: 125px;
-        position: absolute;
-        top: 85px;
-        width: 60px;
-        z-index: 1;
-      }    
-    } 
-  }
+  
 }
