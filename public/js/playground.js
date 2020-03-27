@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+  initializeDuck();
+});
+
 // DOM Elements
 const playBtn = document.querySelector("#play-btn");
 const sleepBtn = document.querySelector("#sleep-btn");
@@ -9,30 +14,77 @@ const duckFood = document.querySelector("#duckfood");
 const duckHunger = document.querySelector("#duckhunger");
 const duckSleepy = document.querySelector("#ducksleepy");
 const duckName = document.querySelector("#duckname");
-const colorBtn = document.querySelector("#color-button");
+const colorBtn = document.querySelector("#color-btn");
+const colorForm = document.querySelector('#color-form');
+const radioBtns = document.querySelectorAll('.color-radio');
+const saveColorBtn = document.querySelector('#save-color');
 const duck = document.querySelectorAll(".duck");
 let quack = document.querySelector("audio");
 
 // Duck Food and Duck Bucks for Microtransactions
 let userDuckBucks = 0;
 let userDuckFood = 0;
-
-document.addEventListener("DOMContentLoaded", function(){
-  // Handler when the DOM is fully loaded
-  initializeDuck();
-});
+let colorRGB;
 
 colorBtn.addEventListener("click", () => {
-  let color = randomColor();
-  for (var i = 0; i < duck.length; i++) {
-    duck[i].style.backgroundColor = color;
+  if (colorForm.style.display === 'none') {
+    colorForm.style.display = 'block';
+  } else {
+    colorForm.style.display = 'none';
   }
 });
+
+saveColorBtn.addEventListener("click", e => {
+  e.preventDefault();
+  const savedColor = colorRGB;
+  saveColorBtn.textContent = 'Saved!';
+  setTimeout(() => {
+    colorForm.style.display = 'none';
+  }, 1000);
+  $.post("/ducklist/color", {color: savedColor}, function(data) {
+    duckStats();
+  });
+});
+
+colorForm.addEventListener('click', () => {
+  const colorName = getRadioColor();
+  colorRGB = getRGB(colorName);
+  for (let i = 0; i < duck.length; i++) {
+    duck[i].style.backgroundColor = colorRGB;
+  }
+});
+
+const getRadioColor = () => {
+  for (let i = 0; i < radioBtns.length; i++) {
+    let radioBtn = radioBtns[i];
+    if (radioBtn.checked) {
+      const color = radioBtn.id;
+      return color;
+    }
+  }
+};
+
+const getRGB = color => {
+  switch (color) {
+    case 'red':
+      return `rgb(240, 70, 70)`;
+    case 'orange':
+      return `rgb(255, 170, 80)`;
+    case 'yellow':
+      return `rgb(255, 255, 0)`;
+    case 'green':
+      return `rgb(20, 180, 80)`;
+    case 'blue':
+      return `rgb(50, 200, 250)`;
+    case 'purple':
+      return `rgb(210, 100, 250)`;
+  }
+}
 
 function initializeDuck() {
   animateCSS("#duck", "bounceInDown");
   duckStats();
-}
+};
 
 // Sets the stats for the Duck bla bla bla
 function duckStats() {
