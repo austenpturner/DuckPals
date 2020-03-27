@@ -4,6 +4,7 @@ $lightAqua: rgb(170,251,170);
 $darkGrey: rgb(61, 61, 61);
 $lightPurple: rgb(140, 140, 180);
 $darkPurple: rgb(130, 0, 220);
+$duckbody: yellow;
 
 // -------- MIXINS -------- //
 
@@ -63,6 +64,7 @@ body {
   margin: auto;
   width: 100%;
   #body {
+    background-color: $duckbody;
     border: 1px solid rgba(255,165,0, 0.3);
     border-radius: 5% 60% 50% 95%;
     box-shadow: -5px 5px 5px rgba(128,128,128,0.3);
@@ -73,6 +75,7 @@ body {
     top: 78px;
     width: 200px;
     #wing {
+      background-color: $duckbody;
       border: 1px solid rgba(255,165,0, 0.3);
       border-bottom: none;
       border-radius: 0% 70% 25% 100%;
@@ -86,6 +89,7 @@ body {
     }
   }  
   #head {
+    background-color: $duckbody;
     border: 1px solid rgba(255,165,0, 0.3);
     border-bottom: none;
     border-radius: 50% 70% 40% 50%;
