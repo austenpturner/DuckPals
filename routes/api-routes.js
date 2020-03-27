@@ -95,14 +95,6 @@ module.exports = app => {
   });
 
   // ---------- PAYPAL ROUTES ---------- //
-  // app.get("api/duckbuck", (req, res) => {
-  //   console.log(req);
-  //   // db.User.update({where: {id: req.body.id}})
-  //   // .then(buckAdded => {
-  //   //   return res.json(buckAdded);
-  //   // })
-  // });
-
   // Post request that creates the PayPal payment
   app.post("/pay", (req, res) => {
     const create_payment_json = {
