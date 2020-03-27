@@ -253,6 +253,7 @@ body {
   padding: 10px 10px 0;
   position: absolute;
   top: 220px;
+  width: 225px;
   z-index: 2;
   h3 {
     padding: 10px auto 5px;
@@ -263,6 +264,18 @@ body {
     div{
       padding: 5px;
     }
+  }
+  button {
+    background: linear-gradient(rgb(107, 107, 228), rgb(114, 114, 168));
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgray;
+    box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 180px;
   }
   /* Hide Old Radio Button */
   input[type=radio]:not(old){

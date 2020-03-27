@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", () => {
   // Handler when the DOM is fully loaded
   initializeDuck();
 });
@@ -26,7 +26,9 @@ let userDuckBucks = 0;
 let userDuckFood = 0;
 let colorRGB;
 
+// Display color form
 colorBtn.addEventListener("click", () => {
+  saveColorBtn.textContent = 'Save Duck Color';
   if (colorForm.style.display === 'none') {
     colorForm.style.display = 'block';
   } else {
@@ -34,18 +36,7 @@ colorBtn.addEventListener("click", () => {
   }
 });
 
-saveColorBtn.addEventListener("click", e => {
-  e.preventDefault();
-  const savedColor = colorRGB;
-  saveColorBtn.textContent = 'Saved!';
-  setTimeout(() => {
-    colorForm.style.display = 'none';
-  }, 1000);
-  $.post("/ducklist/color", {color: savedColor}, function(data) {
-    duckStats();
-  });
-});
-
+// Change duck color
 colorForm.addEventListener('click', () => {
   const colorName = getRadioColor();
   colorRGB = getRGB(colorName);
@@ -54,6 +45,20 @@ colorForm.addEventListener('click', () => {
   }
 });
 
+// Save duck color to database
+saveColorBtn.addEventListener("click", e => {
+  e.preventDefault();
+  const savedColor = colorRGB;
+  saveColorBtn.textContent = 'Saved!';
+  setTimeout(() => {
+    colorForm.style.display = 'none';
+  }, 1000);
+  $.post("/ducklist/color", {color: savedColor}, () => {
+    duckStats();
+  });
+});
+
+// Get color from selected radio button
 const getRadioColor = () => {
   for (let i = 0; i < radioBtns.length; i++) {
     let radioBtn = radioBtns[i];
@@ -64,6 +69,7 @@ const getRadioColor = () => {
   }
 };
 
+// Get RGB values from radio color strings
 const getRGB = color => {
   switch (color) {
     case 'red':
