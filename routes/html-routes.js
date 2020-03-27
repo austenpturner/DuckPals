@@ -40,7 +40,8 @@ module.exports = app => {
       },
       include: [db.Duck]
     }).then(response => {
-      console.log(response.Ducks[0].dataValues.name);
+      // console.log(response.Ducks);
+      // console.log(response.Ducks[0].dataValues.name);
       const ducks = [];
       for (let i = 0; i < response.Ducks.length; i++) {
         let name = response.Ducks[i].dataValues.name;
@@ -55,6 +56,7 @@ module.exports = app => {
   // If the user navigates to playground, redirect them to ducklist if there are logged in so they can pick a duck
   // If user is not logged in, redirect them to the login page
   app.get("/playground", isAuthenticated, (req, res) => {
+    // res.render('playground', { duck: duckData });
     res.sendFile(path.join(__dirname, "../public/playground.html"));
   });
 
