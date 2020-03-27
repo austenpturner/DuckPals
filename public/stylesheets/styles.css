@@ -350,7 +350,6 @@ body {
 }
 
 #duck-container #body {
-  background-color: #ffff33;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-radius: 5% 60% 50% 95%;
   -webkit-box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
@@ -364,7 +363,6 @@ body {
 }
 
 #duck-container #body #wing {
-  background: #ffff33;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
   border-radius: 0% 70% 25% 100%;
@@ -379,7 +377,6 @@ body {
 }
 
 #duck-container #head {
-  background-color: #ffff33;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
   border-radius: 50% 70% 40% 50%;
@@ -633,17 +630,9 @@ body {
   #gameContainer button {
     background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
     background: linear-gradient(#6b6be4, #7272a8);
-    border: none;
     height: 45px;
     width: 45px;
-    border-radius: 50%;
-    border-style: solid;
     border-width: 3px;
-    border-color: darkgray;
-    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-    color: white;
-    cursor: pointer;
     padding: 3px 3px;
   }
   #gameContainer #pet-btn, #gameContainer #new-duck-btn {
@@ -674,110 +663,37 @@ body {
     border-style: solid;
     border-width: 5px;
   }
-  #gameContainer .viewer .speech-bubble {
-    position: relative;
-    background: #ff9bfd;
-    border-radius: .4em;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  #gameContainer .viewer .speech-bubble:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border: 2.313em solid transparent;
-    border-top-color: #ff9bfd;
-    border-bottom: 0;
-    border-right: 0;
-    margin-left: -1.156em;
-    margin-bottom: -2.312em;
-  }
 }
 
 @media (min-width: 768px) {
   #gameContainer {
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
     height: 75vh;
     margin: 40px auto;
-    background-color: #a97bcf;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 40%;
-    border-bottom-right-radius: 40%;
-    -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
-            box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
   }
   #gameContainer button {
-    background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
-    background: linear-gradient(#6b6be4, #7272a8);
-    border: none;
     height: 50px;
     width: 50px;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 3px;
-    border-color: darkgray;
-    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-    color: white;
-    cursor: pointer;
     padding: 3px 3px;
   }
   #gameContainer #pet-btn, #gameContainer #new-duck-btn {
-    float: right;
     margin: 5px 20px 5px 5px;
   }
   #gameContainer #sleep-btn, #gameContainer #logout-btn {
-    float: right;
     margin: 5px 60px 5px 5px;
   }
   #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
-    float: left;
     margin: 5px 0 5px 20px;
   }
   #gameContainer #play-btn {
     margin: 5px 0 5px 60px;
   }
-  #gameContainer #buttons-left {
-    float: left;
-  }
-  #gameContainer #buttons-right {
-    float: right;
-  }
   #gameContainer .buttons {
     margin: 10px;
-  }
-  #gameContainer .viewer .speech-bubble {
-    position: relative;
-    background: #ff9bfd;
-    border-radius: .4em;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  #gameContainer .viewer .speech-bubble:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border: 2.313em solid transparent;
-    border-top-color: #ff9bfd;
-    border-bottom: 0;
-    border-right: 0;
-    margin-left: -1.156em;
-    margin-bottom: -2.312em;
   }
 }
 
 @media (min-width: 992px) {
   #gameContainer {
-    border-style: solid;
     border-width: 5px;
     border-color: black;
     height: 60vh;
@@ -808,139 +724,70 @@ body {
     font-size: large;
   }
   #gameContainer #pet-btn, #gameContainer #new-duck-btn {
-    float: right;
     margin: 10px 50px 10px 10px;
   }
   #gameContainer #sleep-btn, #gameContainer #logout-btn {
-    float: right;
     margin: 10px 100px 10px 10px;
   }
   #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
-    float: left;
     margin: 10px 0 10px 50px;
   }
   #gameContainer #play-btn {
     margin: 10px 0 10px 100px;
   }
-  #gameContainer #buttons-left {
-    float: left;
-  }
-  #gameContainer #buttons-right {
-    float: right;
-  }
   #gameContainer .buttons {
     margin: 10px;
   }
-  #gameContainer .viewer .speech-bubble {
-    position: relative;
-    background: #ff9bfd;
-    border-radius: .4em;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  #gameContainer .viewer .speech-bubble:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border: 2.313em solid transparent;
-    border-top-color: #ff9bfd;
-    border-bottom: 0;
-    border-right: 0;
-    margin-left: -1.156em;
-    margin-bottom: -2.312em;
-  }
-  #duck-container {
+  #gameContainer .viewer #duck-container {
     height: 100%;
     margin: auto;
     width: 100%;
   }
-  #duck-container #body {
-    background-color: #ffff33;
+  #gameContainer .viewer #duck-container #body {
     border: 3px solid rgba(255, 165, 0, 0.3);
-    border-radius: 5% 60% 50% 95%;
-    -webkit-box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
-    height: 250px;
+    height: 180px;
     left: 20px;
-    overflow: hidden;
-    position: absolute;
-    top: 78px;
+    top: 100px;
     width: 300px;
   }
-  #duck-container #body #wing {
-    background: #ffff33;
+  #gameContainer .viewer #duck-container #body #wing {
     border: 3px solid rgba(255, 165, 0, 0.3);
-    border-bottom: none;
-    border-radius: 0% 70% 25% 100%;
-    bottom: 80px;
-    -webkit-box-shadow: -15px 15px 15px rgba(71, 71, 71, 0.3);
-            box-shadow: -15px 15px 15px rgba(71, 71, 71, 0.3);
+    bottom: 50px;
     height: 90px;
     left: 55px;
-    position: absolute;
     width: 200px;
-    z-index: 1;
   }
-  #duck-container #head {
-    background-color: #ffff33;
-    border: 1px solid rgba(255, 165, 0, 0.3);
-    border-bottom: none;
-    border-radius: 50% 70% 40% 50%;
+  #gameContainer .viewer #duck-container #head {
+    border: 3px solid rgba(255, 165, 0, 0.3);
     bottom: 80px;
-    -webkit-box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
     height: 150px;
-    left: 150px;
-    position: absolute;
+    left: 130px;
     top: -30px;
-    width: 150px;
+    width: 170px;
   }
-  #duck-container #head #eye {
-    background: #333;
-    border-radius: 50% 80%;
-    display: block;
-    height: 38px;
+  #gameContainer .viewer #duck-container #head #eye {
+    height: 50px;
     left: 90px;
-    position: absolute;
     top: 25px;
-    width: 25px;
-    z-index: 1;
+    width: 30px;
   }
-  #duck-container #head #eye #pupil {
-    background: white;
-    border-radius: 50% 80%;
+  #gameContainer .viewer #duck-container #head #eye #pupil {
     bottom: 14px;
-    display: block;
-    height: 14px;
+    height: 20px;
     left: 12px;
-    position: absolute;
-    width: 8px;
-    z-index: 1;
+    width: 12px;
   }
-  #duck-container #head #beaktop {
-    background: orange;
-    border-radius: 40% 20% 90% 0%;
+  #gameContainer .viewer #duck-container #head #beaktop {
     height: 40px;
-    left: 125px;
-    position: absolute;
+    left: 150px;
     top: 60px;
     width: 70px;
-    z-index: 1;
   }
-  #duck-container #head #beakbottom {
-    background: orange;
-    border-radius: 20% 90% 20% 70%;
-    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
+  #gameContainer .viewer #duck-container #head #beakbottom {
     height: 20px;
-    left: 125px;
-    position: absolute;
+    left: 150px;
     top: 85px;
     width: 60px;
-    z-index: 1;
   }
 }
 /*# sourceMappingURL=styles.css.map */
