@@ -21,7 +21,8 @@ module.exports = app => {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      duckbucks: 0
+      duckbucks: 0,
+      duckfood: 0
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -66,6 +67,13 @@ module.exports = app => {
   });
 
   // ---------- PAYPAL ROUTES ---------- //
+  // app.get("api/duckbuck", (req, res) => {
+  //   console.log(req);
+  //   // db.User.update({where: {id: req.body.id}})
+  //   // .then(buckAdded => {
+  //   //   return res.json(buckAdded);
+  //   // })
+  // });
 
   // Post request that creates the PayPal payment
   app.post("/pay", (req, res) => {
@@ -110,7 +118,6 @@ module.exports = app => {
             res.redirect(payment.links[i].href);
           }
         }
-        console.log(payment);
       }
     });
 
@@ -139,11 +146,31 @@ module.exports = app => {
           console.log(error.response);
           throw error;
         } else {
-          console.log("Get Payment Response");
-          console.log(JSON.stringify(payment));
           res.send(
-            `Success! 1 Duck Buck has been credited to: ${payment.payer.payer_info.first_name}
-            <button><a href='/playground.html'>Back to Your Duck</a></button>`
+            `<!DOCTYPE html>
+              <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>DuckPals DuckBucks</title>
+
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+                    <link href="stylesheets/styles.css" rel="stylesheet">
+                </head>
+
+                <body>  
+
+                  <h3>Success! 1 Duck Buck has been credited to: ${payment.payer.payer_info.email}</h3>
+
+              
+                    <button id="duckBuckBtn" type="submit"><a href="/playground">Click Here to Add it to your Duck Wallet!</a></button>
+                  
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script src="js/duckbuck.js"></script>
+                </body>
+
+              </html>`
           );
         }
       });

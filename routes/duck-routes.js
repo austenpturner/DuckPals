@@ -8,24 +8,63 @@ module.exports = app => {
       },
       include: [db.Duck]
     }).then(response => {
-      console.log(response);
       return res.json(response);
     });
   });
 
-  app.put("/ducklist/sleepy", function(req, res) {
-    db.Duck.update({ sleepy: true }, { where: { UserId: req.user.id } })
+  app.get("/api/duckbuck", (req, res) => {
+    console.log(req);
+    db.User.findOne({ where: { id: req.user.id } })
+      .then(buckAdded => {
+        return buckAdded.increment("duckbucks", { by: 1 });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  app.post("/ducklist/sleepy", function(req, res) {
+    db.Duck.update({ sleepy: 1 }, { where: { UserId: req.user.id } })
       .then(updatedDuck => {
-        console.log(updatedDuck);
+        return res.json(updatedDuck);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  app.post("/ducklist/notsleepy", function(req, res) {
+    db.Duck.update({ sleepy: 0 }, { where: { UserId: req.user.id } })
+      .then(updatedDuck => {
+        return res.json(updatedDuck);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  app.post("/ducklist/hungry", function(req, res) {
+    db.Duck.findOne({ where: { UserId: req.user.id } }).then(foundDuck => {
+      if (foundDuck.hungry === true) {
+        return res.json(foundDuck);
+      } else if (foundDuck.hungry === false) {
+        db.Duck.update({ hungry: 1 }, { where: { UserId: req.user.id } }).then(
+          updatedDuck => {
+            console.log(updatedDuck);
+            return res.json(updatedDuck);
+          }
+        );
+      }
+    });
+  });
+
+  app.post("/ducklist/nothungry", function(req, res) {
+    db.Duck.update({ hungry: 0 }, { where: { UserId: req.user.id } })
+      .then(updatedDuck => {
+        return res.json(updatedDuck);
       })
       .catch(err => {
         console.log(err);
       });
   });
 };
-
-//   app.update();
-
-//   app.update();
-
-//   app.update();
