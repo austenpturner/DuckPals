@@ -2,7 +2,6 @@ const duckNameInp = document.querySelector("#duckname");
 const hatch = document.querySelector("#hatch-btn");
 const select = document.querySelector("#select-btn");
 
-getDucks();
 // Event listener
 hatch.addEventListener("click", e => {
   e.preventDefault();
@@ -51,3 +50,5 @@ const addDuck = data => {
 const handleDuckErr = err => {
   console.log(`Error: ${err}`);
 };
+
+getDucks();

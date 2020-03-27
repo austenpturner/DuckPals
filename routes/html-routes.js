@@ -9,7 +9,7 @@ module.exports = app => {
   app.get("/", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect("/ducklist");
+      res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
@@ -17,7 +17,7 @@ module.exports = app => {
   app.get("/login", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect("/ducklist");
+      res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -25,7 +25,7 @@ module.exports = app => {
   app.get("/signup", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect("/ducklist");
+      res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
@@ -40,14 +40,15 @@ module.exports = app => {
       },
       include: [db.Duck]
     }).then(response => {
-      // console.log(response.Ducks[0].dataValues.name);
+      console.log(response.Ducks[0].dataValues.name);
       const ducks = [];
       for (let i = 0; i < response.Ducks.length; i++) {
-        let duck = response.Ducks[i].dataValues.name;
-        ducks.push(duck);
+        let name = response.Ducks[i].dataValues.name;
+        ducks.push({
+          name: name
+        });
       }
-      // res.json({ response: response, ducks: ducks });
-      // res.render()
+      res.render('ducklist', { ducks: ducks });
     });
   });
 
