@@ -8,6 +8,7 @@ module.exports = app => {
       },
       include: [db.Duck]
     }).then(response => {
+      console.log(response.Ducks[0].dataValues);
       return res.json(response);
     });
   });
@@ -24,6 +25,7 @@ module.exports = app => {
   });
 
   app.post("/ducklist/sleepy", function(req, res) {
+    console.log(req);
     db.Duck.update({ sleepy: 1 }, { where: { UserId: req.user.id } })
       .then(updatedDuck => {
         return res.json(updatedDuck);

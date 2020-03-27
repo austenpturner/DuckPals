@@ -1,6 +1,6 @@
 // Requiring necessary npm packages
 const express = require("express");
-const exphbs = require("handlebars");
+const exphbs = require("express-handlebars");
 const session = require("express-session");
 // const favicon = require("serve-favicon");
 // const path = require("path");

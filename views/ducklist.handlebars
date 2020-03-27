@@ -8,15 +8,16 @@
   </div>
 
   <main>
+    <H2>Find my Ducks</H2>
+    <button></button>
     <h2>Select a Duck</h2>
     <ul>
-      {{#each}}
+
       <li>
-        <p>{{duck.name}}</p>
-        <button href="/playground" type="submit" id="select-btn">Select Duck</button>
+
+        <button href="/api/playground" type="submit" id="select-btn">Select Duck</button>
       </li>
-      {{/each}}
-    </ul>
+
   </main>
 
   <form>
@@ -27,5 +28,6 @@
   </form>
   <p>Click here to <a href="/logout">Logout</a></p>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/ducklist.js"></script>
 </div>
