@@ -54,6 +54,7 @@ module.exports = app => {
   // If the user navigates to playground, redirect them to ducklist if there are logged in so they can pick a duck
   // If user is not logged in, redirect them to the login page
   app.get("/playground", isAuthenticated, (req, res) => {
+    // res.render('playground', { duck: duckData });
     res.sendFile(path.join(__dirname, "../public/playground.html"));
   });
 
