@@ -33,40 +33,37 @@ module.exports = app => {
   app.post("/api/playground", (req, res) => {
     // set user selected duck's name to duckName
     const duckName = req.body.name;
+    console.log(req.body);
     let duckData;
     db.User.findOne({
       where: {
         id: req.user.id
       },
       include: [db.Duck]
-    }).then(res => {
-      const userDucks = res.Ducks;
+    }).then(data => {
+      // console.log(data);
+      const userDucks = data.Ducks;
       for (let i = 0; i < userDucks.length; i++) {
         duckData = userDucks[i].dataValues;
         // Find user's duck with that name
         if (duckData.name === duckName) {
-          console.log(duckData);
-          // return data for that duck
-          // return duckData;
-         
-          // return duckData;
+          // console.log(duckData);
+          const duckId = duckData.id;
+          // console.log(duckId);
+          db.User.update({
+           currentDuck: duckId
+          },
+          {
+            where: {
+              id: req.user.id
+            }
+          });        
         };
       };
-    }).then(() => {
+    })
+    .then(() => {
       res.redirect("/playground");
     })
-  });
-
-  app.get("/api/playground", function(req, res) {
-    db.User.findOne({
-      where: {
-        id: req.user.id
-      },
-      include: [db.Duck]
-    }).then(response => {
-      console.log(response.Ducks[0].dataValues);
-      return res.json(response);
-    });
   });
 
   app.post("/api/ducklist", (req, res) => {

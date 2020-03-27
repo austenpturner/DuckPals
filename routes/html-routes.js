@@ -56,8 +56,29 @@ module.exports = app => {
   // If the user navigates to playground, redirect them to ducklist if there are logged in so they can pick a duck
   // If user is not logged in, redirect them to the login page
   app.get("/playground", isAuthenticated, (req, res) => {
-    // res.render('playground', { duck: duckData });
-    res.sendFile(path.join(__dirname, "../public/playground.html"));
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      },
+      include: [db.Duck]
+    }).then(response => {
+      const currentDuckId = response.currentDuck;
+      const ducks = response.Ducks;
+      let userData;
+      for (let i = 0; i < ducks.length; i++) {
+        if (ducks[i].dataValues.id === currentDuckId) {
+          const duckData = ducks[i].dataValues;
+          console.log(duckData);
+          userData = {
+            duck: duckData,
+            duckFood: response.duckfood,
+            duckBucks: response.duckbucks
+          }
+        }
+      }
+      res.render('playground', userData);
+    });
+    // res.sendFile(path.join(__dirname, "../public/playground.html"));
   });
 
   app.get("/pay/splash", isAuthenticated, (req, res) => {
