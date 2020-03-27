@@ -8,7 +8,7 @@ module.exports = app => {
   app.get('/', (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect('/ducklist');
+      res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
@@ -16,7 +16,7 @@ module.exports = app => {
   app.get('/login', (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect('/ducklist');
+      res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/login.html'));
   });
@@ -24,7 +24,7 @@ module.exports = app => {
   app.get('/signup', (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      return res.redirect('/ducklist');
+      res.redirect('/ducklist');
     }
     res.sendFile(path.join(__dirname, '../public/signup.html'));
   });
@@ -33,7 +33,8 @@ module.exports = app => {
   // If a user who is not logged in tries to access this route they will be redirected to the login page
   // If the user is logged in they can access their ducklist page
   app.get('/ducklist', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/ducklist.html'));
+    res.render('ducklist');
+    // res.sendFile(path.join(__dirname, '../public/ducklist.html'));
   });
 
   // If the user navigates to playground, redirect them to ducklist if there are logged in so they can pick a duck

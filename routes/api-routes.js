@@ -36,9 +36,8 @@ module.exports = app => {
       name: req.body.name,
       UserId: req.user.id
     })
-    .then(dbDuck => {
-      res.json(dbDuck);
-      // res.redirect(307, '/playground');
+    .then(() => {
+      res.redirect(307, '/playground');
     })
     .catch(err => {
       res.send(err);
