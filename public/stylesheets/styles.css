@@ -544,6 +544,77 @@ body {
   margin-bottom: -2.312em;
 }
 
+#color-form {
+  background-color: white;
+  border: 1px solid #3d3d3d;
+  border-radius: 5px;
+  display: none;
+  left: 60px;
+  margin: 10px;
+  padding: 10px 10px 0;
+  position: absolute;
+  top: 220px;
+  z-index: 2;
+  /* Hide Old Radio Button */
+  /* Space Between Labels */
+  /* New Radio Button */
+  /* New Radio Button Fill */
+}
+
+#color-form h3 {
+  padding: 10px auto 5px;
+  text-align: center;
+}
+
+#color-form #radio-container {
+  padding: 10px;
+}
+
+#color-form #radio-container div {
+  padding: 5px;
+}
+
+#color-form input[type=radio]:not(old) {
+  width: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  opacity: 0;
+}
+
+#color-form input[type=radio]:not(old) + label {
+  display: inline-block;
+  margin-left: -2em;
+  line-height: 1.5em;
+}
+
+#color-form input[type=radio]:not(old) + label > span {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0.25em 0.5em 0.25em 0.25em;
+  border: 0.0625em solid silver;
+  border-radius: 1em;
+  background: #f1f1f1;
+  vertical-align: bottom;
+}
+
+#color-form input[type=radio]:not(old):checked + label > span {
+  border: 0.0625em solid #3d3d3d;
+  background: #f1f1f1;
+}
+
+#color-form input[type=radio]:not(old):checked + label > span > span {
+  display: block;
+  width: 0.6em;
+  height: 0.6em;
+  margin: 0.125em;
+  border: 0.0625em solid #3d3d3d;
+  border-radius: 1em;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#969696), to(#3d3d3d));
+  background-image: linear-gradient(#969696, #3d3d3d);
+}
+
 @media (min-width: 576px) {
   #gameContainer {
     border-style: solid;
