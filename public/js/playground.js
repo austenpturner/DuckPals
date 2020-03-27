@@ -95,6 +95,7 @@ function initializeDuck() {
 // Sets the stats for the Duck bla bla bla
 function duckStats() {
   $.get("/api/playground", function(data) {
+    console.log(data.Ducks);
     duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
     duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
     duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;

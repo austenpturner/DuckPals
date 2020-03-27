@@ -1,18 +1,6 @@
 const db = require("../models");
 
 module.exports = app => {
-  app.get("/api/playground", function(req, res) {
-    db.User.findOne({
-      where: {
-        id: req.user.id
-      },
-      include: [db.Duck]
-    }).then(response => {
-      console.log(response.Ducks[0].dataValues);
-      return res.json(response);
-    });
-  });
-
   app.get("/api/duckbuck", (req, res) => {
     console.log(req);
     db.User.findOne({ where: { id: req.user.id } })

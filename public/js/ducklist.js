@@ -31,19 +31,26 @@ for (let i = 0; i < selectBtns.length; i++) {
   });
 };
 
-const selectDuck = data => {
-  fetch("/api/playground", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  }).then(res => {
-    return res.json();
+const selectDuck = name => {
+  $.post("/api/playground", name, data => {
+    console.log('hello');
+    console.log(data);
   }).then(() => {
-    console.log('done');
     window.location.replace("/playground");
   })
+  // fetch("/api/playground", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(data)
+  // }).then(res => {
+  //   return res.json();
+  // }).then(duckData => {
+  //   console.log('done');
+  //   console.log(duckData);
+  //   window.location.replace("/playground");
+  // })
 }
 
 
@@ -55,14 +62,14 @@ const addDuck = data => {
     },
     body: JSON.stringify(data)
   })
-    .then(res => {
-      res.json();
-    })
-    .then(() => {
-      window.location.replace("/playground");
-      // If there's an error, handle it by throwing up a bootstrap alert
-    })
-    .catch(handleDuckErr);
+  .then(res => {
+    res.json();
+  })
+  .then(() => {
+    window.location.replace("/playground");
+    // If there's an error, handle it by throwing up a bootstrap alert
+  })
+  .catch(handleDuckErr);
 };
 
 const handleDuckErr = err => {
