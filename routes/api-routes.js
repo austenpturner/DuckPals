@@ -9,7 +9,6 @@ module.exports = app => {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-
     res.json({
       email: req.user.email,
       id: req.user.id
@@ -24,13 +23,11 @@ module.exports = app => {
       password: req.body.password,
       duckbucks: 0,
       duckfood: 0
-    })
-      .then(() => {
-        res.redirect(307, "/api/login");
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+    }).then(() => {
+      res.redirect(307, "/api/login");
+    }).catch(err => {
+      res.status(401).json(err);
+    });
   });
 
   app.post("/api/playground", (req, res) => {
@@ -47,12 +44,29 @@ module.exports = app => {
       for (let i = 0; i < userDucks.length; i++) {
         duckData = userDucks[i].dataValues;
         // Find user's duck with that name
-        if ((duckData.name = duckName)) {
+
+        if (duckData.name === duckName) {
           console.log(duckData);
-          return duckData;
-        }
-      }
+          // return data for that duck
+          // return duckData;
+         
+          // return duckData;
+        };
+      };
+    }).then(() => {
       res.redirect("/playground");
+    })
+  });
+
+  app.get("/api/playground", function(req, res) {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      },
+      include: [db.Duck]
+    }).then(response => {
+      console.log(response.Ducks[0].dataValues);
+      return res.json(response);
     });
   });
 
@@ -61,15 +75,14 @@ module.exports = app => {
       name: req.body.name,
       UserId: req.user.id
     })
-      .then(() => {
-        res.redirect(307, "/playground");
-      })
-      .then(dbDuck => {
-        res.json(dbDuck);
-      })
-      .catch(err => {
-        res.send(err);
-      });
+
+    .then(() => {
+      res.redirect(307, "/playground");
+    }).then(dbDuck => {
+      res.json(dbDuck);
+    }).catch(err => {
+      res.send(err);
+    });
   });
 
   // Route for logging user out
@@ -90,7 +103,7 @@ module.exports = app => {
         email: req.user.email,
         id: req.user.id
       });
-    }
+    };
   });
 
   // ---------- PAYPAL ROUTES ---------- //
@@ -135,9 +148,9 @@ module.exports = app => {
         for (let i = 0; i < payment.links.length; i++) {
           if (payment.links[i].rel === "approval_url") {
             res.redirect(payment.links[i].href);
-          }
-        }
-      }
+          };
+        };
+      };
     });
 
     //Path redirect after the user successfully pays

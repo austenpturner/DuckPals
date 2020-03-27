@@ -104,9 +104,7 @@ function duckStatsInit() {
 
 function duckStats() {
   $.get("/api/playground", function(data) {
-    // for (let i = 0; i < data.Ducks.length; i++) {
-
-    //   if(data.Ducks[i].name === duckName.innerHTML)
+    console.log(data.Ducks);
     duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
     duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
     duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
