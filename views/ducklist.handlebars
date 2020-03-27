@@ -1,0 +1,31 @@
+<div id="ducklist">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Welcome<span class="user-name"></span>!</h1>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <h2>Select a Duck</h2>
+    <ul>
+      {{#each}}
+      <li>
+        <p>{{duck.name}}</p>
+        <button href="/playground" type="submit" id="select-btn">Select Duck</button>
+      </li>
+      {{/each}}
+    </ul>
+  </main>
+
+  <form>
+    <h2>Make a New Duck</h2>
+    <label for="duckname">Enter Your Duck's Name</label>
+    <input type="text" class="form-control" id="duckname" name="duckname" />
+    <button type="submit" id="hatch-btn" class="btn btn-default">Hatch My Duck!</button>
+  </form>
+  <p>Click here to <a href="/logout">Logout</a></p>
+
+  <script type="text/javascript" src="/js/ducklist.js"></script>
+</div>
