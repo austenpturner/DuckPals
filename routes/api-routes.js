@@ -61,23 +61,7 @@ module.exports = app => {
     })
     .then(() => {
       res.redirect("/playground");
-    })
-      .then(res => {
-        const userDucks = res.Ducks;
-        for (let i = 0; i < userDucks.length; i++) {
-          duckData = userDucks[i].dataValues;
-          // Find user's duck with that name
-
-          if (duckData.name === duckName) {
-            // return data for that duck
-            // return duckData;
-            // return duckData;
-          }
-        }
-      })
-      .then(() => {
-        res.redirect("/playground");
-      });
+    });
   });
 
   app.get("/api/playground", function(req, res) {
@@ -97,16 +81,12 @@ module.exports = app => {
       name: req.body.name,
       UserId: req.user.id
     })
-
-      .then(() => {
-        res.redirect(307, "/playground");
-      })
-      .then(dbDuck => {
-        res.json(dbDuck);
-      })
-      .catch(err => {
-        res.send(err);
-      });
+    .then(dbDuck => {
+      res.json(dbDuck);
+    })
+    .catch(err => {
+      res.send(err);
+    });
   });
 
   // Route for logging user out

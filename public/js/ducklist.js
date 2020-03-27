@@ -57,7 +57,7 @@ const addDuck = data => {
       res.json();
     })
     .then(() => {
-      window.location.replace("/playground");
+      window.location.reload();
       // If there's an error, handle it by throwing up a bootstrap alert
     })
     .catch(handleDuckErr);
