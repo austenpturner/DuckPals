@@ -47,30 +47,29 @@ module.exports = app => {
       for (let i = 0; i < userDucks.length; i++) {
         duckData = userDucks[i].dataValues;
         // Find user's duck with that name
-        if (duckData.name = duckName) {
+        if ((duckData.name = duckName)) {
           console.log(duckData);
-          // return data for that duck
           return duckData;
         }
       }
       res.redirect("/playground");
     });
-  })
+  });
 
   app.post("/api/ducklist", (req, res) => {
     db.Duck.create({
       name: req.body.name,
       UserId: req.user.id
     })
-    .then(() => {
-      res.redirect(307, "/playground");
-    })
-    .then(dbDuck => {
-      res.json(dbDuck);
-    })
-    .catch(err => {
-      res.send(err);
-    });
+      .then(() => {
+        res.redirect(307, "/playground");
+      })
+      .then(dbDuck => {
+        res.json(dbDuck);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   });
 
   // Route for logging user out
