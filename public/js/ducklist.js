@@ -25,11 +25,11 @@ for (let i = 0; i < selectBtns.length; i++) {
     console.log(name);
     const duckName = {
       name: name
-    }
+    };
     // send selected duck's name to /api/playground in api-routes.js
     selectDuck(duckName);
   });
-};
+}
 
 const selectDuck = name => {
   $.post("/api/playground", name, data => {
@@ -52,7 +52,6 @@ const selectDuck = name => {
   //   window.location.replace("/playground");
   // })
 }
-
 
 const addDuck = data => {
   fetch("/api/ducklist", {

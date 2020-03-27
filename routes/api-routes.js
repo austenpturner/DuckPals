@@ -44,6 +44,7 @@ module.exports = app => {
       for (let i = 0; i < userDucks.length; i++) {
         duckData = userDucks[i].dataValues;
         // Find user's duck with that name
+
         if (duckData.name === duckName) {
           console.log(duckData);
           // return data for that duck
@@ -74,6 +75,7 @@ module.exports = app => {
       name: req.body.name,
       UserId: req.user.id
     })
+
     .then(() => {
       res.redirect(307, "/playground");
     }).then(dbDuck => {
@@ -105,14 +107,6 @@ module.exports = app => {
   });
 
   // ---------- PAYPAL ROUTES ---------- //
-  // app.get("api/duckbuck", (req, res) => {
-  //   console.log(req);
-  //   // db.User.update({where: {id: req.body.id}})
-  //   // .then(buckAdded => {
-  //   //   return res.json(buckAdded);
-  //   // })
-  // });
-
   // Post request that creates the PayPal payment
   app.post("/pay", (req, res) => {
     const create_payment_json = {
