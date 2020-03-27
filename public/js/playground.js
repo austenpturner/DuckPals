@@ -37,12 +37,11 @@ function initializeDuck() {
 // Sets the stats for the Duck bla bla bla
 function duckStats() {
   $.get("/api/playground", function(data) {
-    console.log(data);
     duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
     duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
     duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
-    duckFood.innerHTML = `${data.duckfood}`;
-    duckBucks.innerHTML = `${data.duckbucks}`;
+    duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
+    duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
   });
 }
 
@@ -89,7 +88,7 @@ const newDuck = data => {
 const sleepy = data => {
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
@@ -102,7 +101,7 @@ const sleepy = data => {
 
 const notSleepy = data => {
   fetch("/ducklist/notsleepy", {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
@@ -113,24 +112,20 @@ const notSleepy = data => {
   });
 };
 
-const hungry = data => {
+function hungry() {
   // need a put to the db to make hungry boolean TRUE
-  fetch("/ducklist/hungry", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  }).then(response => {
+  $.post("/ducklist/hungry", function(data) {
+    if (data.hungry === true) {
+      window.location.replace("/pay/splash");
+    }
     duckStats();
-    return response.json();
   });
-};
+}
 
 const notHungry = data => {
   // need a put to the db to make hungry boolean FALSE
   fetch("/ducklist/nothungry", {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
@@ -155,7 +150,6 @@ function animateCSS(element, animationName, callback) {
 
 function makeDuckJump() {
   // interval where the image of the duck is replaced with a jumping duck
-  console.log("getting here");
   animateCSS("#duck", "bounce");
   animateCSS("#eye", "jello");
   animateCSS("#wing", "headShake");
@@ -167,14 +161,12 @@ function makeDuckJump() {
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
-  console.log("getting here");
   animateCSS("#duck", "bounceOutDown");
   // setInterval(console.log('sleepgin'), 3000)
 }
 
 function makeDuckSmile() {
   // interval where the image of the duck is replaced with a smiling duck
-  console.log("getting here");
   animateCSS("#wing", "headShake");
   animateCSS("#duck", "wobble");
   animateCSS("#head", "shake");
@@ -183,7 +175,6 @@ function makeDuckSmile() {
 
 function makeDuckThank() {
   // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
-  console.log("getting here");
   animateCSS("#wing", "headShake");
   animateCSS("#head", "pulse");
   animateCSS("#body", "pulse");
@@ -212,25 +203,25 @@ function randWaitTime() {
 }
 
 // EVENT LISTENERS
-playBtn.addEventListener("click", async () => {
+playBtn.addEventListener("click", () => {
   hungry();
   makeDuckJump();
   playQuack();
 });
 
-sleepBtn.addEventListener("click", async () => {
+sleepBtn.addEventListener("click", () => {
   sleepy();
   makeDuckSleep();
   playQuack();
 });
 
-feedBtn.addEventListener("click", async () => {
+feedBtn.addEventListener("click", () => {
   notHungry();
   makeDuckThank();
   playQuack();
 });
 
-petBtn.addEventListener("click", async () => {
+petBtn.addEventListener("click", () => {
   notSleepy();
   makeDuckSmile();
   playQuack();
