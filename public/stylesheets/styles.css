@@ -350,6 +350,7 @@ body {
 }
 
 #duck-container #body {
+  background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-radius: 5% 60% 50% 95%;
   -webkit-box-shadow: -5px 5px 5px rgba(128, 128, 128, 0.3);
@@ -363,6 +364,7 @@ body {
 }
 
 #duck-container #body #wing {
+  background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
   border-radius: 0% 70% 25% 100%;
@@ -377,6 +379,7 @@ body {
 }
 
 #duck-container #head {
+  background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
   border-radius: 50% 70% 40% 50%;
