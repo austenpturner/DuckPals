@@ -31,21 +31,18 @@ for (let i = 0; i < selectBtns.length; i++) {
   });
 }
 
-const selectDuck = data => {
+const selectDuck = name => {
   fetch("/api/playground", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(data)
-  })
-    .then(res => {
-      return res.json();
-    })
-    .then(() => {
-      console.log("done");
-      window.location.replace("/playground");
-    });
+    body: JSON.stringify(name)
+  }).then(res => {
+    res.json();
+  }).then(() => {
+    window.location.replace("/playground");
+  });
 };
 
 const addDuck = data => {

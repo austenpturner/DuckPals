@@ -88,7 +88,9 @@ const getRGB = color => {
 
 function initializeDuck() {
   animateCSS("#duck", "bounceInDown");
-}
+  // duckStats();
+};
+
 
 function duckStats(name) {
   console.log(name);
