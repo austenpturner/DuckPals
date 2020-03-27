@@ -1,13 +1,4 @@
-$(document).ready(function() {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  initializeDuck();
-});
-
-// Duck Food and Duck Bucks for Microtransactions
-const userDuckBucks = 0;
-const userDuckFood = 0;
-
+// DOM Elements
 const playBtn = document.querySelector("#play-btn");
 const sleepBtn = document.querySelector("#sleep-btn");
 const feedBtn = document.querySelector("#feed-btn");
@@ -18,11 +9,20 @@ const duckFood = document.querySelector("#duckfood");
 const duckHunger = document.querySelector("#duckhunger");
 const duckSleepy = document.querySelector("#ducksleepy");
 const duckName = document.querySelector("#duckname");
-const button = document.querySelector("button");
-const duck = document.getElementsByClassName(".duck");
+const colorBtn = document.querySelector("#color-button");
+const duck = document.querySelectorAll(".duck");
 let quack = document.querySelector("audio");
 
-button.addEventListener("click", () => {
+// Duck Food and Duck Bucks for Microtransactions
+let userDuckBucks = 0;
+let userDuckFood = 0;
+
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+  initializeDuck();
+});
+
+colorBtn.addEventListener("click", () => {
   let color = randomColor();
   for (var i = 0; i < duck.length; i++) {
     duck[i].style.backgroundColor = color;
