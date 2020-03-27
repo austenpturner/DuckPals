@@ -31,27 +31,22 @@ for (let i = 0; i < selectBtns.length; i++) {
   });
 }
 
-const selectDuck = name => {
-  $.post("/api/playground", name, data => {
-    console.log('hello');
-    console.log(data);
-  }).then(() => {
-    window.location.replace("/playground");
+const selectDuck = data => {
+  fetch("/api/playground", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   })
-  // fetch("/api/playground", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify(data)
-  // }).then(res => {
-  //   return res.json();
-  // }).then(duckData => {
-  //   console.log('done');
-  //   console.log(duckData);
-  //   window.location.replace("/playground");
-  // })
-}
+    .then(res => {
+      return res.json();
+    })
+    .then(() => {
+      console.log("done");
+      window.location.replace("/playground");
+    });
+};
 
 const addDuck = data => {
   fetch("/api/ducklist", {
@@ -61,14 +56,14 @@ const addDuck = data => {
     },
     body: JSON.stringify(data)
   })
-  .then(res => {
-    res.json();
-  })
-  .then(() => {
-    window.location.replace("/playground");
-    // If there's an error, handle it by throwing up a bootstrap alert
-  })
-  .catch(handleDuckErr);
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      window.location.replace("/playground");
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleDuckErr);
 };
 
 const handleDuckErr = err => {
