@@ -34,7 +34,6 @@ const loginUser = data => {
     return res.json();
   }).then(() => {
     location.reload('/login');
-=
       // If there's an error, log the error
     })
     .catch(err => {
