@@ -24,20 +24,16 @@ loginBtn.addEventListener("click", e => {
 
 // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
 const loginUser = data => {
-  fetch("/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-    .then(res => {
-      console.log(res);
-      return res.json();
-    })
-    .then(() => {
-      window.location.replace("/ducklist");
-
+  fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  }).then(res => {
+    return res.json();
+  }).then(() => {
+    location.reload('/login');
       // If there's an error, log the error
     })
     .catch(err => {

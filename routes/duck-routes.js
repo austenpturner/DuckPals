@@ -69,4 +69,15 @@ module.exports = app => {
         console.log(err);
       });
   });
+
+  app.post("/ducklist/color", function(req, res) {
+    console.log(req.body);
+    db.Duck.update(req.body, { where: { UserId: req.user.id } })
+    .then(updatedDuck => {
+      return res.json(updatedDuck);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  })
 };
