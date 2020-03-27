@@ -1,99 +1,100 @@
 #ducklist {
-    background-color: $lightAqua;
-    color: $darkGrey;
+  background-color: $lightAqua;
+  color: $darkGrey;
+  margin: 0 auto;
+  h1,
+  form,
+  ul,
+  p {
+    width: 86%;
+  }
+  h1 {
+    margin: 30px auto 10px;
+  }
+  h2 {
+    font-size: 1.6em;
+  }
+  main {
+    // display: none;
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  form {
+    margin: 10px auto;
+    label {
+      font-size: 1em;
+    }
+    button {
+      background: linear-gradient($lightPurple, $darkPurple);
+      border: none;
+      color: white;
+      font-size: 0.9em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+  }
+  p {
+    font-size: 0.9em;
     margin: 0 auto;
-    h1,
-    form,
-    ul, 
-    p {
-        width: 86%;
+    a {
+      color: $lightPurple;
     }
-    h1 {
-        margin: 30px auto 10px;
-    }
-    h2 {
-        font-size: 1.6em;
-    }
-    main {
-        display: none;
-        ul {
-            display: flex;
-            flex-direction: column;
-        }
-    }
-    form {
-        margin: 10px auto;
-        label {
-            font-size: 1em;
-        }
-        button {
-            background: linear-gradient($lightPurple, $darkPurple);
-            border: none;
-            color: white;
-            font-size: 0.9em;
-            padding: 10px 20px;
-            margin-top: 10px;
-        }
-    }
-    p {
-        font-size: 0.9em;
-        margin: 0 auto;
-        a {
-            color: $lightPurple;
-        }
-    }
+  }
 }
 
 @media (min-width: 568px) {
-    #ducklist {
-        h1,
-        ul,
-        form, 
-        p {
-            width: 80%;
-        }
-        main {
-            ul {
-                flex-direction: row;
-            }
-        }
+  #ducklist {
+    h1,
+    ul,
+    form,
+    p {
+      width: 80%;
     }
+    main {
+      ul {
+        flex-direction: row;
+      }
+    }
+  }
 }
 
 @media (min-width: 736px) {
-    #ducklist {
-        h1,
-        form, 
-        ul,
-        p {
-            width: 70%;
-        }
+  #ducklist {
+    h1,
+    form,
+    ul,
+    p {
+      width: 70%;
     }
+  }
 }
 
 @media (min-width: 1024px) {
-    #ducklist {
-        form,
-        ul,
-        p {
-            width: 60%;
-        }
-        h1 {
-            font-size: 3.6em;
-        }
-        h2 {
-            font-size: 2.2em;
-        }
-        form {
-            label {
-                font-size: 1.3em;
-            }
-            button {
-                font-size: 1.2em;
-            }
-        }
-        p {
-            font-size: 1.1em;
-        }
+  #ducklist {
+    form,
+    ul,
+    p {
+      width: 60%;
     }
+    h1 {
+      font-size: 3.6em;
+    }
+    h2 {
+      font-size: 2.2em;
+    }
+    form {
+      label {
+        font-size: 1.3em;
+      }
+      button {
+        font-size: 1.2em;
+      }
+    }
+    p {
+      font-size: 1.1em;
+    }
+  }
 }

@@ -9,6 +9,7 @@ module.exports = app => {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
+
     res.json({
       email: req.user.email,
       id: req.user.id
@@ -38,9 +39,9 @@ module.exports = app => {
       UserId: req.user.id
     })
 
-    .then(() => {
-      res.redirect(307, '/playground');
-    })
+      .then(() => {
+        res.redirect(307, "/playground");
+      })
       .then(dbDuck => {
         res.json(dbDuck);
       })
