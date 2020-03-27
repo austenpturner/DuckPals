@@ -10,11 +10,18 @@
 </head>
 
 <body>
-    <!-- <div id="particles-js"></div> 
-    <div class="count-particles"> <span class="js-count-particles"></span> 
-    </div>
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
-    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h5 id="duckname">Duck: </h5>
+                <h5 id="duckhunger">Hungry: </h5>
+                <h5 id="ducksleepy">Sleepy: </h5>
+                <h5 id="duckfood">Duck Food: </h5>
+                <h5 id="duckbucks">Duck Bucks: </h5>
+            </div>
+        </div>
+    </nav>
     <audio></audio>
     <p id="duckhunger">Hungry: [ ] Sleepy: [ ] Duck Bucks: [ ] Food: [ ] </p>
     <hr>
@@ -34,7 +41,6 @@
             </button>
         </div>
 
-
         <div class='buttons' id='buttons-right'>
             <button id="pet-btn">
                 Pet
@@ -44,9 +50,11 @@
                 Sleep
             </button>
             <br>
-            <button id="new-duck-btn">
-                New Duck
-            </button>
+            <a href="/ducklist">
+                <button id="new-duck-btn">
+                    New Duck
+                </button>
+            </a>
             <br>
             <a href="/logout">
                 <button id="logout-btn">
@@ -79,36 +87,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/ducklist.js.js"></script>
     <script type="text/javascript" src="js/playground.js"></script>
-    <script>
-        let quack = document.querySelector('audio')
-        $(document).ready(function () {
-
-            $('#play-btn').click(function () {
-                quack.setAttribute('src', './assets/quack1.mp3');
-                quack.play();
-            });
-        });
-        $(document).ready(function () {
-            $('#feed-btn').click(function () {
-                quack.setAttribute('src', './assets/quack2.mp3');
-                quack.play();
-            });
-        });
-        $(document).ready(function () {
-            $('#pet-btn').click(function () {
-                quack.setAttribute('src', './assets/quack2.mp3');
-                quack.play();
-            });
-        });
-        $(document).ready(function () {
-            $('#sleep-btn').click(function () {
-                quack.setAttribute('src', './assets/quack1.mp3');
-                quack.play();
-            });
-        });
-    </script>
 </body>
 
 </html>

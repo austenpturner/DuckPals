@@ -6,7 +6,8 @@
         "_index.scss",
         "_signup.scss",
         "_login.scss",
-        "_ducklist.scss"
+        "_ducklist.scss",
+        "_duckbucks.scss"
     ],
     "names": [],
     "file": "styles.css"

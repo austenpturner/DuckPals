@@ -1,0 +1,71 @@
+#duckbucks {
+    background-color: $lightAqua;
+    color: $darkGrey;
+    h1 {
+        font-size: 2em;
+        line-height: 1.3em;
+        margin: 40px auto;
+        text-align: center;
+        width: 86%;
+    }
+    .container {
+        width: 86%;
+        h4 {
+            font-size: 1.2em;
+        }
+        form {
+            margin: 10px auto;
+            input {
+                background: linear-gradient($lightPurple, $darkPurple);
+                border: none;
+                color: white;
+                margin: 5px 16px;
+                padding: 5px 16px;
+            }
+        }
+        p {
+            font-size: 0.9em;
+            margin-top: 16px;
+            a {
+                color: $lightPurple;
+            }
+        }
+    }
+}
+
+@media(min-width: 568px) {
+    #duckbucks {
+        .container {
+            width: 70%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #duckbucks {
+        h1 {
+            font-size: 3em;
+            margin-top: 60px;
+        }
+        .container {
+            width: 60%;
+            h4 {
+                font-size: 1.8em;
+            }
+            form {
+                margin: 15px auto;
+                label {
+                    font-size: 1.4em;
+                }
+                input {
+                    font-size: 1.2em;
+                    padding: 8px 20px;
+                }
+            }
+            p {
+                font-size: 1.2em;
+                margin-top: 16px;
+            }
+        }
+    }
+}

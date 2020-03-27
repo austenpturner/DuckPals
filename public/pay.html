@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DuckPals DuckBucks</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/styles.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>You've Run Out of DuckBucks</h1>
-    <h2>Your Duck Won't Survive Long Without Love!</h2>
+<body id="duckbucks">
 
-    <form action="/pay" method="POST">
-        <label for="one">Buy $1 Duck Buck</label>
-        <input type="submit" name="one" value="Buy">
-        <!-- <br>
-        <label for="ten">Buy $10 Duck Bucks</label>
-        <input type="submit" name="ten" value="Buy">
-        <br>
-        <label for="fifty">Buy $50 Duck Buck</label>
-        <input type="submit" name="fifty" value="Buy"> -->
-    </form>
+    <h1>You're Out of DuckBucks</h1>
+
+    <div class="container">
+        <h4>Your duck won't survive long without love!</h4>
+
+        <form action="/pay" method="POST">
+            <label for="one">Buy $1 DuckBuck</label>
+            <input type="submit" class="btn btn-default" id="buy-btn" name="one" value="Buy">
+        </form>
+        <p>Or return to DuckPals <a href="/playground">playground</a></p>
+    </div>
+
 </body>
 
 </html>
