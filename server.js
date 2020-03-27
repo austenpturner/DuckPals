@@ -4,6 +4,7 @@ const exphbs = require("handlebars");
 const session = require("express-session");
 // const favicon = require("serve-favicon");
 // const path = require("path");
+
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
@@ -37,8 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Handlebars middleware - use handlebars as template engine
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 function ignoreFavicon(req, res, next) {
   if (req.originalUrl === "/favicon.ico") {
