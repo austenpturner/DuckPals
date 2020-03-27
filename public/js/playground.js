@@ -88,34 +88,20 @@ const getRGB = color => {
 
 function initializeDuck() {
   animateCSS("#duck", "bounceInDown");
-<<<<<<< HEAD
   // duckStats();
 };
-=======
-  duckStatsInit();
-}
->>>>>>> e2c67a937e70918b2b4be944964d46ab9d6d11cb
 
-// Sets the stats for the Duck bla bla bla
-function duckStatsInit() {
-  $.get("/api/playground", function(data) {
-    duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
-    duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
-    duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
-    duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
-    duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
-  });
-}
 
-function duckStats() {
-  $.get("/api/playground", function(data) {
-    console.log(data.Ducks);
-    duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
-    duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
-    duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
-    duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
-    duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
-  });
+function duckStats(name) {
+  console.log(name);
+  // $.get("/api/playground", function(data) {
+  //   console.log(data.Ducks);
+  //   duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
+  //   duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
+  //   duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
+  //   duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
+  //   duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
+  // });
 }
 
 function buyFood() {
@@ -153,11 +139,13 @@ const newDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(res => {
-    return res.json();
-  }).catch(err => {
-    console.log(err);
-  });
+  })
+    .then(res => {
+      return res.json();
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 // GLOBAL FUNCTIONS
@@ -171,7 +159,7 @@ const sleepy = data => {
     },
     body: JSON.stringify(data)
   }).then(response => {
-    duckStats();
+    duckStats(duckName.value);
   });
 };
 
@@ -183,31 +171,29 @@ const notSleepy = data => {
     },
     body: JSON.stringify(data)
   }).then(response => {
-    duckStats();
+    duckStats(duckName.value);
   });
 };
 
 function hungry() {
   // need a put to the db to make hungry boolean TRUE
   $.post("/ducklist/hungry", function(data) {
-    console.log(data);
     if (data.hungry === true && data.duckfood < 0) {
       window.location.replace("/pay/splash");
     }
   }).then(response => {
-    duckStats();
+    duckStats(duckName.value);
   });
 }
 
 function notHungry() {
   // need a put to the db to make hungry boolean FALSE
   $.post("/ducklist/nothungry", function(data) {
-    console.log(data);
     if (data.hungry === true && data.duckfood < 0) {
       window.location.replace("/pay/splash");
     }
   }).then(response => {
-    duckStats();
+    duckStats(duckName.value);
   });
 }
 

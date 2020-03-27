@@ -53,14 +53,14 @@ const addDuck = data => {
     },
     body: JSON.stringify(data)
   })
-  .then(res => {
-    res.json();
-  })
-  .then(() => {
-    window.location.replace("/playground");
-    // If there's an error, handle it by throwing up a bootstrap alert
-  })
-  .catch(handleDuckErr);
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      window.location.replace("/playground");
+      // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleDuckErr);
 };
 
 const handleDuckErr = err => {
