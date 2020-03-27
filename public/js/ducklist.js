@@ -25,11 +25,11 @@ for (let i = 0; i < selectBtns.length; i++) {
     console.log(name);
     const duckName = {
       name: name
-    }
+    };
     // send selected duck's name to /api/playground in api-routes.js
     selectDuck(duckName);
   });
-};
+}
 
 const selectDuck = data => {
   fetch("/api/playground", {
@@ -38,14 +38,15 @@ const selectDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(res => {
-    return res.json();
-  }).then(() => {
-    console.log('done');
-    window.location.replace("/playground");
   })
-}
-
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      window.location.replace("/playground");
+    })
+    .catch(handleDuckErr);
+};
 
 const addDuck = data => {
   fetch("/api/ducklist", {
