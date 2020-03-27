@@ -1,18 +1,26 @@
+$(document).ready(function() {
+  // This file just does a GET request to figure out which user is logged in
+  // and updates the HTML on the page
+  initializeDuck();
+});
+
 // Duck Food and Duck Bucks for Microtransactions
-const duckBucks = 0;
-const duckFood = 0;
+const userDuckBucks = 0;
+const userDuckFood = 0;
 
 const playBtn = document.querySelector("#play-btn");
 const sleepBtn = document.querySelector("#sleep-btn");
 const feedBtn = document.querySelector("#feed-btn");
 const petBtn = document.querySelector("#pet-btn");
 const newDuckBtn = document.querySelector("#new-duck-btn");
-const duckBuckHead = document.querySelector("#duckbuck");
-const duckFoodHead = document.querySelector("#duckfood");
-const duckHungerHead = document.querySelector("#duckhunger");
-const duckSleepyHead = document.querySelector("#ducksleepy");
+const duckBucks = document.querySelector("#duckbucks");
+const duckFood = document.querySelector("#duckfood");
+const duckHunger = document.querySelector("#duckhunger");
+const duckSleepy = document.querySelector("#ducksleepy");
+const duckName = document.querySelector("#duckname");
 const button = document.querySelector("button");
 const duck = document.getElementsByClassName(".duck");
+let quack = document.querySelector("audio");
 
 button.addEventListener("click", () => {
   let color = randomColor();
@@ -21,12 +29,33 @@ button.addEventListener("click", () => {
   }
 });
 
+function initializeDuck() {
+  animateCSS("#duck", "bounceInDown");
+  duckStats();
+}
+
 // Sets the stats for the Duck bla bla bla
 function duckStats() {
-  duckBuckHead.innerHTML = `Duck Bucks: ${duckBucks}`;
-  duckFoodHead.innerHTML = `Duck Food: ${duckFood}`;
-  duckHungerHead.innerHTML = `Duck Hungry: `;
-  duckSleepyHead.innerHTML = `Duck Sleepy: `;
+  $.get("/api/playground", function(data) {
+    duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
+    duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
+    duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
+    duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
+    duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
+  });
+}
+
+function playQuack() {
+  quack.setAttribute("src", "./assets/quack1.mp3");
+  let playPromise = quack.play();
+
+  if (playPromise !== undefined) {
+    playPromise
+      .then(_ => {})
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }
 
 function randomColor() {
@@ -35,8 +64,6 @@ function randomColor() {
   var thirdNum = Math.floor(Math.random() * 255);
   return "rgb(" + firstNum + "," + secondNum + "," + thirdNum + ")";
 }
-
-// DOM VARIABLES
 
 // GLOBAL VARIABLES
 
@@ -52,47 +79,62 @@ const newDuck = data => {
       return res.json();
     })
     .catch(err => {
-      if (err) throw err;
+      console.log(err);
     });
 };
 
 // GLOBAL FUNCTIONS
 
-
-function initializeDuck() {
-  // display the duck
-
-  animateCSS('#duck', 'bounceInDown')
-}
-
 const sleepy = data => {
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  })
-    .then(res => {
-      res.json();
-    })
-    .catch(err => {
-      if (err) throw err;
-    });
+  }).then(response => {
+    duckStats();
+    return response.json();
+  });
 };
 
-function notSleepy() {
-  // need a put to the db to make sleepy boolean FALSE
-}
+const notSleepy = data => {
+  fetch("/ducklist/notsleepy", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(response => {
+    duckStats();
+    return response.json();
+  });
+};
 
 function hungry() {
   // need a put to the db to make hungry boolean TRUE
+  $.post("/ducklist/hungry", function(data) {
+    if (data.hungry === true) {
+      window.location.replace("/pay/splash");
+    }
+    duckStats();
+  });
 }
 
-function notHungry() {
+const notHungry = data => {
   // need a put to the db to make hungry boolean FALSE
-}
+  fetch("/ducklist/nothungry", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(response => {
+    duckStats();
+    return response.json();
+  });
+};
 
 function animateCSS(element, animationName, callback) {
   const node = document.querySelector(element);
@@ -107,48 +149,38 @@ function animateCSS(element, animationName, callback) {
 }
 
 function makeDuckJump() {
-
-    // interval where the image of the duck is replaced with a jumping duck
-    console.log('getting here')
-    animateCSS('#duck', 'bounce')
-    animateCSS('#eye', 'jello')
-    animateCSS('#wing', 'headShake')
-    animateCSS('#body', 'jello')
-    animateCSS('#duck', 'flip')
-    animateCSS('#eye', 'flip')
-    animateCSS('#pupil', 'flip')
-};
-
+  // interval where the image of the duck is replaced with a jumping duck
+  animateCSS("#duck", "bounce");
+  animateCSS("#eye", "jello");
+  animateCSS("#wing", "headShake");
+  animateCSS("#body", "jello");
+  animateCSS("#duck", "flip");
+  animateCSS("#eye", "flip");
+  animateCSS("#pupil", "flip");
+}
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
-  console.log('getting here');
-  animateCSS('#duck', 'bounceOutDown')
-  duckStats();
+  animateCSS("#duck", "bounceOutDown");
   // setInterval(console.log('sleepgin'), 3000)
 }
 
 function makeDuckSmile() {
-    // interval where the image of the duck is replaced with a smiling duck
-    console.log('getting here')
-    animateCSS('#wing', 'headShake');
-    animateCSS('#duck', 'wobble');
-    animateCSS('#head', 'shake')
-    animateCSS('#eye','pulse')
-   duckStats();
-};
+  // interval where the image of the duck is replaced with a smiling duck
+  animateCSS("#wing", "headShake");
+  animateCSS("#duck", "wobble");
+  animateCSS("#head", "shake");
+  animateCSS("#eye", "pulse");
+}
 
 function makeDuckThank() {
-    // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble 
-    console.log('getting here')
-    animateCSS('#wing', 'headShake')
-    animateCSS('#head', 'pulse')
-    animateCSS('#body', 'pulse')
-    animateCSS('#beaktop', 'swing')
-    animateCSS('#beakbottom', 'wobble')
-   duckStats();
-};
-
+  // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
+  animateCSS("#wing", "headShake");
+  animateCSS("#head", "pulse");
+  animateCSS("#body", "pulse");
+  animateCSS("#beaktop", "swing");
+  animateCSS("#beakbottom", "wobble");
+}
 
 function randIntervalSwitch() {
   // randomly choose to select either hungry or sleepy boolean
@@ -171,43 +203,28 @@ function randWaitTime() {
 }
 
 // EVENT LISTENERS
-playBtn.addEventListener("click", function(e) {
-  // e.preventDefault();
-
-  // notSleepy();
-
-  // hungry();
-
-  makeDuckJump();
-});
-
-sleepBtn.addEventListener("click", function(e) {
-  e.preventDefault();
-  sleepy();
-});
-
-feedBtn.addEventListener("click", function(e) {
-  e.preventDefault();
-  // make the duck not hungry
-  notHungry();
-  // make the duck sleepy
-  sleepy();
-  // make the duck say thank you
-  makeDuckThank();
-  // timer after that
-  randWaitTime();
-});
-
-petBtn.addEventListener("click", function(e) {
-  e.preventDefault();
-  // make the duck sleepy
-  sleepy();
-  // make the duck hungry
+playBtn.addEventListener("click", () => {
   hungry();
-  // make the duck smile
+  makeDuckJump();
+  playQuack();
+});
+
+sleepBtn.addEventListener("click", () => {
+  sleepy();
+  makeDuckSleep();
+  playQuack();
+});
+
+feedBtn.addEventListener("click", () => {
+  notHungry();
+  makeDuckThank();
+  playQuack();
+});
+
+petBtn.addEventListener("click", () => {
+  notSleepy();
   makeDuckSmile();
-  // timer after that
-  randWaitTime();
+  playQuack();
 });
 
 newDuckBtn.addEventListener("click", function(e) {
