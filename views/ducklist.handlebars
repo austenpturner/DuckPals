@@ -8,17 +8,16 @@
   </div>
 
   <main>
-    <H2>Find my Ducks</H2>
-    <button></button>
+    {{!-- <H2>Find my Ducks</H2>
+    <button></button> --}}
     <h2>Select a Duck</h2>
     <ul>
-
+      {{#each ducks}}
       <li>
-
-        <button href="/api/playground" type="submit" id="select-btn">Select Duck</button>
+        <p>{{this.name}}</p>
+        <button href="/playground" type="submit" id="select-btn">Select Duck</button>
       </li>
-
-
+      {{/each}}
     </ul>
 
   </main>
