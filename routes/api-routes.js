@@ -160,33 +160,35 @@ module.exports = app => {
     });
 
     //Path redirect after the user successfully pays
-    app.get("/success", (req, res) => {
-      const payerId = req.query.PayerID;
-      const paymentId = req.query.paymentId;
-      const execute_payment_json = {
-        payer_id: payerId,
-        transactions: [
-          {
-            amount: {
-              currency: "USD",
-              total: "1.00"
+    app.get(
+      `/success?paymentId=${req.query.paymentId}&token=${req.query.token}&PayerID${req.query.PayerID}`,
+      (req, res) => {
+        const payerId = req.query.PayerID;
+        const paymentId = req.query.paymentId;
+        const execute_payment_json = {
+          payer_id: payerId,
+          transactions: [
+            {
+              amount: {
+                currency: "USD",
+                total: "1.00"
+              }
             }
-          }
-        ]
-      };
+          ]
+        };
 
-      //This will add one duck buck to the user's account in the database.
-      paypal.payment.execute(paymentId, execute_payment_json, function(
-        error,
-        payment
-      ) {
-        if (error) {
-          console.log(error.response);
-          throw error;
-        } else {
-          const payerInfo = payment.payer.payer_info;
-          res.send(
-            `<!DOCTYPE html>
+        //This will add one duck buck to the user's account in the database.
+        paypal.payment.execute(paymentId, execute_payment_json, function(
+          error,
+          payment
+        ) {
+          if (error) {
+            console.log(error.response);
+            throw error;
+          } else {
+            const payerInfo = payment.payer.payer_info;
+            res.send(
+              `<!DOCTYPE html>
               <html lang="en">
 
                 <head>
@@ -210,10 +212,11 @@ module.exports = app => {
                 </body>
 
               </html>`
-          );
-        }
-      });
-    });
+            );
+          }
+        });
+      }
+    );
   });
 
   app.get("/cancel", (req, res) => res.send("cancelled"));
