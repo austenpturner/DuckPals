@@ -218,7 +218,7 @@ const hungry = action => {
     body: JSON.stringify(data)
   }).then(() => {
     duckHunger.textContent = hungryValue;
-    if (hungryValue === true && duckFood.textContent < 0) {
+    if (action === 'feed' && duckFood.textContent < 0) {
       window.location.replace("/pay/splash");
     }
   });
