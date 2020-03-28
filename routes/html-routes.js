@@ -9,7 +9,7 @@ module.exports = app => {
   app.get("/", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      res.redirect("/ducklist");
+      return res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
@@ -17,7 +17,7 @@ module.exports = app => {
   app.get("/login", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      res.redirect("/ducklist");
+      return res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -25,7 +25,7 @@ module.exports = app => {
   app.get("/signup", (req, res) => {
     // If the user already logged in send them to their ducklist page
     if (req.user) {
-      res.redirect("/ducklist");
+      return res.redirect("/ducklist");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
@@ -70,10 +70,10 @@ module.exports = app => {
             duck: duckData,
             duckFood: response.duckfood,
             duckBucks: response.duckbucks
-          }
+          };
         }
       }
-      res.render('playground', userData);
+      res.render("playground", userData);
     });
   });
 
