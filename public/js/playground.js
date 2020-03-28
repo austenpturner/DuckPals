@@ -20,6 +20,8 @@ const colorForm = document.querySelector("#color-form");
 const radioBtns = document.querySelectorAll(".color-radio");
 const saveColorBtn = document.querySelector("#save-color");
 const duck = document.querySelectorAll(".duck");
+const colorSpan = document.querySelector('#duckcolor');
+const idSpan = document.querySelector('#duckid');
 let quack = document.querySelector("audio");
 
 // Duck Food and Duck Bucks for Microtransactions
@@ -48,13 +50,31 @@ colorForm.addEventListener("click", () => {
 saveColorBtn.addEventListener("click", e => {
   e.preventDefault();
   const savedColor = colorRGB;
+  const duckId = idSpan.textContent;
+  const duckData = {
+    id: duckId,
+    color: savedColor
+  };
   saveColorBtn.textContent = "Saved!";
   setTimeout(() => {
     colorForm.style.display = "none";
   }, 1000);
-  $.post("/ducklist/color", { color: savedColor }, () => {
-    duckStats();
-  });
+  fetch("/ducklist/color", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(duckData)
+  }).then(res => {
+    return res.json();
+  }).then(() => {
+    console.log('updated color');
+  })
+
+
+  // $.post("/ducklist/color", { color: savedColor }, () => {
+  //   duckStats();
+  // });
 });
 
 // Get color from selected radio button
@@ -86,22 +106,29 @@ const getRGB = color => {
   }
 };
 
+const getDuckColor = () => {
+  console.log(colorSpan.textContent);
+  const color = colorSpan.textContent;
+  for (let i = 0; i < duck.length; i++) {
+    duck[i].style.backgroundColor = color;
+  }
+}
+
 function initializeDuck() {
+  getDuckColor();
   animateCSS("#duck", "bounceInDown");
-  // duckStats();
+  duckStats();
 };
 
-
-function duckStats(name) {
-  console.log(name);
-  // $.get("/api/playground", function(data) {
-  //   console.log(data.Ducks);
-  //   duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
-  //   duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
-  //   duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
-  //   duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
-  //   duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
-  // });
+// Sets the stats for the Duck bla bla bla
+function duckStatsInit() {
+  $.get("/api/playground", function(data) {
+    duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
+    duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
+    duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
+    duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
+    duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
+  });
 }
 
 function buyFood() {
@@ -123,13 +150,6 @@ function playQuack() {
   }
 }
 
-function randomColor() {
-  var firstNum = Math.floor(Math.random() * 255);
-  var secondNum = Math.floor(Math.random() * 255);
-  var thirdNum = Math.floor(Math.random() * 255);
-  return "rgb(" + firstNum + "," + secondNum + "," + thirdNum + ")";
-}
-
 // GLOBAL VARIABLES
 
 const newDuck = data => {
@@ -139,18 +159,27 @@ const newDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  })
-    .then(res => {
-      return res.json();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }).then(res => {
+    return res.json();
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
 // GLOBAL FUNCTIONS
 
-const sleepy = data => {
+const sleepy = () => {
+  let sleepyValue = duckSleepy.firstElementChild.textContent;
+  if (sleepyValue) {
+    sleepyValue = false;
+  } else {
+    sleepyValue = true;
+  }
+  const duckId = idSpan.textContent;
+  const data = {
+    sleepy: sleepyValue, 
+    id: duckId
+  }
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
     method: "POST",
@@ -158,43 +187,50 @@ const sleepy = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(response => {
-    duckStats(duckName.value);
+  }).then(() => {
+    duckStats();
   });
 };
 
-const notSleepy = data => {
-  fetch("/ducklist/notsleepy", {
+const hungry = () => {
+  let hungryValue = duckHunger.firstElementChild.textContent;
+  console.log(hungryValue);
+  if (hungryValue) {
+    hungryValue = false;
+  } else {
+    hungryValue = true;
+  }
+  console.log(hungryValue);
+  const duckId = idSpan.textContent;
+  const data = {
+    hungry: hungryValue, 
+    id: duckId
+  }
+  // need a put to the db to make sleepy boolean TRUE
+  fetch("/ducklist/hungry", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(response => {
-    duckStats(duckName.value);
+  }).then(data => {
+    console.log(data);
+    if (data.hungry === true && data.duckfood < 0) {
+        window.location.replace("/pay/splash");
+      }
+  })
+  .then(() => {
+    duckStats();
   });
-};
-
-function hungry() {
   // need a put to the db to make hungry boolean TRUE
-  $.post("/ducklist/hungry", function(data) {
-    if (data.hungry === true && data.duckfood < 0) {
-      window.location.replace("/pay/splash");
-    }
-  }).then(response => {
-    duckStats(duckName.value);
-  });
-}
-
-function notHungry() {
-  // need a put to the db to make hungry boolean FALSE
-  $.post("/ducklist/nothungry", function(data) {
-    if (data.hungry === true && data.duckfood < 0) {
-      window.location.replace("/pay/splash");
-    }
-  }).then(response => {
-    duckStats(duckName.value);
-  });
+  // $.post("/ducklist/hungry", function(data) {
+  //   console.log(data);
+  //   if (data.hungry === true && data.duckfood < 0) {
+  //     window.location.replace("/pay/splash");
+  //   }
+  // }).then(response => {
+  //   duckStats();
+  // });
 }
 
 function animateCSS(element, animationName, callback) {
@@ -277,13 +313,13 @@ sleepBtn.addEventListener("click", () => {
 });
 
 feedBtn.addEventListener("click", () => {
-  notHungry();
+  hungry();
   makeDuckThank();
   playQuack();
 });
 
 petBtn.addEventListener("click", () => {
-  notSleepy();
+  sleepy();
   makeDuckSmile();
   playQuack();
 });
