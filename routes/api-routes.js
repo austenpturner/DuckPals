@@ -25,7 +25,7 @@ module.exports = app => {
       duckfood: 0
     })
       .then(() => {
-        res.redirect(307, "/api/login");
+        res.redirect("/api/login");
       })
       .catch(err => {
         res.status(401).json(err);
@@ -41,30 +41,29 @@ module.exports = app => {
         id: req.user.id
       },
       include: [db.Duck]
-    })
-      .then(data => {
-        const userDucks = data.Ducks;
-        for (let i = 0; i < userDucks.length; i++) {
-          duckData = userDucks[i].dataValues;
-          // Find user's duck with that name
-          if (duckData.name === duckName) {
-            const duckId = duckData.id;
-            db.User.update(
-              {
-                currentDuck: duckId
-              },
-              {
-                where: {
-                  id: req.user.id
-                }
+    }).then(data => {
+      const userDucks = data.Ducks;
+      for (let i = 0; i < userDucks.length; i++) {
+        duckData = userDucks[i].dataValues;
+        // Find user's duck with that name
+        if (duckData.name === duckName) {
+          const duckId = duckData.id;
+          db.User.update(
+            {
+              currentDuck: duckId
+            },
+            {
+              where: {
+                id: req.user.id
               }
-            );
-          }
+            }
+          );
         }
-      })
-      .then(() => {
-        res.redirect("/playground");
-      });
+      }
+    })
+    .then(() => {
+      res.redirect("/playground");
+    });
   });
 
   app.get("/api/playground", function(req, res) {
@@ -184,31 +183,32 @@ module.exports = app => {
           console.log(error.response);
           throw error;
         } else {
-          res.send(
-            `<!DOCTYPE html>
-              <html lang="en">
+          const payerInfo = payment.payer.payer_info;
+          res.render("duckbuck", payerInfo
+            // `<!DOCTYPE html>
+            //   <html lang="en">
 
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>DuckPals DuckBucks</title>
+            //     <head>
+            //         <meta charset="UTF-8">
+            //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            //         <title>DuckPals DuckBucks</title>
 
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-                    <link href="stylesheets/styles.css" rel="stylesheet">
-                </head>
+            //         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+            //         <link href="stylesheets/styles.css" rel="stylesheet">
+            //     </head>
 
-                <body>  
+            //     <body>  
 
-                  <h3>Success! 1 Duck Buck has been credited to: ${payment.payer.payer_info.email}</h3>
+            //       <h3>Success! 1 Duck Buck has been credited to: ${payment.payer.payer_info.email}</h3>
 
               
-                    <button id="duckBuckBtn" type="submit"><a href="/playground">Click Here to Add it to your Duck Wallet!</a></button>
+            //         <button id="duckBuckBtn" type="submit"><a href="/playground">Click Here to Add it to your Duck Wallet!</a></button>
                   
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                  <script src="js/duckbuck.js"></script>
-                </body>
+            //       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            //       <script src="js/duckbuck.js"></script>
+            //     </body>
 
-              </html>`
+            //   </html>`
           );
         }
       });

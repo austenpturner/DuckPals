@@ -150,6 +150,22 @@ body {
 
 // -------- GAME CONTAINER -------- //
 
+#data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px auto 10px;
+  p {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    span {
+      font-weight: lighter;
+      margin-left: 5px;
+    }
+  }
+}
+
 #duckid,
 #duckcolor {
   display: none;
@@ -166,24 +182,20 @@ body {
   min-height: 300px;
   margin: 40px auto;
   background-color: lightgray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 50px;
+  border-radius: 10px 10px 50px 10px;
   box-shadow: -15px 15px 15px rgba(128,128,128, 0.5);
   button {
     background: linear-gradient(rgb(165, 17, 91), rgb(112, 50, 50));
     border: none;
+    border-color: darkgray;
     height: 45px;
     width: 45px;
     border-radius: 50%;
     border-style: solid;
     border-width: 3px;
-    border-color: darkgray;
     box-shadow: -2px 2px 5px rgba(128,128,128, 0.3);
     color: white;
     cursor: pointer;
-    // padding;
   }
   #pet-btn, #new-duck-btn {
     float: right;

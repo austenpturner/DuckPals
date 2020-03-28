@@ -332,7 +332,7 @@ body {
   font-size: 2em;
   line-height: 1.3em;
   margin: 40px auto;
-  text-align: center;
+  padding: 15px;
   width: 86%;
 }
 
@@ -367,6 +367,9 @@ body {
 }
 
 @media (min-width: 568px) {
+  #duckbucks h1 {
+    width: 70%;
+  }
   #duckbucks .container {
     width: 70%;
   }
@@ -376,6 +379,7 @@ body {
   #duckbucks h1 {
     font-size: 3em;
     margin-top: 60px;
+    width: 60%;
   }
   #duckbucks .container {
     width: 60%;
@@ -497,6 +501,30 @@ body {
   z-index: 1;
 }
 
+#data-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 20px auto 10px;
+}
+
+#data-container p {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#data-container p span {
+  font-weight: lighter;
+  margin-left: 5px;
+}
+
 #duckid,
 #duckcolor {
   display: none;
@@ -511,10 +539,7 @@ body {
   min-height: 300px;
   margin: 40px auto;
   background-color: lightgray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 50px;
+  border-radius: 10px 10px 50px 10px;
   -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
           box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.5);
 }
@@ -523,12 +548,12 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#a5115b), to(#703232));
   background: linear-gradient(#a5115b, #703232);
   border: none;
+  border-color: darkgray;
   height: 45px;
   width: 45px;
   border-radius: 50%;
   border-style: solid;
   border-width: 3px;
-  border-color: darkgray;
   -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
           box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
   color: white;

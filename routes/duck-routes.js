@@ -5,8 +5,7 @@ module.exports = app => {
     db.User.findOne({ where: { id: req.user.id } })
       .then(buckAdded => {
         return buckAdded.increment("duckbucks", { by: 1 });
-      })
-      .catch(err => {
+      }).catch(err => {
         console.log(err);
       });
   });
@@ -22,6 +21,20 @@ module.exports = app => {
       .catch(err => {
         console.log(err);
       });
+  });
+
+  app.post("/api/duckbuck", (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    }).then(user => {
+      user.decrement("duckfood", { by: 1 })
+    }).then(duckfood => {
+      res.json(duckfood);
+    }).catch(err => {
+      console.log(err);
+    });
   });
 
   app.post("/ducklist/sleepy", function(req, res) {
@@ -50,23 +63,12 @@ module.exports = app => {
       where: {
         id: id
       }
+    }).then(data => {
+      return res.json(data);
     })
-    if (!req.body.hungry) {
-      db.User.findOne({
-        where: {
-          id: req.user.id
-        }
-      }).then(user => {
-        return user.decrement("duckfood", {
-          by: 1
-        })
-      }).then(data => {
-        return res.json(data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    }
+    .catch(err => {
+      console.log(err);
+    });
   });
 
   app.post("/ducklist/color", function(req, res) {
@@ -79,7 +81,6 @@ module.exports = app => {
          id: id
        }
     }).then(updatedDuck => {
-      console.log(updatedDuck);
       return res.json(updatedDuck);
     })
     .catch(err => {
