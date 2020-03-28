@@ -19,6 +19,8 @@ const colorForm = document.querySelector("#color-form");
 const radioBtns = document.querySelectorAll(".color-radio");
 const saveColorBtn = document.querySelector("#save-color");
 const duck = document.querySelectorAll(".duck");
+const colorSpan = document.querySelector('#duckcolor');
+const idSpan = document.querySelector('#duckid');
 let quack = document.querySelector("audio");
 
 // Duck Food and Duck Bucks for Microtransactions
@@ -47,13 +49,31 @@ colorForm.addEventListener("click", () => {
 saveColorBtn.addEventListener("click", e => {
   e.preventDefault();
   const savedColor = colorRGB;
+  const duckId = idSpan.textContent;
+  const duckData = {
+    id: duckId,
+    color: savedColor
+  };
   saveColorBtn.textContent = "Saved!";
   setTimeout(() => {
     colorForm.style.display = "none";
   }, 1000);
-  $.post("/ducklist/color", { color: savedColor }, () => {
-    duckStats();
-  });
+  fetch("/ducklist/color", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(duckData)
+  }).then(res => {
+    return res.json();
+  }).then(() => {
+    console.log('updated color');
+  })
+
+
+  // $.post("/ducklist/color", { color: savedColor }, () => {
+  //   duckStats();
+  // });
 });
 
 // Get color from selected radio button
@@ -84,6 +104,15 @@ const getRGB = color => {
       return `rgb(210, 100, 250)`;
   }
 };
+
+
+const getDuckColor = () => {
+  console.log(colorSpan.textContent);
+  const color = colorSpan.textContent;
+  for (let i = 0; i < duck.length; i++) {
+    duck[i].style.backgroundColor = color;
+  }
+}
 
 function duckStats(name) {
   let selectDuck = name.slice(6);
@@ -122,15 +151,6 @@ function playQuack() {
   }
 }
 
-function randomColor() {
-  var firstNum = Math.floor(Math.random() * 255);
-  var secondNum = Math.floor(Math.random() * 255);
-  var thirdNum = Math.floor(Math.random() * 255);
-  return "rgb(" + firstNum + "," + secondNum + "," + thirdNum + ")";
-}
-
-// GLOBAL FUNCTIONS
-
 const newDuck = data => {
   fetch("/ducklist", {
     method: "GET",
@@ -138,16 +158,28 @@ const newDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  })
-    .then(res => {
-      return res.json();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }).then(res => {
+    return res.json();
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
-const sleepy = data => {
+
+// GLOBAL FUNCTIONS
+
+const sleepy = () => {
+  let sleepyValue = duckSleepy.firstElementChild.textContent;
+  if (sleepyValue) {
+    sleepyValue = false;
+  } else {
+    sleepyValue = true;
+  }
+  const duckId = idSpan.textContent;
+  const data = {
+    sleepy: sleepyValue, 
+    id: duckId
+  }
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
     method: "POST",
@@ -160,13 +192,32 @@ const sleepy = data => {
   });
 };
 
-const notSleepy = data => {
-  fetch("/ducklist/notsleepy", {
+const hungry = () => {
+  let hungryValue = duckHunger.firstElementChild.textContent;
+  console.log(hungryValue);
+  if (hungryValue) {
+    hungryValue = false;
+  } else {
+    hungryValue = true;
+  }
+  console.log(hungryValue);
+  const duckId = idSpan.textContent;
+  const data = {
+    hungry: hungryValue, 
+    id: duckId
+  }
+  // need a put to the db to make sleepy boolean TRUE
+  fetch("/ducklist/hungry", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
+  }).then(data => {
+    console.log(data);
+    if (data.hungry === true && data.duckfood < 0) {
+        window.location.replace("/pay/splash");
+      }
   }).then(response => {
     duckStats(duckName.innerHTML);
   });
@@ -192,6 +243,15 @@ function notHungry() {
   }).then(response => {
     duckStats(duckName.innerHTML);
   });
+  // need a put to the db to make hungry boolean TRUE
+  // $.post("/ducklist/hungry", function(data) {
+  //   console.log(data);
+  //   if (data.hungry === true && data.duckfood < 0) {
+  //     window.location.replace("/pay/splash");
+  //   }
+  // }).then(response => {
+  //   duckStats();
+  // });
 }
 
 function animateCSS(element, animationName, callback) {
@@ -254,13 +314,13 @@ sleepBtn.addEventListener("click", () => {
 });
 
 feedBtn.addEventListener("click", () => {
-  notHungry();
+  hungry();
   makeDuckThank();
   playQuack();
 });
 
 petBtn.addEventListener("click", () => {
-  notSleepy();
+  sleepy();
   makeDuckSmile();
   playQuack();
 });

@@ -25,62 +25,65 @@ module.exports = app => {
   });
 
   app.post("/ducklist/sleepy", function(req, res) {
-    db.Duck.update({ sleepy: 1 }, { where: { UserId: req.user.id } })
-      .then(updatedDuck => {
-        return res.json(updatedDuck);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-
-  app.post("/ducklist/notsleepy", function(req, res) {
-    db.Duck.update({ sleepy: 0 }, { where: { UserId: req.user.id } })
-      .then(updatedDuck => {
-        return res.json(updatedDuck);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const id = parseInt(req.body.id);
+    db.Duck.update({
+        sleepy: req.body.sleepy
+      },
+      {
+        where: {
+          id: id
+        }
+    }).then(updatedDuck => {
+      return res.json(updatedDuck);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   });
 
   app.post("/ducklist/hungry", function(req, res) {
-    db.Duck.findOne({ where: { UserId: req.user.id } }).then(foundDuck => {
-      if (foundDuck.hungry === true) {
-        return res.json(foundDuck);
-      } else if (foundDuck.hungry === false) {
-        db.Duck.update({ hungry: 1 }, { where: { UserId: req.user.id } }).then(
-          updatedDuck => {
-            return res.json(updatedDuck);
-          }
-        );
+    const id = parseInt(req.body.id);
+    db.Duck.update({
+      hungry: req.body.hungry
+    },
+    {
+      where: {
+        id: id
       }
-    });
-  });
-
-  app.post("/ducklist/nothungry", function(req, res) {
-    db.Duck.findOne({ where: { UserId: req.user.id } }).then(foundDuck => {
-      if (foundDuck.hungry === true) {
-        db.Duck.update({ hungry: 0 }, { where: { UserId: req.user.id } }).then(
-          foundDuck => {
-            return res.json(foundDuck);
-          }
-        );
-      } else if (foundDuck.hungry === false) {
-        db.User.findOne({ where: { id: req.user.id } }).then(foundUser => {
-          return foundUser.decrement("duckfood", { by: 1 });
-        });
-      }
-    });
-  });
-
-  app.post("/ducklist/color", function(req, res) {
-    db.Duck.update(req.body, { where: { UserId: req.user.id } })
-      .then(updatedDuck => {
-        return res.json(updatedDuck);
+    })
+    if (!req.body.hungry) {
+      db.User.findOne({
+        where: {
+          id: req.user.id
+        }
+      }).then(user => {
+        return user.decrement("duckfood", {
+          by: 1
+        })
+      }).then(data => {
+        return res.json(data);
       })
       .catch(err => {
         console.log(err);
       });
+    }
+  });
+
+  app.post("/ducklist/color", function(req, res) {
+    const id = parseInt(req.body.id);
+    db.Duck.update({
+      color: req.body.color
+     },
+     {
+       where: {
+         id: id
+       }
+    }).then(updatedDuck => {
+      console.log(updatedDuck);
+      return res.json(updatedDuck);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   });
 };
