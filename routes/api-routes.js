@@ -9,7 +9,7 @@ module.exports = app => {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
+    return res.json({
       email: req.user.email,
       id: req.user.id
     });
@@ -84,7 +84,7 @@ module.exports = app => {
       UserId: req.user.id
     })
       .then(dbDuck => {
-        res.json(dbDuck);
+        return res.json(dbDuck);
       })
       .catch(err => {
         res.send(err);
@@ -101,11 +101,11 @@ module.exports = app => {
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({});
+      return res.json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
+      return res.json({
         email: req.user.email,
         id: req.user.id
       });
@@ -121,8 +121,8 @@ module.exports = app => {
         payment_method: "paypal"
       },
       redirect_urls: {
-        return_url: "http://localhost:8080/success",
-        cancel_url: "http://localhost:8080/cancel"
+        return_url: "https://duckpals.herokuapp.com/success",
+        cancel_url: "https://duckpals.herokuapp.com/cancel"
       },
       transactions: [
         {
