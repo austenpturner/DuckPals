@@ -32,7 +32,7 @@ const loginUser = data => {
     body: JSON.stringify(data)
   })
     .then(res => {
-      res.json();
+      return res.json();
     })
     .then(() => {
       location.reload("/login");
