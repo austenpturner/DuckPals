@@ -545,7 +545,7 @@ body {
   margin: 10px 75px 10px 10px;
 }
 
-#gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+#gameContainer #color-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
   float: left;
   margin: 10px 10px 10px 25px;
 }
@@ -723,7 +723,7 @@ body {
     float: right;
     margin: 5px 60px 5px 5px;
   }
-  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+  #gameContainer #color-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
     float: left;
     margin: 5px 0 5px 20px;
   }
@@ -761,7 +761,7 @@ body {
   #gameContainer #sleep-btn, #gameContainer #logout-btn {
     margin: 5px 60px 5px 5px;
   }
-  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+  #gameContainer #color-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
     margin: 5px 0 5px 20px;
   }
   #gameContainer #play-btn {
@@ -809,7 +809,7 @@ body {
   #gameContainer #sleep-btn, #gameContainer #logout-btn {
     margin: 10px 100px 10px 10px;
   }
-  #gameContainer #change-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+  #gameContainer #color-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
     margin: 10px 0 10px 50px;
   }
   #gameContainer #play-btn {

@@ -22,7 +22,6 @@ for (let i = 0; i < selectBtns.length; i++) {
   selectBtns[i].addEventListener("click", e => {
     e.preventDefault();
     const name = e.target.previousElementSibling.textContent;
-    console.log(name);
     const duckName = {
       name: name
     };
@@ -38,11 +37,13 @@ const selectDuck = name => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(name)
-  }).then(res => {
-    res.json();
-  }).then(() => {
-    window.location.replace("/playground");
-  });
+  })
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      window.location.replace("/playground");
+    });
 };
 
 const addDuck = data => {

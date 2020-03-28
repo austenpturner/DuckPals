@@ -41,31 +41,33 @@ module.exports = app => {
         id: req.user.id
       },
       include: [db.Duck]
-    }).then(data => {
-      const userDucks = data.Ducks;
-      for (let i = 0; i < userDucks.length; i++) {
-        duckData = userDucks[i].dataValues;
-        // Find user's duck with that name
-        if (duckData.name === duckName) {
-          const duckId = duckData.id;
-          db.User.update({
-           currentDuck: duckId
-          },
-          {
-            where: {
-              id: req.user.id
-            }
-          });        
-        };
-      };
     })
-    .then(() => {
-      res.redirect("/playground");
-    });
+      .then(data => {
+        const userDucks = data.Ducks;
+        for (let i = 0; i < userDucks.length; i++) {
+          duckData = userDucks[i].dataValues;
+          // Find user's duck with that name
+          if (duckData.name === duckName) {
+            const duckId = duckData.id;
+            db.User.update(
+              {
+                currentDuck: duckId
+              },
+              {
+                where: {
+                  id: req.user.id
+                }
+              }
+            );
+          }
+        }
+      })
+      .then(() => {
+        res.redirect("/playground");
+      });
   });
 
   app.get("/api/playground", function(req, res) {
-    console.log(req);
     db.User.findOne({
       where: {
         id: req.user.id
@@ -81,12 +83,12 @@ module.exports = app => {
       name: req.body.name,
       UserId: req.user.id
     })
-    .then(dbDuck => {
-      res.json(dbDuck);
-    })
-    .catch(err => {
-      res.send(err);
-    });
+      .then(dbDuck => {
+        res.json(dbDuck);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   });
 
   // Route for logging user out
