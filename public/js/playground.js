@@ -218,7 +218,7 @@ const hungry = action => {
     body: JSON.stringify(data)
   }).then(() => {
     duckHunger.textContent = hungryValue;
-    if (hungryValue && duckFood.textContent < 0) {
+    if (hungryValue === true && duckFood.textContent < 0) {
       window.location.replace("/pay/splash");
     }
   });
@@ -238,8 +238,8 @@ const subtractDuckbucks = () => {
     duckfood = duckFood.textContent;
     duckfood--;
     duckFood.textContent = duckfood;
-  })
-}
+  });
+};
 
 const animateCSS = (element, animationName, callback) => {
   const node = document.querySelector(element);
