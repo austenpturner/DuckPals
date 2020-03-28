@@ -15,8 +15,8 @@ const duckFood = document.querySelector("#duckfood");
 const duckHunger = document.querySelector("#duckhunger");
 const duckSleepy = document.querySelector("#ducksleepy");
 const duckName = document.querySelector("#duckname");
-const colorSpan = document.querySelector('#duckcolor');
-const idSpan = document.querySelector('#duckid');
+const colorSpan = document.querySelector("#duckcolor");
+const idSpan = document.querySelector("#duckid");
 
 // Color Form
 const colorForm = document.querySelector("#color-form");
@@ -110,11 +110,13 @@ const saveDuckColor = duckData => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(duckData)
-  }).then(res => {
-    return res.json();
-  }).then(() => {
-    console.log("updated color");
-  });
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(() => {
+      console.log("updated color");
+    });
 };
 
 // Get color from selected radio button
@@ -125,7 +127,7 @@ const getRadioColor = () => {
       const color = radioBtn.id;
       return color;
     }
-  };
+  }
 };
 
 // Get RGB values from radio color strings
@@ -143,24 +145,29 @@ const getRGB = color => {
       return `rgb(50, 200, 250)`;
     case "purple":
       return `rgb(210, 100, 250)`;
-  };
+  }
 };
 
 const getDuckColor = () => {
   const color = colorSpan.textContent;
   for (let i = 0; i < duck.length; i++) {
     duck[i].style.backgroundColor = color;
-  };
+  }
 };
 
 const buyFood = () => {
-  $.get("/api/buyfood", function(data) {
-    console.log(data);
-  }).then(() => {
-    duckbucks = duckBucks.textContent;
-    duckbucks++;
-    duckBucks.textContent = duckbucks;
-  });
+  fetch("/api/buyfood", {
+    method: "GET"
+  })
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      // duckfood = duckFood.textContent;
+      // duckfood += 3;
+      // duckFood.textContent = duckfood;
+      window.location.reload();
+    });
 };
 
 const playQuack = () => {
@@ -168,11 +175,11 @@ const playQuack = () => {
   const playPromise = quack.play();
   if (playPromise !== undefined) {
     playPromise
-    .then(_ => {})
-    .catch(err => {
-      console.log(err);
-    });
-  };
+      .then(_ => {})
+      .catch(err => {
+        console.log(err);
+      });
+  }
 };
 
 const sleepy = action => {
@@ -186,7 +193,7 @@ const sleepy = action => {
   const data = {
     sleepy: sleepyValue,
     id: duckId
-  }
+  };
   fetch("/ducklist/sleepy", {
     method: "POST",
     headers: {
@@ -209,7 +216,7 @@ const hungry = action => {
   const data = {
     hungry: hungryValue,
     id: duckId
-  }
+  };
   fetch("/ducklist/hungry", {
     method: "POST",
     headers: {
@@ -218,7 +225,7 @@ const hungry = action => {
     body: JSON.stringify(data)
   }).then(() => {
     duckHunger.textContent = hungryValue;
-    if (action === 'feed' && duckFood.textContent < 0) {
+    if (action === "feed" && duckFood.textContent < 0) {
       window.location.replace("/pay/splash");
     }
   });
@@ -227,7 +234,7 @@ const hungry = action => {
 const subtractDuckbucks = () => {
   const data = {
     duckbucks: duckBucks.textContent
-  }
+  };
   fetch("/api/duckbuck", {
     method: "POST",
     headers: {
@@ -261,13 +268,13 @@ function makeDuckJump() {
   animateCSS("#duck", "flip");
   animateCSS("#eye", "flip");
   animateCSS("#pupil", "flip");
-};
+}
 
 function makeDuckSleep() {
   // interval where the image of the duck is replaced with a sleeping duck
   animateCSS("#duck", "bounceOutDown");
   // setInterval(console.log('sleepgin'), 3000)
-};
+}
 
 function makeDuckSmile() {
   // interval where the image of the duck is replaced with a smiling duck
@@ -275,7 +282,7 @@ function makeDuckSmile() {
   animateCSS("#duck", "wobble");
   animateCSS("#head", "shake");
   animateCSS("#eye", "pulse");
-};
+}
 
 function makeDuckThank() {
   // interval where the image of the duck is replaced with a duck with a "thank you" thought bubble
@@ -284,4 +291,4 @@ function makeDuckThank() {
   animateCSS("#body", "pulse");
   animateCSS("#beaktop", "swing");
   animateCSS("#beakbottom", "wobble");
-};
+}
