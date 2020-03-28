@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Handler when the DOM is fully loaded
-  initializeDuck();
+  animateCSS("#duck", "bounceInDown");
 });
 
 // DOM Elements
@@ -86,27 +85,27 @@ const getRGB = color => {
   }
 };
 
-function initializeDuck() {
-  animateCSS("#duck", "bounceInDown");
-  // duckStats();
-};
-
-
 function duckStats(name) {
-  console.log(name);
-  // $.get("/api/playground", function(data) {
-  //   console.log(data.Ducks);
-  //   duckName.innerHTML = `Duckie Name: ${data.Ducks[0].name}`;
-  //   duckHunger.innerHTML = `Is ${data.Ducks[0].name} hungry? ${data.Ducks[0].hungry}`;
-  //   duckSleepy.innerHTML = `Is ${data.Ducks[0].name} sleepy? ${data.Ducks[0].sleepy}`;
-  //   duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
-  //   duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
-  // });
+  let selectDuck = name.slice(6);
+  $.get("/api/playground", name, function(data) {
+    for (let i = 0; i < data.Ducks.length; i++) {
+      if (selectDuck.trim() === data.Ducks[i].name.trim()) {
+        console.log(data);
+        duckName.innerHTML = `Duck: ${data.Ducks[i].name}`;
+        duckHunger.innerHTML = `Hungry: ${data.Ducks[i].hungry}`;
+        duckSleepy.innerHTML = `Sleepy: ${data.Ducks[i].sleepy}`;
+        duckFood.innerHTML = `Duck Food: ${data.duckfood}`;
+        duckBucks.innerHTML = `Duck Bucks: $${data.duckbucks}`;
+      }
+    }
+  });
 }
 
 function buyFood() {
   $.get("/api/buyfood", function(data) {
     console.log(data);
+  }).then(response => {
+    duckStats(duckName.innerHTML);
   });
 }
 
@@ -130,7 +129,7 @@ function randomColor() {
   return "rgb(" + firstNum + "," + secondNum + "," + thirdNum + ")";
 }
 
-// GLOBAL VARIABLES
+// GLOBAL FUNCTIONS
 
 const newDuck = data => {
   fetch("/ducklist", {
@@ -148,8 +147,6 @@ const newDuck = data => {
     });
 };
 
-// GLOBAL FUNCTIONS
-
 const sleepy = data => {
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
@@ -159,7 +156,7 @@ const sleepy = data => {
     },
     body: JSON.stringify(data)
   }).then(response => {
-    duckStats(duckName.value);
+    duckStats(duckName.innerHTML);
   });
 };
 
@@ -171,7 +168,7 @@ const notSleepy = data => {
     },
     body: JSON.stringify(data)
   }).then(response => {
-    duckStats(duckName.value);
+    duckStats(duckName.innerHTML);
   });
 };
 
@@ -182,7 +179,7 @@ function hungry() {
       window.location.replace("/pay/splash");
     }
   }).then(response => {
-    duckStats(duckName.value);
+    duckStats(duckName.innerHTML);
   });
 }
 
@@ -193,7 +190,7 @@ function notHungry() {
       window.location.replace("/pay/splash");
     }
   }).then(response => {
-    duckStats(duckName.value);
+    duckStats(duckName.innerHTML);
   });
 }
 
@@ -241,26 +238,6 @@ function makeDuckThank() {
   animateCSS("#body", "pulse");
   animateCSS("#beaktop", "swing");
   animateCSS("#beakbottom", "wobble");
-}
-
-function randIntervalSwitch() {
-  // randomly choose to select either hungry or sleepy boolean
-  // randomly selects one of the booleans and changes it to 'true' if it is alread false
-  let randNum = Math.floor(Math.random() * 2);
-  if ((randNum = 1 && !hungry)) {
-    hungry();
-    //need to include a put to the database to change the boolean
-  } else if ((randNum = 0 && !sleepy)) {
-    sleepy();
-    //need to include a put to the database to change the boolean
-  }
-}
-
-function randWaitTime() {
-  // set a randon lenght of time after the user does something before moving on
-  let ranWait = Math.floor(Math.random() * 10000);
-  //randomly choses to switch sleepy or hungry to true, if they are false
-  setInterval(randIntervalSwitch(), ranWait);
 }
 
 // EVENT LISTENERS
