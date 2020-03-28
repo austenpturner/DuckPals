@@ -12,13 +12,13 @@ body {
   background-color: #aafbaa;
 }
 
-body #duck-container {
+#duck-container {
   height: 200px;
   margin: auto;
   width: 100%;
 }
 
-body #duck-container #body {
+#duck-container #body {
   background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-radius: 5% 60% 50% 95%;
@@ -32,7 +32,7 @@ body #duck-container #body {
   width: 200px;
 }
 
-body #duck-container #body #wing {
+#duck-container #body #wing {
   background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
@@ -47,7 +47,7 @@ body #duck-container #body #wing {
   z-index: 1;
 }
 
-body #duck-container #head {
+#duck-container #head {
   background-color: yellow;
   border: 1px solid rgba(255, 165, 0, 0.3);
   border-bottom: none;
@@ -62,7 +62,7 @@ body #duck-container #head {
   width: 120px;
 }
 
-body #duck-container #head #eye {
+#duck-container #head #eye {
   background: #333;
   border-radius: 50% 80%;
   display: block;
@@ -74,7 +74,7 @@ body #duck-container #head #eye {
   z-index: 1;
 }
 
-body #duck-container #head #eye #pupil {
+#duck-container #head #eye #pupil {
   background: white;
   border-radius: 50% 80%;
   bottom: 14px;
@@ -86,7 +86,7 @@ body #duck-container #head #eye #pupil {
   z-index: 1;
 }
 
-body #duck-container #head #beaktop {
+#duck-container #head #beaktop {
   background: orange;
   border-radius: 40% 20% 90% 0%;
   height: 20px;
@@ -97,7 +97,7 @@ body #duck-container #head #beaktop {
   z-index: 1;
 }
 
-body #duck-container #head #beakbottom {
+#duck-container #head #beakbottom {
   background: orange;
   border-radius: 20% 90% 20% 70%;
   -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
