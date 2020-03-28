@@ -184,7 +184,7 @@ const sleepy = action => {
   }
   const duckId = idSpan.textContent;
   const data = {
-    sleepy: sleepyValue, 
+    sleepy: sleepyValue,
     id: duckId
   }
   fetch("/ducklist/sleepy", {
@@ -207,7 +207,7 @@ const hungry = action => {
   }
   const duckId = idSpan.textContent;
   const data = {
-    hungry: hungryValue, 
+    hungry: hungryValue,
     id: duckId
   }
   fetch("/ducklist/hungry", {

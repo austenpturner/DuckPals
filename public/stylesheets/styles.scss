@@ -335,8 +335,6 @@ body {
   }
 }
 
-
-
 // -------- MEDIA QUERIES -------- //
 
 // Standard view is vertical phones - old school gameboy advance look 
@@ -363,22 +361,27 @@ body {
       border-width: 3px;
       padding: 3px 3px;
     }
-    #pet-btn, #new-duck-btn {
+    #pet-btn, 
+    #new-duck-btn {
       float: right;
       margin: 5px 20px 5px 5px;
     }
-    #sleep-btn, #logout-btn {
+    #sleep-btn, 
+    #logout-btn {
       float: right;
       margin: 5px 60px 5px 5px;
     }
-    #color-btn, #play-btn, #feed-btn {
+    #color-btn, 
+    #play-btn, 
+    #feed-btn {
       float: left;
       margin: 5px 0 5px 20px;
     }
     #play-btn {
       margin: 5px 0 5px 60px;
     }
-    #buttons-left, #buttons-right  {
+    #buttons-left, 
+    #buttons-right  {
       margin: 10px;
     }
     .buttons {
@@ -393,7 +396,6 @@ body {
     }
   }
 }
-
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   #gameContainer {
@@ -422,7 +424,6 @@ body {
     }
   }
 }
-
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   #gameContainer {
@@ -452,43 +453,33 @@ body {
       font-size: large;
     }
     #pet-btn, #new-duck-btn {
-
       margin: 10px 50px 10px 10px;
     }
     #sleep-btn, #logout-btn {
-
       margin: 10px 100px 10px 10px;
     }
     #color-btn, #play-btn, #feed-btn {
- 
       margin: 10px 0 10px 50px;
     }
     #play-btn {
       margin: 10px 0 10px 100px;
     }
-   
     .buttons {
       margin: 10px;
     }
     .viewer {
-
-      
-
       #duck-container {
-        // border: 1px dashed black;
         height: 100%;
         // position: relative;
         margin: auto;
         width: 100%;
         #body {
-          
           border: 3px solid rgba(255,165,0, 0.3);
           height: 180px;
           left: 20px;
           top: 100px;
           width: 300px;
           #wing {
-            
             border: 3px solid rgba(255,165,0, 0.3);
             bottom: 50px;
             height: 90px;
@@ -497,7 +488,6 @@ body {
           }
         }  
         #head {
-          
           border: 3px solid rgba(255,165,0, 0.3);
           bottom: 80px;
           height: 150px;
@@ -509,16 +499,11 @@ body {
             left: 90px;
             top: 25px;
             width: 30px;
-            
             #pupil {
-              
               bottom: 14px;
-              
               height: 20px;
               left: 12px;
-              
               width: 12px;
-              
             }
           }
           #beaktop {
@@ -528,7 +513,6 @@ body {
             width: 70px;
           }
           #beakbottom {
-
             height: 20px;
             left: 150px;
             top: 85px;

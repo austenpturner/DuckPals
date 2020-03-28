@@ -740,22 +740,27 @@ body {
     border-width: 3px;
     padding: 3px 3px;
   }
-  #gameContainer #pet-btn, #gameContainer #new-duck-btn {
+  #gameContainer #pet-btn,
+  #gameContainer #new-duck-btn {
     float: right;
     margin: 5px 20px 5px 5px;
   }
-  #gameContainer #sleep-btn, #gameContainer #logout-btn {
+  #gameContainer #sleep-btn,
+  #gameContainer #logout-btn {
     float: right;
     margin: 5px 60px 5px 5px;
   }
-  #gameContainer #color-btn, #gameContainer #play-btn, #gameContainer #feed-btn {
+  #gameContainer #color-btn,
+  #gameContainer #play-btn,
+  #gameContainer #feed-btn {
     float: left;
     margin: 5px 0 5px 20px;
   }
   #gameContainer #play-btn {
     margin: 5px 0 5px 60px;
   }
-  #gameContainer #buttons-left, #gameContainer #buttons-right {
+  #gameContainer #buttons-left,
+  #gameContainer #buttons-right {
     margin: 10px;
   }
   #gameContainer .buttons {
