@@ -121,8 +121,8 @@ module.exports = app => {
         payment_method: "paypal"
       },
       redirect_urls: {
-        return_url: "https://duckpals.herokuapp.com//success",
-        cancel_url: "https://duckpals.herokuapp.com//cancel"
+        return_url: "https://duckpals.herokuapp.com/success",
+        cancel_url: "https://duckpals.herokuapp.com/cancel"
       },
       transactions: [
         {
