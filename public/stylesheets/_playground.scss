@@ -1,4 +1,196 @@
 #data-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 10px 10px;
+  p {
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    width: 20%;
+    span {
+      font-weight: lighter;
+      margin-left: 5px;
+    }
+  }
+}
+
+#duckid,
+#duckcolor {
+  display: none;
+}
+
+// Standard view is vertical phones - old school gameboy look 
+
+#gameContainer {
+  background-color: lightgray;
+  border-color: black;
+  border-radius: 10px 10px 50px 10px;
+  box-shadow: -15px 15px 15px $shadow;
+  border-style: solid;
+  border-width: 5px;
+  height: 90vh;
+  margin: 40px auto;
+  min-height: 300px;
+  max-width: 775px;
+  width: 80%;
+  button {
+    background: linear-gradient($raspberry, $rust);
+    border: 3px solid darkgray;
+    border-radius: 50%;
+    box-shadow: -2px 2px 5px $shadow;
+    color: white;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+  }
+  #pet-btn, 
+  #new-duck-btn {
+    float: right;
+    margin: 10px 25px 10px 10px;
+  }
+  #sleep-btn, 
+  #logout-btn {
+    float: right;
+    margin: 10px 75px 10px 10px;
+  }
+  #color-btn, 
+  #play-btn, 
+  #feed-btn {
+    float: left;
+    margin: 10px 10px 10px 25px;
+  }
+  #play-btn {
+    margin: 10px 0 10px 75px;
+  }
+  #buttons-left {
+    float: left;
+    margin: 40vh 0;
+  }
+  #buttons-right {
+    float: right;
+    margin: 40vh 0;
+  }
+  .buttons {
+    margin: 10px;
+  }
+  .viewer {
+    background-color: lightcyan;
+    border: 5px solid black;
+    height: 40%;
+    min-height: 240px;
+    margin: 5%;
+    padding: 3% 0;
+    position: relative;
+    width: 80% auto;
+    .speech-bubble {
+      background: $pink;
+      border-radius: .4em;
+      height: 10px;
+      margin-top: 10px;
+      padding: 10px;
+      position: relative;
+    }
+    .speech-bubble:after {
+      border: 2.313em solid transparent;
+      border-bottom: 0;
+      border-right: 0;
+      border-top-color: $pink;
+      bottom: 0;
+      content: '';
+      height: 0;
+      left: 50%;
+      margin-left: -1.156em;
+      margin-bottom: -2.312em;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
+
+#color-form {
+  background-color: white;
+  border: 1px solid $darkGrey;
+  border-radius: 5px;
+  display: none;
+  left: 60px;
+  margin: 10px;
+  padding: 10px 10px 0;
+  position: absolute;
+  top: 220px;
+  width: 225px;
+  z-index: 2;
+  h3 {
+    padding: 10px auto 5px;
+    text-align: center;
+  }
+  #radio-container {
+    padding: 10px;
+    div{
+      padding: 5px;
+    }
+  }
+  button {
+    background: linear-gradient($darkCyan, $lightCyan);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgray;
+    box-shadow: -2px 2px 5px $shadow;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 180px;
+  }
+  /* Hide Old Radio Button */
+  input[type=radio]:not(old){
+    width: 2em;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    opacity: 0;
+  }
+  /* Space Between Labels */
+  input[type=radio]:not(old) + label{
+    display: inline-block;
+    margin-left: -2em;
+    line-height: 1.5em;
+  }
+  /* New Radio Button */
+  input[type=radio]:not(old) + label > span{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0.25em 0.5em 0.25em 0.25em;
+    border: 0.0625em solid rgb(192,192,192);
+    border-radius: 1em;
+    background: $offWhite;
+    vertical-align: bottom;
+  }
+  input[type=radio]:not(old):checked + label > span{
+    border: 0.0625em solid $darkGrey;
+    background: $offWhite;
+  }
+  /* New Radio Button Fill */
+  input[type=radio]:not(old):checked + label > span > span{
+    display: block;
+    width: 0.6em;
+    height: 0.6em;
+    margin: 0.125em;
+    border: 0.0625em solid $darkGrey;
+    border-radius: 1em;
+    background-image: linear-gradient(rgb(150, 150, 150), $darkGrey);
+  }
+}
+
+// -------- MEDIA QUERIES -------- //
+
+// Standard view is vertical phones - old school gameboy advance look 
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  #data-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -7,354 +199,137 @@
       font-size: 1.2em;
       font-weight: bold;
       padding: 10px;
-      span {
-        font-weight: lighter;
-        margin-left: 5px;
+    span {
+      font-weight: lighter;
+      margin-left: 5px;
       }
     }
   }
-  
-  #duckid,
-  #duckcolor {
-    display: none;
-  }
-  
-  // Standard view is vertical phones - old school gameboy look 
-  
   #gameContainer {
-    background-color: lightgray;
-    border-color: black;
-    border-radius: 10px 10px 50px 10px;
+    background-color: $lavender;
+    border: 5px solid black;
+    border-radius: 30px 30px 40% 40%;
     box-shadow: -15px 15px 15px $shadow;
-    border-style: solid;
-    border-width: 5px;
-    height: 90vh;
+    height: 80vh;
     margin: 40px auto;
-    min-height: 300px;
-    width: 80%;
     button {
-      background: linear-gradient($raspberry, $rust);
-      border: 3px solid darkgray;
-      border-radius: 50%;
-      box-shadow: -2px 2px 5px $shadow;
-      color: white;
-      cursor: pointer;
+      background: linear-gradient($darkCyan, $lightCyan);
+      border-width: 3px;
       height: 45px;
+      padding: 3px 3px;
       width: 45px;
     }
     #pet-btn, 
     #new-duck-btn {
       float: right;
-      margin: 10px 25px 10px 10px;
+      margin: 5px 20px 5px 5px;
     }
     #sleep-btn, 
     #logout-btn {
       float: right;
-      margin: 10px 75px 10px 10px;
+      margin: 5px 60px 5px 5px;
     }
     #color-btn, 
     #play-btn, 
     #feed-btn {
       float: left;
-      margin: 10px 10px 10px 25px;
+      margin: 10px 0 5px 20px;
     }
     #play-btn {
-      margin: 10px 0 10px 75px;
+      margin: 5px 0 5px 60px;
     }
-    #buttons-left {
-      float: left;
-      margin: 40vh 0;
+    #buy-btn {
+      margin: 50px 10px 0 10px;
     }
-    #buttons-right {
-      float: right;
-      margin: 40vh 0;
+    #buttons-left, 
+    #buttons-right  {
+      height: 240px;
+      margin: 10px;
     }
     .buttons {
       margin: 10px;
     }
     .viewer {
-      background-color: lightcyan;
-      border: 5px solid black;
-      height: 40%;
-      min-height: 240px;
-      margin: 5%;
-      padding: 3% 0;
-      position: relative;
-      width: 80% auto;
-      .speech-bubble {
-        background: $pink;
-        border-radius: .4em;
-        height: 10px;
-        margin-top: 10px;
-        padding: 10px;
-        position: relative;
-      }
-      .speech-bubble:after {
-        border: 2.313em solid transparent;
-        border-bottom: 0;
-        border-right: 0;
-        border-top-color: $pink;
-        bottom: 0;
-        content: '';
-        height: 0;
-        left: 50%;
-        margin-left: -1.156em;
-        margin-bottom: -2.312em;
-        position: absolute;
-        width: 0;
-      }
-    }
-  }
-  
-  #color-form {
-    background-color: white;
-    border: 1px solid $darkGrey;
-    border-radius: 5px;
-    display: none;
-    left: 60px;
-    margin: 10px;
-    padding: 10px 10px 0;
-    position: absolute;
-    top: 220px;
-    width: 225px;
-    z-index: 2;
-    h3 {
-      padding: 10px auto 5px;
-      text-align: center;
-    }
-    #radio-container {
-      padding: 10px;
-      div{
-        padding: 5px;
-      }
-    }
-    button {
-      background: linear-gradient($darkCyan, $lightCyan);
-      border-radius: 5px;
       border-style: solid;
-      border-width: 3px;
-      border-color: darkgray;
-      box-shadow: -2px 2px 5px $shadow;
-      color: white;
-      cursor: pointer;
-      padding: 10px 20px;
-      width: 180px;
-    }
-    /* Hide Old Radio Button */
-    input[type=radio]:not(old){
-      width: 2em;
-      margin: 0;
-      padding: 0;
-      font-size: 1em;
-      opacity: 0;
-    }
-    /* Space Between Labels */
-    input[type=radio]:not(old) + label{
-      display: inline-block;
-      margin-left: -2em;
-      line-height: 1.5em;
-    }
-    /* New Radio Button */
-    input[type=radio]:not(old) + label > span{
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      margin: 0.25em 0.5em 0.25em 0.25em;
-      border: 0.0625em solid rgb(192,192,192);
-      border-radius: 1em;
-      background: $offWhite;
-      vertical-align: bottom;
-    }
-    input[type=radio]:not(old):checked + label > span{
-      border: 0.0625em solid $darkGrey;
-      background: $offWhite;
-    }
-    /* New Radio Button Fill */
-    input[type=radio]:not(old):checked + label > span > span{
-      display: block;
-      width: 0.6em;
-      height: 0.6em;
-      margin: 0.125em;
-      border: 0.0625em solid $darkGrey;
-      border-radius: 1em;
-      background-image: linear-gradient(rgb(150, 150, 150), $darkGrey);
+      border-width: 5px;
+      height: 80%;
+      margin: 5% auto;
+      width:  50%;
     }
   }
-  
-  // -------- MEDIA QUERIES -------- //
-  
-  // Standard view is vertical phones - old school gameboy advance look 
-  
-  // Small devices (landscape phones, 576px and up)
-  @media (min-width: 576px) {
-    #gameContainer {
-      background-color: $lavender;
-      border: 5px solid black;
-      border-radius: 30px 30px 40% 40%;
-      box-shadow: -15px 15px 15px $shadow;
-      height: 80vh;
-      margin: 40px auto;
-      button {
-        background: linear-gradient($darkCyan, $lightCyan);
-        border-width: 3px;
-        height: 45px;
-        padding: 3px 3px;
-        width: 45px;
-      }
-      #pet-btn, 
-      #new-duck-btn {
-        float: right;
-        margin: 5px 20px 5px 5px;
-      }
-      #sleep-btn, 
-      #logout-btn {
-        float: right;
-        margin: 5px 60px 5px 5px;
-      }
-      #color-btn, 
-      #play-btn, 
-      #feed-btn {
-        float: left;
-        margin: 5px 0 5px 20px;
-      }
-      #play-btn {
-        margin: 5px 0 5px 60px;
-      }
-      #buttons-left, 
-      #buttons-right  {
-        margin: 10px;
-      }
-      .buttons {
-        margin: 10px;
-      }
-      .viewer {
-        border-style: solid;
-        border-width: 5px;
-        height: 80%;
-        margin: 5% auto;
-        width:  50%;
-      }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  #data-container {
+    width: 76%;
+  }
+  #gameContainer {
+    height: 60vh;
+    margin: 40px auto;
+    width: 80%;
+    button {
+      height: 50px;
+      padding: 3px 3px;
+      width: 50px;
+    }
+    #pet-btn, #new-duck-btn {
+      margin: 5px 20px 5px 5px;
+    }
+    #sleep-btn, #logout-btn {
+      margin: 5px 60px 5px 5px;
+    }
+    #color-btn, #play-btn, #feed-btn {
+      margin: 5px 0 5px 20px;
+    }
+    #play-btn {
+      margin: 5px 0 5px 60px;
+    }
+    .buttons {
+      margin: 10px;
     }
   }
-  // Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) {
-    #gameContainer {
-      height: 75vh;
-      margin: 40px auto;
-      button {
-        height: 50px;
-        padding: 3px 3px;
-        width: 50px;
-      }
-      #pet-btn, #new-duck-btn {
-        margin: 5px 20px 5px 5px;
-      }
-      #sleep-btn, #logout-btn {
-        margin: 5px 60px 5px 5px;
-      }
-      #color-btn, #play-btn, #feed-btn {
-        margin: 5px 0 5px 20px;
-      }
-      #play-btn {
-        margin: 5px 0 5px 60px;
-      }
-      .buttons {
-        margin: 10px;
-      }
-    }
-  }
+}
   // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
-    #gameContainer {
-      background-color: $lavender;
-      border: 5px solid black;
-      border-radius: 30px 30px 40% 40%;
-      box-shadow: -15px 15px 15px $shadow;
-      height: 60vh;
-      margin: 40px auto;
-      button {
-        background: linear-gradient($lightPeriwinkle, $darkPeriwinkle);
-        border: 3px solid darkgray;
-        border-radius: 50%;
-        box-shadow: -2px 2px 5px $shadow;
-        color: white;
-        cursor: pointer;
-        font-size: large;
-        height: 80px;
-        padding: 10px 20px;
-        width: 80px;
-      }
-      #pet-btn, 
-      #new-duck-btn {
-        margin: 10px 50px 10px 10px;
-      }
-      #sleep-btn, 
-      #logout-btn {
-        margin: 10px 100px 10px 10px;
-      }
-      #color-btn, 
-      #play-btn, 
-      #feed-btn {
-        margin: 10px 0 10px 50px;
-      }
-      #play-btn {
-        margin: 10px 0 10px 100px;
-      }
-      .buttons {
-        margin: 10px;
-      }
-      // .viewer {
-        // #duck-container {
-        //   height: 100%;
-        //   margin: auto;
-        //   width: 100%;
-        //   #body {
-        //     border: 3px solid rgba(255,165,0, 0.3);
-        //     height: 180px;
-        //     left: 20px;
-        //     top: 100px;
-        //     width: 300px;
-        //     #wing {
-        //       border: 3px solid rgba(255,165,0, 0.3);
-        //       bottom: 50px;
-        //       height: 90px;
-        //       left: 55px;
-        //       width: 200px;
-        //     }
-        //   }  
-        //   #head {
-        //     border: 3px solid rgba(255,165,0, 0.3);
-        //     bottom: 80px;
-        //     height: 150px;
-        //     left: 130px;
-        //     top: -30px;
-        //     width: 170px;
-        //     #eye {
-        //       height: 50px;
-        //       left: 90px;
-        //       top: 25px;
-        //       width: 30px;
-        //       #pupil {
-        //         bottom: 14px;
-        //         height: 20px;
-        //         left: 12px;
-        //         width: 12px;
-        //       }
-        //     }
-        //     #beaktop {
-        //       height: 40px;
-        //       left: 150px;
-        //       top: 60px;
-        //       width: 70px;
-        //     }
-        //     #beakbottom {
-        //       height: 20px;
-        //       left: 150px;
-        //       top: 85px;
-        //       width: 60px;
-        //     }    
-        //   } 
-        // }
-      }
-    }
+  // @media (min-width: 992px) {
+  //   #gameContainer {
+  //     background-color: $lavender;
+  //     border: 5px solid black;
+  //     border-radius: 30px 30px 40% 40%;
+  //     box-shadow: -15px 15px 15px $shadow;
+  //     height: 60vh;
+  //     margin: 40px auto;
+  //     button {
+  //       background: linear-gradient($lightPeriwinkle, $darkPeriwinkle);
+  //       border: 3px solid darkgray;
+  //       border-radius: 50%;
+  //       box-shadow: -2px 2px 5px $shadow;
+  //       color: white;
+  //       cursor: pointer;
+  //       font-size: large;
+  //       height: 80px;
+  //       padding: 10px 20px;
+  //       width: 80px;
+  //     }
+  //     #pet-btn, 
+  //     #new-duck-btn {
+  //       margin: 10px 50px 10px 10px;
+  //     }
+  //     #sleep-btn, 
+  //     #logout-btn {
+  //       margin: 10px 100px 10px 10px;
+  //     }
+  //     #color-btn, 
+  //     #play-btn, 
+  //     #feed-btn {
+  //       margin: 10px 0 10px 50px;
+  //     }
+  //     #play-btn {
+  //       margin: 10px 0 10px 100px;
+  //     }
+  //     .buttons {
+  //       margin: 10px;
+  //     }
+    // }
+// }
   

@@ -429,15 +429,18 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 20px auto 10px;
+  margin: 20px 10px 10px;
 }
 
 #data-container p {
-  font-size: 1.2em;
+  display: inline-block;
+  font-size: 1em;
   font-weight: bold;
-  padding: 10px;
+  width: 20%;
 }
 
 #data-container p span {
@@ -461,6 +464,7 @@ body {
   height: 90vh;
   margin: 40px auto;
   min-height: 300px;
+  max-width: 775px;
   width: 80%;
 }
 
@@ -637,6 +641,27 @@ body {
 }
 
 @media (min-width: 576px) {
+  #data-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 20px auto 10px;
+  }
+  #data-container p {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+  }
+  #data-container p span {
+    font-weight: lighter;
+    margin-left: 5px;
+  }
   #gameContainer {
     background-color: #a97bcf;
     border: 5px solid black;
@@ -668,13 +693,17 @@ body {
   #gameContainer #play-btn,
   #gameContainer #feed-btn {
     float: left;
-    margin: 5px 0 5px 20px;
+    margin: 10px 0 5px 20px;
   }
   #gameContainer #play-btn {
     margin: 5px 0 5px 60px;
   }
+  #gameContainer #buy-btn {
+    margin: 50px 10px 0 10px;
+  }
   #gameContainer #buttons-left,
   #gameContainer #buttons-right {
+    height: 240px;
     margin: 10px;
   }
   #gameContainer .buttons {
@@ -690,9 +719,13 @@ body {
 }
 
 @media (min-width: 768px) {
+  #data-container {
+    width: 76%;
+  }
   #gameContainer {
-    height: 75vh;
+    height: 60vh;
     margin: 40px auto;
+    width: 80%;
   }
   #gameContainer button {
     height: 50px;
@@ -710,51 +743,6 @@ body {
   }
   #gameContainer #play-btn {
     margin: 5px 0 5px 60px;
-  }
-  #gameContainer .buttons {
-    margin: 10px;
-  }
-}
-
-@media (min-width: 992px) {
-  #gameContainer {
-    background-color: #a97bcf;
-    border: 5px solid black;
-    border-radius: 30px 30px 40% 40%;
-    -webkit-box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.3);
-            box-shadow: -15px 15px 15px rgba(128, 128, 128, 0.3);
-    height: 60vh;
-    margin: 40px auto;
-  }
-  #gameContainer button {
-    background: -webkit-gradient(linear, left top, left bottom, from(#6b6be4), to(#7272a8));
-    background: linear-gradient(#6b6be4, #7272a8);
-    border: 3px solid darkgray;
-    border-radius: 50%;
-    -webkit-box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-            box-shadow: -2px 2px 5px rgba(128, 128, 128, 0.3);
-    color: white;
-    cursor: pointer;
-    font-size: large;
-    height: 80px;
-    padding: 10px 20px;
-    width: 80px;
-  }
-  #gameContainer #pet-btn,
-  #gameContainer #new-duck-btn {
-    margin: 10px 50px 10px 10px;
-  }
-  #gameContainer #sleep-btn,
-  #gameContainer #logout-btn {
-    margin: 10px 100px 10px 10px;
-  }
-  #gameContainer #color-btn,
-  #gameContainer #play-btn,
-  #gameContainer #feed-btn {
-    margin: 10px 0 10px 50px;
-  }
-  #gameContainer #play-btn {
-    margin: 10px 0 10px 100px;
   }
   #gameContainer .buttons {
     margin: 10px;
