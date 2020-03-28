@@ -37,13 +37,12 @@ const selectDuck = name => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(name)
+  }).then(res => {
+    res.json();
   })
-    .then(res => {
-      res.json();
-    })
-    .then(() => {
-      window.location.replace("/playground");
-    });
+  .then(() => {
+    window.location.replace("/playground");
+  });
 };
 
 const addDuck = data => {
