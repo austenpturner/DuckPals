@@ -156,13 +156,18 @@ const getDuckColor = () => {
 };
 
 const buyFood = () => {
-  $.get("/api/buyfood", function(data) {
-    console.log(data);
-  }).then(() => {
-    duckbucks = duckBucks.textContent;
-    duckbucks++;
-    duckBucks.textContent = duckbucks;
-  });
+  fetch("/api/buyfood", {
+    method: "GET"
+  })
+    .then(res => {
+      res.json();
+    })
+    .then(() => {
+      // duckfood = duckFood.textContent;
+      // duckfood += 3;
+      // duckFood.textContent = duckfood;
+      window.location.reload();
+    });
 };
 
 const playQuack = () => {
