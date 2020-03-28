@@ -19,8 +19,8 @@ const colorForm = document.querySelector("#color-form");
 const radioBtns = document.querySelectorAll(".color-radio");
 const saveColorBtn = document.querySelector("#save-color");
 const duck = document.querySelectorAll(".duck");
-const colorSpan = document.querySelector('#duckcolor');
-const idSpan = document.querySelector('#duckid');
+const colorSpan = document.querySelector("#duckcolor");
+const idSpan = document.querySelector("#duckid");
 let quack = document.querySelector("audio");
 
 // Duck Food and Duck Bucks for Microtransactions
@@ -64,12 +64,13 @@ saveColorBtn.addEventListener("click", e => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(duckData)
-  }).then(res => {
-    return res.json();
-  }).then(() => {
-    console.log('updated color');
   })
-
+    .then(res => {
+      return res.json();
+    })
+    .then(() => {
+      console.log("updated color");
+    });
 
   // $.post("/ducklist/color", { color: savedColor }, () => {
   //   duckStats();
@@ -105,20 +106,21 @@ const getRGB = color => {
   }
 };
 
-
 const getDuckColor = () => {
   console.log(colorSpan.textContent);
   const color = colorSpan.textContent;
   for (let i = 0; i < duck.length; i++) {
     duck[i].style.backgroundColor = color;
   }
-}
+};
 
 function duckStats(name) {
   let selectDuck = name.slice(6);
   $.get("/api/playground", name, function(data) {
+    console.log(data.Ducks[0].name.trim());
+    console.log(selectDuck.trim());
     for (let i = 0; i < data.Ducks.length; i++) {
-      if (selectDuck.trim() === data.Ducks[i].name.trim()) {
+      if (selectDuck.firstElementChild.trim() === data.Ducks[i].name.trim()) {
         console.log(data);
         duckName.innerHTML = `Duck: ${data.Ducks[i].name}`;
         duckHunger.innerHTML = `Hungry: ${data.Ducks[i].hungry}`;
@@ -158,13 +160,14 @@ const newDuck = data => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(res => {
-    return res.json();
-  }).catch(err => {
-    console.log(err);
-  });
+  })
+    .then(res => {
+      return res.json();
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
-
 
 // GLOBAL FUNCTIONS
 
@@ -177,9 +180,9 @@ const sleepy = () => {
   }
   const duckId = idSpan.textContent;
   const data = {
-    sleepy: sleepyValue, 
+    sleepy: sleepyValue,
     id: duckId
-  }
+  };
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/sleepy", {
     method: "POST",
@@ -194,18 +197,16 @@ const sleepy = () => {
 
 const hungry = () => {
   let hungryValue = duckHunger.firstElementChild.textContent;
-  console.log(hungryValue);
   if (hungryValue) {
     hungryValue = false;
   } else {
     hungryValue = true;
   }
-  console.log(hungryValue);
   const duckId = idSpan.textContent;
   const data = {
-    hungry: hungryValue, 
+    hungry: hungryValue,
     id: duckId
-  }
+  };
   // need a put to the db to make sleepy boolean TRUE
   fetch("/ducklist/hungry", {
     method: "POST",
@@ -213,46 +214,16 @@ const hungry = () => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  }).then(data => {
-    console.log(data);
-    if (data.hungry === true && data.duckfood < 0) {
+  })
+    .then(data => {
+      if (data.hungry === true && data.duckfood < 0) {
         window.location.replace("/pay/splash");
       }
-  }).then(response => {
-    duckStats(duckName.innerHTML);
-  });
+    })
+    .then(response => {
+      duckStats(duckName.innerHTML);
+    });
 };
-
-function hungry() {
-  // need a put to the db to make hungry boolean TRUE
-  $.post("/ducklist/hungry", function(data) {
-    if (data.hungry === true && data.duckfood < 0) {
-      window.location.replace("/pay/splash");
-    }
-  }).then(response => {
-    duckStats(duckName.innerHTML);
-  });
-}
-
-function notHungry() {
-  // need a put to the db to make hungry boolean FALSE
-  $.post("/ducklist/nothungry", function(data) {
-    if (data.hungry === true && data.duckfood < 0) {
-      window.location.replace("/pay/splash");
-    }
-  }).then(response => {
-    duckStats(duckName.innerHTML);
-  });
-  // need a put to the db to make hungry boolean TRUE
-  // $.post("/ducklist/hungry", function(data) {
-  //   console.log(data);
-  //   if (data.hungry === true && data.duckfood < 0) {
-  //     window.location.replace("/pay/splash");
-  //   }
-  // }).then(response => {
-  //   duckStats();
-  // });
-}
 
 function animateCSS(element, animationName, callback) {
   const node = document.querySelector(element);
