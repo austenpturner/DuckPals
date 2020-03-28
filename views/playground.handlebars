@@ -1,18 +1,16 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <span id="duckid">{{this.duck.id}}</span>
-            <span id="duckname">Duck: <span>{{this.duck.name}}</span> </span>
-            <span id="duckhunger">Hungry: <span>{{this.duck.hungry}}</span>  </span>
-            <span id="ducksleepy">Sleepy: <span>{{this.duck.sleepy}}</span>  </span>
-            <span id="duckcolor">{{this.duck.color}}</span>
-            <span id="duckfood">Duck Food: {{this.duckFood}} </span>
-            <span id="duckbucks">Duck Bucks: {{this.duckBucks}}</span>
-        </div>
-    </div>
-</nav>
+<div id="data-container">
+    <p>Duck: <span id="duckname">{{this.duck.name}}</span></p>
+    <p>Hungry: <span id="duckhunger">{{this.duck.hungry}}</span></p>
+    <p>Sleepy: <span id="ducksleepy">{{this.duck.sleepy}}</span></p>
+    <p>Duck Food: <span id="duckfood">{{this.duckFood}}</span> </p>
+    <p>Duck Bucks: <span id="duckbucks">{{this.duckBucks}}</span></p>
+</div>
+
 <audio></audio>
+<span id="duckid">{{this.duck.id}}</span>
+<span id="duckcolor">{{this.duck.color}}</span>
 <hr>
+
 <div id='gameContainer'>
 
     <div class='buttons' id='buttons-left'>
@@ -44,7 +42,7 @@
         <br>
         <a href="/ducklist">
             <button id="new-duck-btn">
-                New Duck
+                Go Back
             </button>
         </a>
         <br>

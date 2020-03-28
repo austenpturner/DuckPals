@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     duckfood: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      value: 0
+      value: 5
     },
     currentDuck: {
       type: DataTypes.INTEGER
